@@ -1,0 +1,16 @@
+{
+    "python.terminal.activateEnvironment": true,
+    "python.defaultInterpreterPath": "C:/Users/Justi/Documents/Code/Django/NexoJardin/venv/Scripts/python.exe",
+    "terminal.integrated.profiles.windows": {
+        "Mi PowerShell con venv": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell",
+            "args": [
+                "-NoExit",
+                "-Command",
+                "& '.\\venv\\Scripts\\Activate.ps1'"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Mi PowerShell con venv"
+}

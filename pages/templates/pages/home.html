@@ -1,0 +1,337 @@
+{% extends "base.html" %}
+{% load static %}
+{% load puntomiles %}
+{% block content %}
+
+<h2 class="titulo-carrusel">Productos Destacados</h2>
+<div class="carrusel-contenedor-exterior">
+  <button class="carrusel-flecha carrusel-flecha-izq" onclick="moverCarrusel(-1)" disabled>&#10094;</button>
+  <div class="carrusel-wrapper">
+    <div class="carrusel-destacados" id="carruselDestacados">
+      {% for producto in productos_destacados %}
+        <div class="producto-card">
+          <div class="producto-imagen-container">
+            <a href="{% url 'detalle_producto' producto.id %}">
+              {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="producto-img">
+              {% else %}
+                <img src="{% static 'img/default.jpg' %}" alt="Imagen por defecto" class="producto-img">
+              {% endif %}
+            </a>
+            {% if user.is_authenticated and user.is_staff %}
+              <button class="btn-destacado {% if producto.destacado %}destacado{% endif %}"
+                      onclick="toggleDestacado({{ producto.id }})"
+                      title="{% if producto.destacado %}Quitar de destacados{% else %}Marcar como destacado{% endif %}">
+                <i class="fa-star {% if producto.destacado %}fa-solid{% else %}fa-regular{% endif %}"></i>
+              </button>
+            {% endif %}
+          </div>
+          
+          <div class="producto-info">
+              <h3 class="producto-nombre">
+                <a href="{% url 'detalle_producto' producto.id %}" style="color:inherit; text-decoration:none;">
+                  {{ producto.nombre }}
+                </a>
+              </h3>
+              <p class="producto-categoria">{{ producto.categoria.nombre }}</p>
+              <p class="producto-precio">${{ producto.precio|puntomiles }}</p>
+          </div>
+  
+          <a href="{% url 'detalle_producto' producto.id %}" class="btn-ver-producto">
+            Ver producto
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <button class="carrusel-flecha carrusel-flecha-der" onclick="moverCarrusel(1)">&#10095;</button>
+</div>
+
+<style>
+/* ========================================================== */
+/* ESTILOS ADAPTADOS PARA EL CARRUSEL               */
+/* ========================================================== */
+
+.titulo-carrusel {
+  font-size: 2.2rem;
+  margin-top: 32px;
+  margin-bottom: 18px;
+  color: var(--primary-color, #4B5945);
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* * Contenedor exterior que posiciona las flechas a los lados.
+ * Este es el cambio principal para tu solicitud.
+ */
+.carrusel-contenedor-exterior {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1300px; /* Ancho máximo para todo el componente */
+    margin: 0 auto 48px auto;
+    gap: 1rem; /* Espacio entre las flechas y el carrusel */
+}
+
+/* El wrapper ahora solo contiene las tarjetas */
+.carrusel-wrapper {
+  width: 100%;
+  overflow: hidden; /* Oculta el overflow para que el scroll sea solo en el div de abajo */
+}
+
+
+.carrusel-destacados {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 24px;
+  align-items: stretch; /* Asegura que todas las tarjetas tengan la misma altura */
+}
+
+.carrusel-destacados::-webkit-scrollbar {
+    display: none; /* Oculta la barra de scroll */
+}
+
+.producto-card {
+  flex: 0 0 calc(25% - 18px); /* 4 items por vista en desktop */
+  display: flex;
+  flex-direction: column;
+  /* height: 100%;  Eliminado para permitir que la altura sea la del contenido más alto */
+  text-align: center;
+  scroll-snap-align: start;
+}
+
+.producto-info {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+}
+
+.producto-nombre {
+    flex-grow: 1;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-top: 1.2rem;
+}
+
+.producto-imagen-container {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.producto-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.producto-imagen-container:hover .producto-img {
+  transform: scale(1.08);
+}
+
+/* Las flechas ya no necesitan posicionamiento absoluto */
+.carrusel-flecha {
+  flex-shrink: 0;
+  background: #fff;
+  border: none;
+  font-size: 2.5rem;
+  color: #4B5945;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  z-index: 2;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.carrusel-flecha:hover:not(:disabled) {
+  background: #e8ebe7;
+  color: #2d3328;
+}
+
+.carrusel-flecha:disabled {
+    opacity: 0.5;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 1350px) {
+    /* En pantallas más pequeñas, volvemos a poner las flechas sobre el carrusel */
+    .carrusel-contenedor-exterior {
+        position: relative;
+        max-width: 1200px;
+        gap: 0;
+    }
+    .carrusel-flecha {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .carrusel-flecha-izq {
+        left: 10px;
+    }
+    .carrusel-flecha-der {
+        right: 10px;
+    }
+}
+
+@media (max-width: 900px) {
+  .producto-card { flex-basis: calc(33.33% - 16px); }
+}
+@media (max-width: 700px) {
+  .producto-card { flex-basis: calc(50% - 12px); }
+}
+
+@media (max-width: 480px) {
+  .carrusel-contenedor-exterior {
+      width: 100%;
+  }
+  .carrusel-wrapper {
+      padding: 0;
+  }
+  .carrusel-destacados {
+      padding: 0 1rem;
+  }
+  .carrusel-flecha {
+      display: none; /* Ocultamos las flechas en móvil, se usa scroll táctil */
+  }
+  .producto-card {
+      flex-basis: 80%;
+  }
+}
+</style>
+
+<script>
+// El script no necesita cambios. Se mantiene el anterior.
+let carruselPos = 0;
+let isAnimating = false;
+const carrusel = document.getElementById('carruselDestacados');
+const flechaIzq = document.querySelector('.carrusel-flecha-izq');
+const flechaDer = document.querySelector('.carrusel-flecha-der');
+
+function updateArrowState() {
+    if (!carrusel || !flechaIzq || !flechaDer) return;
+    const maxScrollLeft = carrusel.scrollWidth - carrusel.clientWidth;
+    // Se usa un margen de 1px por posibles decimales en el cálculo del scroll
+    flechaIzq.disabled = carrusel.scrollLeft <= 0;
+    flechaDer.disabled = carrusel.scrollLeft >= maxScrollLeft - 1;
+}
+
+if (carrusel) {
+    carrusel.addEventListener('scroll', () => {
+        if (!isAnimating) {
+            updateArrowState();
+        }
+    });
+    // Llamada inicial para establecer el estado correcto de los botones al cargar
+    setTimeout(updateArrowState, 100); 
+}
+
+
+function moverCarrusel(dir) {
+  if (!carrusel) return;
+  const cards = carrusel.querySelectorAll('.producto-card');
+  if (cards.length === 0) return;
+  const cardWidth = cards[0].offsetWidth;
+  const gap = parseFloat(window.getComputedStyle(carrusel).gap) || 24;
+  const totalCard = cardWidth + gap;
+  // Calcular el índice del primer card visible
+  const scrollLeft = carrusel.scrollLeft;
+  let index = Math.round(scrollLeft / totalCard);
+  // Nuevo índice destino
+  let newIndex = index + dir;
+  newIndex = Math.max(0, Math.min(cards.length - 1, newIndex));
+  const newScrollLeft = newIndex * totalCard;
+  carrusel.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
+  setTimeout(updateArrowState, 400);
+}
+
+window.addEventListener('resize', () => {
+    updateArrowState();
+    igualarAlturaTarjetasCarrusel();
+});
+
+// Igualar altura de todas las .producto-card en el carrusel
+function igualarAlturaTarjetasCarrusel() {
+  const cards = document.querySelectorAll('.carrusel-destacados .producto-card');
+  let max = 0;
+  // Reset heights
+  cards.forEach(card => { card.style.height = 'auto'; });
+  // Buscar la mayor altura
+  cards.forEach(card => {
+    if (card.offsetHeight > max) max = card.offsetHeight;
+  });
+  // Asignar la mayor altura a todas
+  cards.forEach(card => { card.style.height = max + 'px'; });
+}
+
+// Ejecutar al cargar
+window.addEventListener('DOMContentLoaded', igualarAlturaTarjetasCarrusel);
+// Ejecutar también tras cargar imágenes (por si cambian el alto)
+window.addEventListener('load', igualarAlturaTarjetasCarrusel);
+
+// --- Toggle destacado desde el home ---
+function toggleDestacado(productoId) {
+  const btn = document.querySelector(`.btn-destacado[onclick="toggleDestacado(${productoId})"]`);
+  if (!btn) return;
+  btn.disabled = true;
+  fetch(`/productos/toggle-destacado/${productoId}/`, {
+    method: 'POST',
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest',
+      'X-CSRFToken': getCSRFToken(),
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        if (!data.destacado) {
+          // Si ya no es destacado, eliminar la tarjeta del DOM
+          const card = btn.closest('.producto-card');
+          if (card) {
+            card.remove();
+            igualarAlturaTarjetasCarrusel();
+          }
+        } else {
+          btn.classList.add('destacado');
+        }
+        const icon = btn.querySelector('i');
+        if (icon) {
+          icon.classList.toggle('fa-solid', data.destacado);
+          icon.classList.toggle('fa-regular', !data.destacado);
+        }
+        btn.title = data.destacado ? 'Quitar de destacados' : 'Marcar como destacado';
+      } else {
+        alert('No se pudo cambiar el estado de destacado.');
+      }
+    })
+    .catch(() => alert('Error de red.'))
+    .finally(() => { btn.disabled = false; });
+}
+
+// Obtener CSRF token de la cookie
+function getCSRFToken() {
+  let name = 'csrftoken=';
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1);
+    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  }
+  return '';
+}
+</script>
+
+{% endblock content %}

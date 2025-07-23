@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NexoJardin{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Font Awesome CDN para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <!-- Barra superior con logo y búsqueda -->
+        <div class="container-superior">
+            <div class="container superior">
+                <form class="search-form" action="{% url 'ver-todo' %}" method="GET">
+                    <span class="search-icon">
+                        <i class="fa-solid fa-magnifying-glass icon-lupa"></i>
+                    </span>
+                    <input type="search" placeholder="Buscar producto" id="search-input" name="q">
+                </form>
+
+                <div class="logo-container">
+                    <h1 class="logo"><a href="{% url 'home' %}">Nexo Jardin</a></h1>
+                </div>
+
+                <div class="contacto-container" style="display: flex; align-items: center; justify-content: flex-end; flex: 1; min-width: 180px;">
+                    <!-- Espacio vacío para mantener el centrado del logo -->
+                    {% if user.is_authenticated and user.is_superuser %}
+                        <div class="dropdown-cuenta" style="display: flex; align-items: center; gap: 1.5rem;">
+                            <span style="font-weight:500; font-size:1.3rem; cursor:pointer;">
+                                <i class="fa-solid fa-user"></i> Cuenta
+                            </span>
+                            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" style="background:none; border:none; color:#d86461; font-size:1.1rem; cursor:pointer; padding:0;">Cerrar sesión</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de navegación principal -->
+        <div class="container-navegacion">
+            <nav class="container navegacion">
+                <ul class="menu">
+                    <li><a href="{% url 'home' %}">INICIO</a></li>
+                    <li><a href="{% url 'plantas' %}">PLANTAS</a></li>
+                    <li><a href="{% url 'materiales' %}">MATERIALES</a></li>
+                    <li><a href="{% url 'informacion' %}">INFORMACIÓN Y CUIDADOS</a></li>
+                    <li><a href="{% url 'ver-todo' %}">VER TODO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    {% block banner %}
+    <section class="banner">
+        <div class="contenido-banner">
+            <h2>DESCUBRE TODOS NUESTROS PRODUCTOS</h2>
+            <a href="#">Ver productos</a>
+        </div>
+    </section>
+    {% endblock banner %}
+
+    <main class="container">
+        {% block content %}
+        {% endblock content %}
+    </main>
+    
+    <footer class="footer">
+        <!-- Barra inferior con la informacion -->
+        <div class="container container-inferior">
+            <div class="menu-inferior">
+                <div class="contact-info">
+                    <p class="title-inferior">INFORMACIÓN DE CONTACTO</p>
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot icon-contacto"></i> Direccíon: Camino interior el chacayal 1540</li>
+                        <li><i class="fa-solid fa-phone icon-contacto"></i> Teléfono: +569 9139 5705</li>
+                        <li><i class="fa-solid fa-envelope icon-contacto"></i> Email: nexojardincl@gmail.com</li>
+                    </ul>
+
+                    <div class="social-icons">
+                        <a class="instagram-link" href="https://www.instagram.com/nexo.jardin/" target="_blank" rel="noopener">
+                            <span>Instagram</span>
+                            <i class="fa-brands fa-instagram fa-lg icon-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="informacion">
+                    <p class="title-inferior">INFORMACIÓN</p>
+                    <ul>
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Información de envios</a></li>
+                    </ul>
+                </div>
+
+                <div class="newsletter">
+                    <p class="title-inferior">BOLETÍN INFORMATIVO</p>
+                    <div class="content">
+                        <p>Suscribete al correo para recibir novedades</p>
+                        <input type="email" placeholder="Ingresar correo"> 
+                        <button>Suscríbete</button>
+                    </div>
+                </div>            
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 NexoJardin. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="{% static 'js/search.js' %}"></script>
+</body>
+</html>
+

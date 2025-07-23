@@ -1,0 +1,358 @@
+{% extends "base.html" %}
+{% block banner %}{% endblock banner %}
+{% load static %}
+{% load puntomiles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% block content %}
+{% if user.is_authenticated and user.is_staff %}
+    <div class="botones-admin">
+        <button id="openModalProductoBtn" class="btn-agregar">Agregar producto</button>
+        <button id="openModalCategoriaBtn" class="btn-agregar">Agregar categoría</button>
+        <button id="openModalEliminarCategoriaBtn" class="btn-eliminar">Eliminar categoría</button>
+    </div>
+
+    <!-- Modal Producto -->
+    <div id="modalProducto" class="modal modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <span id="closeModalProductoBtn" class="modal-close">&times;</span>
+            <h2>Agregar {{ tipo|title }}</h2>
+            <form id="formProducto" method="post" enctype="multipart/form-data" data-url="{% url agregar_producto_url %}">
+                {% csrf_token %}
+                <input type="hidden" name="tipo" value="{{ tipo }}">
+                {% for field in producto_form %}
+                    {% if field.name == 'categoria' %}
+                        <div class="form-group">
+                            <label for="id_categoria">Categoría:</label>
+                            <select name="categoria" id="id_categoria" autocomplete="off">
+                                <option value="">---------</option>
+                                {% for cat in categorias %}
+                                    <option value="{{ cat.id }}" {% if field.value|stringformat:'s' == cat.id|stringformat:'s' %}selected{% endif %}>{{ cat.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% elif field.name == 'nombre' %}
+                        <div class="form-group">
+                            <label for="id_nombre">Nombre:</label>
+                            <input type="text" name="nombre" id="id_nombre" value="{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}" maxlength="100" autocomplete="off">
+                        </div>
+                    {% elif field.name == 'descripcion' %}
+                        <div class="form-group">
+                            <label for="id_descripcion">Descripción:</label>
+                            <textarea name="descripcion" id="id_descripcion" maxlength="500">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
+                        </div>
+                    {% elif field.name == 'precio' %}
+                        <div class="form-group">
+                            <label for="id_precio">Precio:</label>
+                            <input type="number" name="precio" id="id_precio" class="no-spin" value="{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}" min="0" step="0.01">
+                        </div>
+                    {% elif field.name == 'imagen' %}
+                        <div class="form-group">
+                            <label for="id_imagen">Imagen:</label>
+                            <div class="image-upload-container">
+                                <div class="image-upload-box" onclick="document.getElementById('id_imagen').click();">
+                                    <div class="upload-icon">📁</div>
+                                    <div class="upload-text">
+                                        <span id="file-name-display">Haz clic para seleccionar una imagen<br>o arrastra y suelta aquí</span>
+                                        <br><small>Formatos: JPG, PNG</small>
+                                    </div>
+                                </div>
+                                <input type="file" name="imagen" id="id_imagen" accept="image/*" style="display: none;" onchange="updateFileName(this)">
+                                <button type="button" id="btn-eliminar-imagen" class="btn-eliminar-imagen" onclick="eliminarImagen()" style="display: none; margin-top: 10px; padding: 8px 16px; background-color: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9em;">
+                                    <i class="fas fa-trash"></i> Eliminar imagen
+                                </button>
+                            </div>
+                        </div>
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                {% endfor %}
+                <div id="mensajeErrorProducto" class="mensaje-error"></div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-agregar">Guardar</button>
+                    <button type="button" id="cancelarModalProducto" class="btn-cancelar">Cancelar</button>
+                </div>
+            </form>
+            <div id="mensajeExitoProducto" class="mensaje-exito">¡{{ tipo|title }} agregado!</div>
+        </div>
+    </div>
+
+    <!-- Modal Categoría -->
+    <!-- Modal Eliminar Categoría -->
+    <div id="modalEliminarCategoria" class="modal modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <span id="closeModalEliminarCategoriaBtn" class="modal-close">&times;</span>
+            <h2>Eliminar Categoría</h2>
+            <form id="formEliminarCategoria" method="post" action="{% url eliminar_categoria_url %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_categoria_eliminar">Selecciona la categoría a eliminar:</label>
+                    <select name="categoria_id" id="id_categoria_eliminar" required autocomplete="off">
+                        <option value="">Selecciona categoría</option>
+                        {% for cat in categorias %}
+                            <option value="{{ cat.id }}">{{ cat.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div id="mensajeErrorEliminarCategoria" class="mensaje-error"></div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-eliminar">Eliminar</button>
+                    <button type="button" id="cancelarModalEliminarCategoria" class="btn-cancelar">Cancelar</button>
+                </div>
+            </form>
+            <div id="mensajeExitoEliminarCategoria" class="mensaje-exito"></div>
+        </div>
+    </div>
+    <div id="modalCategoria" class="modal modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <span id="closeModalCategoriaBtn" class="modal-close">&times;</span>
+            <h2>Agregar Categoría</h2>
+            <form id="formCategoria" method="post" data-url="{% url agregar_categoria_url %}">
+                {% csrf_token %}
+                <input type="hidden" name="tipo" value="{{ tipo }}">
+                <div class="form-group">
+                    <label for="id_nombre_categoria">Nombre:</label>
+                    <input type="text" name="nombre" id="id_nombre_categoria" maxlength="100" autocomplete="off" required>
+                </div>
+                <div id="mensajeErrorCategoria" class="mensaje-error"></div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-agregar">Guardar</button>
+                    <button type="button" id="cancelarModalCategoria" class="btn-cancelar">Cancelar</button>
+                </div>
+            </form>
+            <div id="mensajeExitoCategoria" class="mensaje-exito">¡Categoría agregada!</div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/productos.js' %}"></script>
+
+{% endif %}
+
+<div class="productos-container">
+    <!-- Encabezado con título y filtros en línea -->
+    <div class="header-productos">
+        <h1 class="titulo-seccion">{{ titulo }}</h1>
+        <div class="filtros-linea">
+            <!-- Filtro de Tipo (solo para Ver Todo) -->
+            {% if tipo == 'todos' %}
+            <div class="filtro-inline">
+                <label for="filtro-tipo">tipo</label>
+                <select id="filtro-tipo" name="tipo">
+                    <option value="">Todos</option>
+                    <option value="planta" {% if request.GET.tipo == 'planta' %}selected{% endif %}>Plantas</option>
+                    <option value="material" {% if request.GET.tipo == 'material' %}selected{% endif %}>Materiales</option>
+                </select>
+            </div>
+            {% endif %}
+            
+            <!-- Filtro de Categoría -->
+            <div class="filtro-inline">
+                <label for="filtro-categoria">categoría</label>
+                <select id="filtro-categoria" name="categoria">
+                    <option value="">Todas</option>
+                    {% if tipo == 'todos' %}
+                        <!-- Mostrar categorías de plantas -->
+                        {% if categorias_plantas %}
+                            <optgroup label="Plantas">
+                                {% for cat in categorias_plantas %}
+                                    <option value="{{ cat.id }}" {% if request.GET.categoria == cat.id|stringformat:'s' %}selected{% endif %}>{{ cat.nombre }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endif %}
+                        <!-- Mostrar categorías de materiales -->
+                        {% if categorias_materiales %}
+                            <optgroup label="Materiales">
+                                {% for cat in categorias_materiales %}
+                                    <option value="{{ cat.id }}" {% if request.GET.categoria == cat.id|stringformat:'s' %}selected{% endif %}>{{ cat.nombre }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endif %}
+                    {% else %}
+                        {% for cat in categorias %}
+                            <option value="{{ cat.id }}" {% if request.GET.categoria == cat.id|stringformat:'s' %}selected{% endif %}>{{ cat.nombre }}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div>
+
+            <!-- Filtro de Ordenamiento -->
+            <div class="filtro-inline">
+                <label for="filtro-orden">ordenar</label>
+                <select id="filtro-orden" name="orden_precio">
+                    <option value="">Relevancia</option>
+                    <option value="menor" {% if request.GET.orden_precio == 'menor' %}selected{% endif %}>Precio: menor a mayor</option>
+                    <option value="mayor" {% if request.GET.orden_precio == 'mayor' %}selected{% endif %}>Precio: mayor a menor</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Información de resultados -->
+    <div class="info-resultados">
+        <span class="productos-count">{{ productos|length }} producto{{ productos|length|pluralize }} encontrado{{ productos|length|pluralize }}</span>
+    </div>
+    <div class="grid-productos">
+        {% for producto in productos %}
+            <div class="producto-card">
+                <div class="producto-imagen-container">
+                    <a href="{% url detalle_producto_url producto.id %}">
+                        {% if producto.imagen %}
+                            <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="producto-img">
+                        {% else %}
+                            <img src="{% static 'img/default.jpg' %}" alt="Imagen por defecto" class="producto-img">
+                        {% endif %}
+                    </a>
+                    {% if user.is_authenticated and user.is_staff %}
+                        <button class="btn-destacado {% if producto.destacado %}destacado{% endif %}" 
+                                onclick="toggleDestacado({{ producto.id }})" 
+                                title="{% if producto.destacado %}Quitar de destacados{% else %}Marcar como destacado{% endif %}">
+                            <i class="fa-star {% if producto.destacado %}fa-solid{% else %}fa-regular{% endif %}"></i>
+                        </button>
+                    {% endif %}
+                </div>
+                <h3 class="producto-nombre">
+                    <a href="{% url detalle_producto_url producto.id %}" style="color:inherit; text-decoration:none;">
+                        {{ producto.nombre }}
+                    </a>
+                </h3>
+                <p class="producto-categoria">{{ producto.categoria.nombre }}</p>
+                <p class="producto-precio">${{ producto.precio|puntomiles }}</p>
+                <a href="{% url detalle_producto_url producto.id %}" class="btn-ver-producto">
+                    Ver producto
+                </a>
+                {% if user.is_authenticated and user.is_staff %}
+                    <div class="botones-producto">
+                        <button type="button" class="btn-editar" onclick="abrirModalEditarProducto({{ producto.id }})">Editar</button>
+                        <button type="button" class="btn-eliminar" onclick="abrirModalEliminarProducto({{ producto.id }}, '{{ producto.nombre|escapejs }}')">Eliminar</button>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        <!-- Si no hay productos, crear tarjetas transparentes para mantener el grid -->
+        {% if not productos %}
+            <div class="producto-card-transparente">
+                <div class="mensaje-no-productos">
+                    {% if tipo == 'todos' %}
+                        <p>No hay productos disponibles con los filtros seleccionados.</p>
+                    {% else %}
+                        <p>No hay {{ tipo }}s disponibles con los filtros seleccionados.</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="producto-card-transparente invisible"></div>
+            <div class="producto-card-transparente invisible"></div>
+            <div class="producto-card-transparente invisible"></div>
+            <div class="producto-card-transparente invisible"></div>
+            <div class="producto-card-transparente invisible"></div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- CSRF global para AJAX -->
+{% csrf_token %}
+
+<!-- Modal Confirmar Eliminar Producto -->
+<div id="modalConfirmarEliminarProducto" class="modal modal-overlay" style="display:none;">
+  <div class="modal-content">
+    <span id="closeModalConfirmarEliminarProductoBtn" class="modal-close">&times;</span>
+    <h2>Confirmar eliminación</h2>
+    <p id="textoConfirmarEliminarProducto"></p>
+    <form id="formConfirmarEliminarProducto" method="post">
+        {% csrf_token %}
+        <div class="modal-actions">
+            <button type="submit" class="btn-eliminar">Eliminar</button>
+            <button type="button" id="cancelarModalConfirmarEliminarProducto" class="btn-cancelar">Cancelar</button>
+        </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Editar Producto -->
+<div id="modalEditarProducto" class="modal modal-overlay" style="display:none;">
+  <div class="modal-content" id="modalEditarProductoContent">
+    <!-- El formulario se carga dinámicamente por JS -->
+  </div>
+</div>
+
+<script>
+// JavaScript para filtros horizontales
+document.addEventListener('DOMContentLoaded', function() {
+    const filtroCategoria = document.getElementById('filtro-categoria');
+    const filtroOrden = document.getElementById('filtro-orden');
+    const filtroTipo = document.getElementById('filtro-tipo'); // Nuevo filtro de tipo
+    
+    function aplicarFiltros() {
+        const url = new URL(window.location);
+        const categoria = filtroCategoria.value;
+        const orden = filtroOrden.value;
+        const tipo = filtroTipo ? filtroTipo.value : null; // Solo si existe el filtro de tipo
+        
+        // Limpiar parámetros existentes
+        url.searchParams.delete('categoria');
+        url.searchParams.delete('orden_precio');
+        url.searchParams.delete('tipo');
+        
+        // Agregar nuevos parámetros si tienen valor
+        if (categoria) {
+            url.searchParams.set('categoria', categoria);
+        }
+        if (orden) {
+            url.searchParams.set('orden_precio', orden);
+        }
+        if (tipo) {
+            url.searchParams.set('tipo', tipo);
+        }
+        
+        // Recargar página con nuevos filtros
+        window.location.href = url.toString();
+    }
+    
+    // Escuchar cambios en los filtros
+    if (filtroCategoria) {
+        filtroCategoria.addEventListener('change', aplicarFiltros);
+    }
+    if (filtroOrden) {
+        filtroOrden.addEventListener('change', aplicarFiltros);
+    }
+    if (filtroTipo) {
+        filtroTipo.addEventListener('change', aplicarFiltros);
+    }
+});
+
+// Función para alternar destacado
+function toggleDestacado(productoId) {
+    fetch(`/products/toggle-destacado/${productoId}/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Actualizar la UI
+            const btn = document.querySelector(`button[onclick="toggleDestacado(${productoId})"]`);
+            const icon = btn.querySelector('i');
+            
+            if (data.destacado) {
+                btn.classList.add('destacado');
+                icon.className = 'fa-star fa-solid';
+                btn.title = 'Quitar de destacados';
+            } else {
+                btn.classList.remove('destacado');
+                icon.className = 'fa-star fa-regular';
+                btn.title = 'Marcar como destacado';
+            }
+            
+            // Mostrar mensaje de éxito
+            console.log(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al actualizar el estado de destacado');
+    });
+}
+</script>
+{% endblock content %}
