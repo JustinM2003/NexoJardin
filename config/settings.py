@@ -146,3 +146,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Configuración para Azure Blob Storage
+if not DEBUG:
+    INSTALLED_APPS += ['storages']
+    DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+    AZURE_ACCOUNT_NAME = 'nexojardinstorage'
+    AZURE_ACCOUNT_KEY = '3SS4g+7IQ6Lx70WWrf8nb310I0VXoF7IKux/chKMW6IvsC7dS4hykgJB1kGUMWMrU42DEKnVsrRx+AStyngJVQ=='
+    AZURE_CONTAINER = 'media'
+    MEDIA_URL = 'https://nexojardinstorage.blob.core.windows.net/media/'
