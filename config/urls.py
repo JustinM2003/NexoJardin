@@ -27,4 +27,10 @@ urlpatterns = [
     path('productos/', include('products.urls')),
     path('', include('products.urls')),
     # path('login/', include('pages.urls_login')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+# Servir archivos estáticos en producción (DEBUG=False)
+if not settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
