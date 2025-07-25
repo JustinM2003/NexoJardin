@@ -1,4 +1,6 @@
-...existing code...
+Django>=4.0
+gunicorn
+Pillow
 Django>=4.0
 gunicorn
 Pillow
