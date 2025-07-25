@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5gt+u4q1pi1f5n!wqhq7amtrf#gsybb-4@+z$^ya#@k--if2t_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# Dominio permitido para producción en Render
+ALLOWED_HOSTS = ['nexojardin.onrender.com']
 
 
 # Application definition
@@ -115,13 +116,16 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
 
-#Buscar carpeta static en la raiz del proyecto
+# Carpeta donde Django guardará los archivos estáticos recolectados para producción
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# Buscar carpeta static en la raiz del proyecto
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
