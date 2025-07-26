@@ -2,6 +2,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.querySelector('#search-input') || document.querySelector('.search-form input');
     const searchForm = document.querySelector('.search-form');
+    // Desactivar autocompletado del navegador
+    if (searchInput) {
+        searchInput.setAttribute('autocomplete', 'off');
+    }
     
     // Verificar que los elementos existen
     if (!searchInput || !searchForm) {

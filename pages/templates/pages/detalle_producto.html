@@ -1,24 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
+{% load puntomiles %}
 {% block banner %}{% endblock %}
 {% block content %}
 <div class="detalle-producto-flex-container">
-  <div class="detalle-producto-img-col">
-    {% if producto.imagen %}
-      <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="detalle-producto-img">
-    {% else %}
-      <img src="{% static 'img/default.jpg' %}" alt="Imagen por defecto" class="detalle-producto-img">
-    {% endif %}
-  </div>
-  <div class="detalle-producto-info-col">
-    <h1 class="detalle-producto-nombre">{{ producto.nombre }}</h1>
-    <div class="detalle-producto-precio">${{ producto.precio }}</div>
-    <hr class="detalle-producto-divider">
-    {% if producto.descripcion %}
-      <div class="detalle-producto-descripcion">{{ producto.descripcion }}</div>
-    {% endif %}
-    <a href="{% url 'plantas' %}" class="detalle-producto-volver-btn">Volver al catálogo</a>
-  </div>
+    <div class="detalle-producto-img-col">
+        {% if producto.imagen %}
+            <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="detalle-producto-img">
+        {% else %}
+            <img src="{% static 'img/default.jpg' %}" alt="Imagen por defecto" class="detalle-producto-img">
+        {% endif %}
+    </div>
+    <div class="detalle-producto-info-col">
+        <h1 class="detalle-producto-nombre">{{ producto.nombre }}</h1>
+        <div class="detalle-producto-precio">${{ producto.precio|puntomiles }}</div>
+        <hr class="detalle-producto-divider">
+        {% if producto.descripcion %}
+            <div class="detalle-producto-descripcion">{{ producto.descripcion|linebreaksbr }}</div>
+        {% endif %}
+        <a href="{% url 'plantas' %}" class="detalle-producto-volver-btn">Volver al catálogo</a>
+    </div>
 </div>
 <style>
 
@@ -34,16 +36,16 @@
 }
 
 .detalle-producto-img-col {
-  flex: 0 0 500px;
-  min-width: 500px;
-  max-width: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 500px;
-  background: #f3f3f3;
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    flex: 0 0 500px;
+    min-width: 500px;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    background: #f3f3f3;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
 }
 .detalle-producto-img {
   width: 500px;

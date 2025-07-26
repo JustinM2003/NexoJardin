@@ -38,7 +38,7 @@
                     {% elif field.name == 'descripcion' %}
                         <div class="form-group">
                             <label for="id_descripcion">Descripción:</label>
-                            <textarea name="descripcion" id="id_descripcion" maxlength="500">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
+                            <textarea name="descripcion" id="id_descripcion">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
                         </div>
                     {% elif field.name == 'precio' %}
                         <div class="form-group">
@@ -283,40 +283,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function aplicarFiltros() {
         const url = new URL(window.location);
-        const categoria = filtroCategoria.value;
-        const orden = filtroOrden.value;
-        const tipo = filtroTipo ? filtroTipo.value : null; // Solo si existe el filtro de tipo
-        
-        // Limpiar parámetros existentes
+        const categoria = filtroCategoria ? filtroCategoria.value : null;
+        const orden = filtroOrden ? filtroOrden.value : null;
+        const tipo = filtroTipo ? filtroTipo.value : null;
         url.searchParams.delete('categoria');
         url.searchParams.delete('orden_precio');
         url.searchParams.delete('tipo');
-        
-        // Agregar nuevos parámetros si tienen valor
-        if (categoria) {
-            url.searchParams.set('categoria', categoria);
-        }
-        if (orden) {
-            url.searchParams.set('orden_precio', orden);
-        }
-        if (tipo) {
-            url.searchParams.set('tipo', tipo);
-        }
-        
-        // Recargar página con nuevos filtros
+        if (categoria) url.searchParams.set('categoria', categoria);
+        if (orden) url.searchParams.set('orden_precio', orden);
+        if (tipo) url.searchParams.set('tipo', tipo);
         window.location.href = url.toString();
     }
-    
-    // Escuchar cambios en los filtros
-    if (filtroCategoria) {
-        filtroCategoria.addEventListener('change', aplicarFiltros);
-    }
-    if (filtroOrden) {
-        filtroOrden.addEventListener('change', aplicarFiltros);
-    }
-    if (filtroTipo) {
-        filtroTipo.addEventListener('change', aplicarFiltros);
-    }
+    if (filtroCategoria) filtroCategoria.addEventListener('change', aplicarFiltros);
+    if (filtroOrden) filtroOrden.addEventListener('change', aplicarFiltros);
+    if (filtroTipo) filtroTipo.addEventListener('change', aplicarFiltros);
 });
 
 // Función para alternar destacado
@@ -356,3 +336,68 @@ function toggleDestacado(productoId) {
 }
 </script>
 {% endblock content %}
+
+<!-- Estilos y scripts para dropdowns personalizados -->
+<style>
+  .custom-dropdown .dropdown-label {
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+  .custom-dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    min-width: 120px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: none;
+    padding: 0.5em 0;
+    z-index: 10;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .custom-dropdown .dropdown-item {
+    color: #111;
+    padding: 8px 18px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    background: none;
+    border: none;
+    transition: background 0.15s;
+  }
+  .custom-dropdown .dropdown-item:hover {
+    background: #f3f3f3;
+    color: #111;
+  }
+  .custom-dropdown {
+    position: relative;
+  }
+</style>
+
+<script>
+// Dropdowns personalizados para filtros tipo y categoría
+function toggleDropdown(tipo) {
+    document.querySelectorAll('.custom-dropdown .dropdown-menu').forEach(menu => menu.style.display = 'none');
+    const menu = document.querySelector(`#dropdown-${tipo} .dropdown-menu`);
+    if (menu) menu.style.display = 'block';
+}
+
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.custom-dropdown')) {
+        document.querySelectorAll('.custom-dropdown .dropdown-menu').forEach(menu => menu.style.display = 'none');
+    }
+});
+
+function setFiltro(tipo, valor) {
+    const url = new URL(window.location);
+    url.searchParams.delete(tipo);
+    if (valor) url.searchParams.set(tipo, valor);
+    window.location.href = url.toString();
+}
+</script>

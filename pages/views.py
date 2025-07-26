@@ -146,3 +146,6 @@ def mantencion(request):
 def detalle_producto(request, id):
     producto = get_object_or_404(Producto, id=id)
     return render(request, 'pages/detalle_producto.html', {'producto': producto})
+
+def nosotros(request):
+    return render(request, 'pages/nosotros.html')
