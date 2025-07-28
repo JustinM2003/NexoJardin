@@ -1,0 +1,104 @@
+.detalle-producto-flex-container {
+  display: flex;
+  flex-direction: row;
+  gap: 3.5rem;
+  max-width: 1100px;
+  margin: 7vh auto 6vh auto; /* Espacio superior/inferior relativo a la altura de la pantalla */
+  padding: 0 2.5rem 0 2.5rem;
+  min-height: 70vh;
+  flex-wrap: nowrap;
+}
+
+.detalle-producto-img-col {
+    flex: 0 0 500px;
+    min-width: 500px;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    background: #f3f3f3;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+.detalle-producto-img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  background: transparent;
+  box-shadow: none;
+}
+.detalle-producto-info-col {
+  flex: 1 1 320px;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2.2rem;
+  flex-shrink: 0;
+}
+.detalle-producto-nombre {
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--dark-text);
+  margin-bottom: 0.7rem;
+}
+.detalle-producto-precio {
+  font-size: 2.5rem;
+  color: var(--dark-text);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+.detalle-producto-descripcion {
+  color: var(--dark-text);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 325;
+}
+
+@media (max-width: 900px) {
+  .detalle-producto-flex-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0.5rem 3.5rem 0.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    gap: 2.2rem;
+  }
+  .detalle-producto-img-col, .detalle-producto-info-col {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .detalle-producto-img-col {
+    height: 320px;
+    max-width: 95vw;
+  }
+  .detalle-producto-img {
+    max-width: 100%;
+    height: 100%;
+    min-height: 180px;
+    object-fit: contain;
+  }
+  .detalle-producto-nombre {
+    font-size: 2rem;
+  }
+  .detalle-producto-precio {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 600px) {
+  .detalle-producto-flex-container {
+    padding: 0.5rem 0.2rem 2.5rem 0.2rem;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+    gap: 1.2rem;
+  }
+  .detalle-producto-img-col {
+    height: 200px;
+    max-width: 100vw;
+  }
+  .detalle-producto-img {
+    min-height: 100px;
+  }
+}

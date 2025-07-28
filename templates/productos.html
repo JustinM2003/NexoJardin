@@ -3,6 +3,8 @@
 {% load static %}
 {% load puntomiles %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/productos.css' %}">
+
 {% block content %}
 {% if user.is_authenticated and user.is_staff %}
     <div class="botones-admin">
@@ -127,9 +129,9 @@
 
 {% endif %}
 
-<div class="productos-container">
+<!-- INICIO CONTENIDO PRODUCTOS -->
     <!-- Encabezado con título y filtros en línea -->
-    <div class="header-productos" style="margin-top: 56px;">
+    <div class="header-productos">
         <h1 class="titulo-seccion">{{ titulo }}</h1>
         <div class="filtros-linea">
             <!-- Filtro de Tipo (solo para Ver Todo) -->
