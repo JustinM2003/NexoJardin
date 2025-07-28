@@ -1,17 +1,19 @@
 {% load static %}
 {% load puntomiles %}
 
+<span class="modal-close" onclick="document.getElementById('modalEditarProducto').style.display='none'">&times;</span>
+<h2>Editar Producto</h2>
+
 <form id="formEditarProducto" method="post" enctype="multipart/form-data" data-url="/editar/{{ producto.id }}/">
     {% csrf_token %}
-    <!-- Campo oculto para mantener el precio base original -->
-    <input type="hidden" name="precio_base_original" value="{{ precio_base_original }}">
     <!-- Campo oculto para indicar si se debe eliminar la imagen -->
     <input type="hidden" name="eliminar_imagen" id="eliminar_imagen_hidden" value="false">
+    
     {% for field in form %}
         {% if field.name == 'categoria' %}
             <div class="form-group">
-                <label for="id_categoria">Categoría:</label>
-                <select name="categoria" id="id_categoria" autocomplete="off" class="input-full">
+                <label for="id_categoria_edit">Categoría:</label>
+                <select name="categoria" id="id_categoria_edit" autocomplete="off" class="input-full">
                     <option value="">---------</option>
                     {% for cat in form.fields.categoria.queryset %}
                         <option value="{{ cat.id }}" {% if field.value|stringformat:'s' == cat.id|stringformat:'s' %}selected{% endif %}>{{ cat.nombre }}</option>
@@ -20,32 +22,33 @@
             </div>
         {% elif field.name == 'nombre' %}
             <div class="form-group">
-                <label for="id_nombre">Nombre:</label><br>
-                <input type="text" name="nombre" id="id_nombre" value="{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}" class="input-full" maxlength="100" autocomplete="off">
+                <label for="id_nombre_edit">Nombre:</label>
+                <input type="text" name="nombre" id="id_nombre_edit" value="{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}" class="input-full" maxlength="100" autocomplete="off">
             </div>
         {% elif field.name == 'descripcion' %}
             <div class="form-group">
-                <label for="id_descripcion">Descripción:</label><br>
-                <textarea name="descripcion" id="id_descripcion" class="input-full" autocomplete="off">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
+                <label for="id_descripcion_edit">Descripción:</label>
+                <textarea name="descripcion" id="id_descripcion_edit" class="input-full" autocomplete="off">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
             </div>
         {% elif field.name == 'precio' %}
             <div class="form-group">
-                <label for="id_precio">Precio:</label><br>
-                <input type="text" name="precio" id="id_precio" class="no-spin input-full" value="{{ precio_base_original|puntomiles }}" autocomplete="off">
-                <div class="precio-anterior">
-                    <span>Valor anterior: ${{ precio_base_original|puntomiles }}</span>
+                <label for="id_precio_edit">Precio:</label>
+                <!-- El precio se guarda y muestra tal como se ingresa -->
+                <input type="number" name="precio" id="id_precio_edit" class="input-full" value="{{ precio_base_original }}" min="0" step="0.01" autocomplete="off">
+                <div class="precio-info">
+                    <small>Este será el precio final que verán los clientes</small>
                 </div>
             </div>
         {% elif field.name == 'imagen' %}
             <div class="form-group">
-                <label for="id_imagen">Imagen:</label><br>
+                <label for="id_imagen_edit">Imagen:</label>
                 <div class="image-upload-container">
                     <div class="image-upload-box" onclick="document.getElementById('id_imagen_edit').click();">
                         <div class="upload-icon">📁</div>
                         <div class="upload-text">
                             <span id="file-name-display-edit">
                                 {% if field.value %}
-                                    Imagen actual: {{ field.value|truncatechars:30 }}<br>Haz clic o arrastra para cambiar
+                                    Imagen actual<br>Haz clic o arrastra para cambiar
                                 {% else %}
                                     Haz clic para seleccionar una imagen<br>o arrastra y suelta aquí
                                 {% endif %}
@@ -54,100 +57,179 @@
                         </div>
                     </div>
                     <input type="file" name="imagen" id="id_imagen_edit" accept="image/*" style="display: none;" onchange="updateFileNameEdit(this)">
-                    <button type="button" id="btn-eliminar-imagen-edit" class="btn-eliminar-imagen" onclick="eliminarImagenEdit()" {% if not field.value %}style="display: none;"{% endif %}>
-                        <i class="fas fa-trash"></i> Eliminar imagen
-                    </button>
-                    <button type="button" id="btn-restaurar-imagen-edit" class="btn-restaurar-imagen" onclick="restaurarImagenEdit()" style="display: none;">
-                        <i class="fas fa-undo"></i> Restaurar imagen
-                    </button>
+                    
+                    <div class="imagen-buttons">
+                        <button type="button" id="btn-eliminar-imagen-edit" class="btn-eliminar-imagen" onclick="eliminarImagenEdit()" {% if not field.value %}style="display: none;"{% endif %}>
+                            <i class="fas fa-trash"></i> Eliminar imagen
+                        </button>
+                        <button type="button" id="btn-restaurar-imagen-edit" class="btn-restaurar-imagen" onclick="restaurarImagenEdit()" style="display: none;">
+                            <i class="fas fa-undo"></i> Restaurar imagen
+                        </button>
+                    </div>
                 </div>
             </div>
-        {% else %}
-            {{ field }}
         {% endif %}
     {% endfor %}
-    <div id="mensajeErrorEditarProducto" class="mensaje-error" style="display:none; color:red; margin-bottom:1em; text-align:center;"></div>
-    <div class="modal-actions modal-actions-edit">
-        <button type="submit" class="btn-agregar btn-full">Guardar</button>
-        <button type="button" id="cancelarModalEditarProducto" class="btn-cancelar btn-full">Cancelar</button>
+    
+    <div id="mensajeErrorEditarProducto" class="mensaje-error" style="display:none;"></div>
+    
+    <div class="modal-actions">
+        <button type="submit" class="btn-agregar">Guardar cambios</button>
+        <button type="button" id="cancelarModalEditarProducto" class="btn-cancelar">Cancelar</button>
     </div>
 </form>
-<div id="mensajeExitoEditarProducto" class="mensaje-exito" style="display:none;">¡Producto editado!</div>
+
+<div id="mensajeExitoEditarProducto" class="mensaje-exito" style="display:none;">¡Producto editado exitosamente!</div>
+
 <style>
-    .input-full {
-        width: 100%;
-        padding: 0.5em;
-        border-radius: 3px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-    }
-    .precio-anterior {
-        margin-top: 0.5em;
-        color: #5e8861;
-        font-size: 1.1em;
-        background: rgba(0,0,0,0.04);
-        border-radius: 4px;
-        padding: 0.3em 0.7em;
-        opacity: 0.7;
-    }
-    .image-upload-container {
-        width: 100%;
-    }
-    .image-upload-box {
-        border: 2px dashed #ccc;
-        border-radius: 8px;
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-        background-color: #f9f9f9;
-        transition: all 0.3s ease;
-    }
-    .image-upload-box:hover {
-        border-color: #007bff;
-        background-color: #f0f8ff;
-    }
-    .upload-icon {
-        font-size: 2em;
-        color: #666;
-        margin-bottom: 10px;
-    }
-    .upload-text {
-        color: #666;
-        font-size: 0.9em;
-    }
-    .upload-text small {
-        color: #999;
-        font-size: 0.8em;
-    }
-    .btn-eliminar-imagen {
-        margin-top: 10px;
-        padding: 8px 16px;
-        background-color: #dc3545;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.9em;
-        display: inline-block;
-    }
-    .btn-restaurar-imagen {
-        margin-top: 10px;
-        padding: 8px 16px;
-        background-color: #28a745;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.9em;
-        display: inline-block;
-    }
-    .modal-actions-edit {
-        width: 100%;
-        display: flex;
-        gap: 1rem;
-        margin-top: 1.5rem;
-    }
-    .btn-full {
-        flex: 1;
-    }
+.input-full {
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.input-full:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(75, 89, 69, 0.1);
+}
+
+.precio-info {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.precio-info small {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.image-upload-container {
+    width: 100%;
+}
+
+.image-upload-box {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.image-upload-box:hover {
+    border-color: var(--primary-color);
+    background-color: #f0f8ff;
+}
+
+.upload-icon {
+    font-size: 2rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.upload-text {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.upload-text small {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.imagen-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-eliminar-imagen, .btn-restaurar-imagen {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-eliminar-imagen {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-eliminar-imagen:hover {
+    background-color: #c82333;
+}
+
+.btn-restaurar-imagen {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-restaurar-imagen:hover {
+    background-color: #218838;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.mensaje-error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.mensaje-exito {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Disable resize for textarea */
+textarea.input-full {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Remove number input spinners */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 </style>
