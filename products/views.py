@@ -2,6 +2,8 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 from .models import Producto, Categoria
 from .forms import ProductoForm, CategoriaForm
 
@@ -193,3 +195,31 @@ def editar_producto(request, producto_id):
             'precio_base_original': producto.precio  # Precio real del producto
         })
     return render(request, 'products/editar_producto.html', {'form': form, 'producto': producto})
+
+@user_passes_test(lambda u: u.is_staff)
+@require_POST
+def editar_descripciones(request, producto_id):
+    """Vista para editar solo las descripciones de un producto via AJAX"""
+    try:
+        producto = get_object_or_404(Producto, id=producto_id)
+        
+        # Obtener los nuevos valores de las descripciones
+        descripcion_corta = request.POST.get('descripcion_corta', '').strip()
+        descripcion = request.POST.get('descripcion', '').strip()
+        
+        # Actualizar el producto
+        producto.descripcion_corta = descripcion_corta if descripcion_corta else None
+        producto.descripcion = descripcion if descripcion else None
+        producto.save()
+        
+        return JsonResponse({
+            'success': True,
+            'descripcion_corta': descripcion_corta,
+            'descripcion': descripcion
+        })
+        
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        })
