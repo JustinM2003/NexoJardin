@@ -22,9 +22,46 @@
         <h1 class="detalle-producto-nombre">{{ producto.nombre }}</h1>
         <div class="detalle-producto-precio">${{ producto.precio|puntomiles }}</div>
         <hr class="detalle-producto-divider">
-        {% if producto.descripcion %}
-            <div class="detalle-producto-descripcion">{{ producto.descripcion|linebreaksbr }}</div>
-        {% endif %}
+        
     </div>
 </div>
+
+<div class="detalle-tabs-container">
+    <div class="detalle-tabs">
+        <button class="detalle-tab active" data-tab="descripcion">Descripción</button>
+        <button class="detalle-tab" data-tab="medidas">Medidas</button>
+        <button class="detalle-tab" data-tab="envios">Envíos</button>
+    </div>
+    <div class="detalle-tabs-content">
+        <div class="detalle-tab-panel" id="tab-descripcion" style="display:block;">
+            {% if producto.descripcion %}
+                <div class="detalle-producto-descripcion">{{ producto.descripcion|linebreaksbr }}</div>
+            {% else %}
+                <div class="detalle-producto-descripcion">&nbsp;</div>
+            {% endif %}
+        </div>
+        <div class="detalle-tab-panel" id="tab-medidas" style="display:none;">
+            <div class="detalle-producto-medidas">&nbsp;</div>
+        </div>
+        <div class="detalle-tab-panel" id="tab-envios" style="display:none;">
+            <div class="detalle-producto-envios">&nbsp;</div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.detalle-tab');
+    const panels = document.querySelectorAll('.detalle-tab-panel');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            panels.forEach(panel => panel.style.display = 'none');
+            const selected = document.getElementById('tab-' + this.dataset.tab);
+            if (selected) selected.style.display = 'block';
+        });
+    });
+});
+</script>
 {% endblock %}

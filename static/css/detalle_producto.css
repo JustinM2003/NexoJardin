@@ -5,7 +5,6 @@
   max-width: 1100px;
   margin: 7vh auto 6vh auto; /* Espacio superior/inferior relativo a la altura de la pantalla */
   padding: 0 2.5rem 0 2.5rem;
-  min-height: 70vh;
   flex-wrap: nowrap;
 }
 
@@ -21,13 +20,18 @@
     border-radius: 14px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.10);
 }
+
 .detalle-producto-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 500px;
   height: 500px;
   object-fit: cover;
   background: transparent;
   box-shadow: none;
 }
+
 .detalle-producto-info-col {
   flex: 1 1 320px;
   min-width: 260px;
@@ -37,6 +41,7 @@
   gap: 2.2rem;
   flex-shrink: 0;
 }
+
 .detalle-producto-nombre {
   font-size: 4rem;
   font-weight: 300;
@@ -87,6 +92,7 @@
     font-size: 1.4rem;
   }
 }
+
 @media (max-width: 600px) {
   .detalle-producto-flex-container {
     padding: 0.5rem 0.2rem 2.5rem 0.2rem;
@@ -101,4 +107,55 @@
   .detalle-producto-img {
     min-height: 100px;
   }
+}
+
+/* Tabs con los detalles del productos */
+
+.detalle-tabs {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  
+}
+
+.detalle-tabs button {
+  display: flex;
+  background: none;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  margin: 0;
+  color: var(--dark-text);
+  font-size: 1.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  text-transform: inherit;
+  box-shadow: none;
+  outline: none;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+.detalle-tabs button.active {
+  border-bottom: 2px solid var(--primary-color);
+  font-weight: 500;
+}
+.detalle-tabs button:hover {
+  color: var(--primary-color);
+}
+
+.detalle-tabs button:focus,
+.detalle-tabs button:active {
+  background: none !important;
+  background-color: transparent !important;
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* tab con el contenido de para cada detalle */
+
+.detalle-tabs-content {
+  display: block;
+  min-height: 80px;
 }
