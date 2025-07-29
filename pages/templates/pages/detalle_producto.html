@@ -29,7 +29,7 @@
 
     <div class="detalle-tabs-container">
         <div class="detalle-tabs">
-            <button class="detalle-tab active" data-tab="descripcion">Descripción</button>
+            <button class="detalle-tab active" data-tab="descripcion">Descripción y cuidados</button>
             <button class="detalle-tab" data-tab="medidas">Medidas</button>
             <button class="detalle-tab" data-tab="envios">Envíos</button>
         </div>
@@ -55,34 +55,31 @@
 document.addEventListener('DOMContentLoaded', function() {
     const tabs = document.querySelectorAll('.detalle-tab');
     const panels = document.querySelectorAll('.detalle-tab-panel');
-    
-    // Ocultar todos los paneles excepto el primero
-    panels.forEach((panel, index) => {
-        if (index !== 0) {
-            panel.style.visibility = 'hidden';
-            panel.style.position = 'absolute';
-        }
-    });
-    
+
+    // Activar el primer tab y panel por defecto
+    // (Asegúrate de que tu HTML ya tenga la clase 'active' en el primer tab y panel al cargar la página)
+    if (tabs.length > 0 && panels.length > 0) {
+        tabs[0].classList.add('active');
+        panels[0].classList.add('active');
+    }
+
     tabs.forEach(tab => {
         tab.addEventListener('click', function() {
+            // Quitar la clase 'active' de todos los tabs y paneles
             tabs.forEach(t => t.classList.remove('active'));
+            panels.forEach(p => p.classList.remove('active'));
+
+            // Añadir 'active' al tab clickeado
             this.classList.add('active');
             
-            // Ocultar todos los paneles
-            panels.forEach(panel => {
-                panel.style.visibility = 'hidden';
-                panel.style.position = 'absolute';
-            });
-            
-            // Mostrar el panel seleccionado
-            const selected = document.getElementById('tab-' + this.dataset.tab);
-            if (selected) {
-                selected.style.visibility = 'visible';
-                selected.style.position = 'static';
+            // Añadir 'active' al panel correspondiente
+            const targetPanel = document.getElementById('tab-' + this.dataset.tab);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
             }
         });
     });
 });
 </script>
 {% endblock %}
+
