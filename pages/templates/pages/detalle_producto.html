@@ -10,41 +10,43 @@
 {% endblock %}
 
 {% block content %}
-<div class="detalle-producto-flex-container">
-    <div class="detalle-producto-img-col">
-        {% if producto.imagen %}
-            <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="detalle-producto-img">
-        {% else %}
-            <img src="{% static 'img/default.jpg' %}" alt="Imagen por defecto" class="detalle-producto-img">
-        {% endif %}
-    </div>
-    <div class="detalle-producto-info-col">
-        <h1 class="detalle-producto-nombre">{{ producto.nombre }}</h1>
-        <div class="detalle-producto-precio">${{ producto.precio|puntomiles }}</div>
-        <hr class="detalle-producto-divider">
-        
-    </div>
-</div>
-
-<div class="detalle-tabs-container">
-    <div class="detalle-tabs">
-        <button class="detalle-tab active" data-tab="descripcion">Descripción</button>
-        <button class="detalle-tab" data-tab="medidas">Medidas</button>
-        <button class="detalle-tab" data-tab="envios">Envíos</button>
-    </div>
-    <div class="detalle-tabs-content">
-        <div class="detalle-tab-panel" id="tab-descripcion">
-            {% if producto.descripcion %}
-                <div class="detalle-producto-descripcion">{{ producto.descripcion|linebreaksbr }}</div>
+<div class="page-wrapper">
+    <div class="detalle-producto-flex-container">
+        <div class="detalle-producto-img-col">
+            {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="detalle-producto-img">
             {% else %}
-                <div class="detalle-producto-descripcion">Sin descripción disponible.</div>
+                <img src="{% static 'img/default.jpg' %}" alt="Imagen por defecto" class="detalle-producto-img">
             {% endif %}
         </div>
-        <div class="detalle-tab-panel" id="tab-medidas">
-            <div class="detalle-producto-medidas">Medidas del producto aquí.</div>
+        <div class="detalle-producto-info-col">
+            <h1 class="detalle-producto-nombre">{{ producto.nombre }}</h1>
+            <div class="detalle-producto-precio">${{ producto.precio|puntomiles }}</div>
+            <hr class="detalle-producto-divider">
+            
         </div>
-        <div class="detalle-tab-panel" id="tab-envios">
-            <div class="detalle-producto-envios">Información de envíos aquí.</div>
+    </div>
+
+    <div class="detalle-tabs-container">
+        <div class="detalle-tabs">
+            <button class="detalle-tab active" data-tab="descripcion">Descripción</button>
+            <button class="detalle-tab" data-tab="medidas">Medidas</button>
+            <button class="detalle-tab" data-tab="envios">Envíos</button>
+        </div>
+        <div class="detalle-tabs-content">
+            <div class="detalle-tab-panel" id="tab-descripcion">
+                {% if producto.descripcion %}
+                    <div class="detalle-producto-descripcion">{{ producto.descripcion|linebreaksbr }}</div>
+                {% else %}
+                    <div class="detalle-producto-descripcion">Sin descripción disponible.</div>
+                {% endif %}
+            </div>
+            <div class="detalle-tab-panel" id="tab-medidas">
+                <div class="detalle-producto-medidas">Medidas del producto aquí.</div>
+            </div>
+            <div class="detalle-tab-panel" id="tab-envios">
+                <div class="detalle-producto-envios">Información de envíos aquí.</div>
+            </div>
         </div>
     </div>
 </div>
@@ -53,13 +55,32 @@
 document.addEventListener('DOMContentLoaded', function() {
     const tabs = document.querySelectorAll('.detalle-tab');
     const panels = document.querySelectorAll('.detalle-tab-panel');
+    
+    // Ocultar todos los paneles excepto el primero
+    panels.forEach((panel, index) => {
+        if (index !== 0) {
+            panel.style.visibility = 'hidden';
+            panel.style.position = 'absolute';
+        }
+    });
+    
     tabs.forEach(tab => {
         tab.addEventListener('click', function() {
             tabs.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
-            panels.forEach(panel => panel.style.display = 'none');
+            
+            // Ocultar todos los paneles
+            panels.forEach(panel => {
+                panel.style.visibility = 'hidden';
+                panel.style.position = 'absolute';
+            });
+            
+            // Mostrar el panel seleccionado
             const selected = document.getElementById('tab-' + this.dataset.tab);
-            if (selected) selected.style.display = 'block';
+            if (selected) {
+                selected.style.visibility = 'visible';
+                selected.style.position = 'static';
+            }
         });
     });
 });
