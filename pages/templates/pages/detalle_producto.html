@@ -34,19 +34,17 @@
         {% csrf_token %}
         
         <div class="detalle-producto-flex-container">
-            <div class="detalle-producto-img-col">
-                <!-- Imagen editable -->
-                <div class="imagen-container">
-                    <img id="producto-imagen" src="{% if producto.imagen %}{{ producto.imagen.url }}{% else %}{% static 'img/default.jpg' %}{% endif %}" alt="{{ producto.nombre }}" class="detalle-producto-img">
-                    {% if user.is_authenticated and user.is_staff %}
-                    <div class="imagen-edit-overlay" style="display: none;">
-                        <input type="file" id="imagen_edit" name="imagen" accept="image/*" style="display: none;">
-                        <button type="button" class="btn-cambiar-imagen" onclick="document.getElementById('imagen_edit').click()">
-                            <i class="fas fa-camera"></i> Cambiar imagen
-                        </button>
-                    </div>
-                    {% endif %}
+            <!-- Contenedor de imagen para mantener proporciones -->
+            <div class="detalle-producto-imagen-container">
+                <img id="producto-imagen" src="{% if producto.imagen %}{{ producto.imagen.url }}{% else %}{% static 'img/default.jpg' %}{% endif %}" alt="{{ producto.nombre }}" class="detalle-producto-img">
+                {% if user.is_authenticated and user.is_staff %}
+                <div class="imagen-edit-overlay" style="display: none;">
+                    <input type="file" id="imagen_edit" name="imagen" accept="image/*" style="display: none;">
+                    <button type="button" class="btn-cambiar-imagen" onclick="document.getElementById('imagen_edit').click()">
+                        <i class="fas fa-camera"></i> Cambiar imagen
+                    </button>
                 </div>
+                {% endif %}
             </div>
             
             <div class="detalle-producto-info-col">
@@ -182,6 +180,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Inicializar tabs (para todos los usuarios)
     initMainTabs();
+    
+    // Verificar descripción corta inicial
+    const descCortaInitial = document.getElementById('descripcion-corta-display');
+    const descCortaContainer = document.querySelector('.descripcion-corta-container');
+    const infoCol = document.querySelector('.detalle-producto-info-col');
+    
+    function actualizarEspaciadoInfoCol() {
+        const divider = document.querySelector('.detalle-producto-divider');
+        
+        if (descCortaInitial && (!descCortaInitial.textContent.trim() || descCortaInitial.style.display === 'none')) {
+            descCortaContainer.style.display = 'none';
+            infoCol.classList.add('sin-descripcion-corta');
+            // También ocultar o ajustar el divider
+            if (divider) divider.style.marginBottom = '0';
+        } else {
+            descCortaContainer.style.display = 'block';
+            infoCol.classList.remove('sin-descripcion-corta');
+            // Restaurar el divider
+            if (divider) divider.style.marginBottom = '';
+        }
+    }
+    
+    // Ejecutar verificación inicial
+    actualizarEspaciadoInfoCol();
 
     {% if user.is_authenticated and user.is_staff %}
     // FUNCIONES DE EDICIÓN INLINE - SOLO PARA ADMINISTRADORES
@@ -267,14 +289,23 @@ document.addEventListener('DOMContentLoaded', function() {
         // Descripción corta
         const descCortaInput = document.getElementById('descripcion-corta-input');
         const descCortaDisplay = document.getElementById('descripcion-corta-display');
+        const descCortaContainer = document.querySelector('.descripcion-corta-container');
+        const infoCol = document.querySelector('.detalle-producto-info-col');
+        const divider = document.querySelector('.detalle-producto-divider');
         
         descCortaInput.style.display = 'none';
         
-        // Solo mostrar el display si hay contenido
+        // Solo mostrar el display y container si hay contenido
         if (descCortaInput.value.trim()) {
             descCortaDisplay.style.display = 'block';
+            descCortaContainer.style.display = 'block';
+            infoCol.classList.remove('sin-descripcion-corta');
+            if (divider) divider.style.marginBottom = '';
         } else {
             descCortaDisplay.style.display = 'none';
+            descCortaContainer.style.display = 'none';
+            infoCol.classList.add('sin-descripcion-corta');
+            if (divider) divider.style.marginBottom = '0';
         }
         
         // Descripción
@@ -300,11 +331,23 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Actualizar descripción corta
         const descCorta = document.getElementById('descripcion-corta-input').value;
-        document.getElementById('descripcion-corta-display').innerHTML = descCorta.replace(/\n/g, '<br>');
+        const descCortaDisplay = document.getElementById('descripcion-corta-display');
+        const descCortaContainer = document.querySelector('.descripcion-corta-container');
+        const infoCol = document.querySelector('.detalle-producto-info-col');
+        const divider = document.querySelector('.detalle-producto-divider');
+        
+        descCortaDisplay.innerHTML = descCorta.replace(/\n/g, '<br>');
+        
         if (descCorta.trim()) {
-            document.getElementById('descripcion-corta-display').style.display = 'block';
+            descCortaDisplay.style.display = 'block';
+            descCortaContainer.style.display = 'block';
+            infoCol.classList.remove('sin-descripcion-corta');
+            if (divider) divider.style.marginBottom = '';
         } else {
-            document.getElementById('descripcion-corta-display').style.display = 'none';
+            descCortaDisplay.style.display = 'none';
+            descCortaContainer.style.display = 'none';
+            infoCol.classList.add('sin-descripcion-corta');
+            if (divider) divider.style.marginBottom = '0';
         }
         
         // Actualizar descripción

@@ -54,6 +54,13 @@ html{
     box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
 }
 
+/* Estilos globales para imágenes de productos - bordes rectos */
+.producto-img,
+.detalle-producto-img,
+img[src*="productos/"] {
+    border-radius: 0 !important;
+}
+
 /* Responsive para container principal */
 @media (max-width: 768px) {
     .container {

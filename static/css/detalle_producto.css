@@ -5,6 +5,7 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 2.5rem;
+  
   width: 100%;
   box-sizing: border-box;
 }
@@ -14,35 +15,50 @@
 /* ================================== */
 .detalle-producto-flex-container {
   display: flex;
-  flex-direction: row;
-  gap: 3.5rem;
-  margin: 7vh 0 6vh 0;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 5vh 0 6vh 0;
   padding: 0;
-  flex-wrap: nowrap;
+  position: relative;
 }
 
-.detalle-producto-img-col {
-  flex: 0 0 500px;
-  min-width: 500px;
-  max-width: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 500px;
-  background: #f3f3f3;
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+.detalle-producto-imagen-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 400px;
+  align-self: flex-start;
+  overflow: hidden;
+}
+
+/* Asegurar que la imagen respete siempre las dimensiones del container */
+.detalle-producto-imagen-container .detalle-producto-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+  margin: 0 !important;
+  object-fit: cover;
+  object-position: center;
 }
 
 .detalle-producto-img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 500px;
-  height: 500px;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
   object-fit: cover;
-  background: transparent;
-  box-shadow: none;
+  object-position: center;
+  background: #f3f3f3;
+  border-radius: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  transition: transform 0.3s ease;
+  display: block;
 }
 
 .detalle-producto-info-col {
@@ -51,8 +67,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 2.2rem;
+  gap: 1.5rem;
   flex-shrink: 0;
+  align-self: flex-start;
 }
 
 .detalle-producto-nombre {
@@ -60,6 +77,7 @@
   font-weight: 300;
   color: var(--dark-text);
   margin-bottom: 0.7rem;
+  line-height: 1.1; /* Mejorar el espaciado de línea */
 }
 
 .detalle-producto-precio {
@@ -78,6 +96,26 @@
   font-style: italic;
   width: 100%;
   display: block;
+}
+
+/* Cuando la descripción está vacía o oculta, no debe tener margen */
+.detalle-producto-descripcion-corta:empty,
+.detalle-producto-descripcion-corta[style*="display: none"] {
+  margin-bottom: 0 !important;
+  display: none !important;
+}
+
+/* Añadir separador visual */
+.detalle-producto-divider {
+  border: none;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 1.5rem 0;
+}
+
+/* Eliminar margen del divider cuando no hay descripción corta después */
+.sin-descripcion-corta .detalle-producto-divider {
+  margin-bottom: 0 !important;
 }
 
 /* ================================== */
@@ -160,29 +198,99 @@
   position: relative;
   width: 100%;
   display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cuando el container está oculto, no ocupa espacio */
+.descripcion-corta-container[style*="display: none"] {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Eliminar cualquier espacio residual cuando la descripción corta no está visible */
+.sin-descripcion-corta .descripcion-corta-container {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+}
+
+/* Clase para controlar spacing dinámico */
+.detalle-producto-info-col.sin-descripcion-corta {
+  gap: 1rem !important;
+}
+
+/* En móviles, eliminar gap completamente */
+@media (max-width: 767px) {
+  .detalle-producto-info-col.sin-descripcion-corta {
+    gap: 0 !important;
+  }
+  
+  /* Gap mínimo incluso con descripción corta */
+  .detalle-producto-info-col {
+    gap: 0.3rem !important;
+  }
+  
+  /* Reducir márgenes internos de elementos en móviles */
+  .detalle-producto-nombre {
+    margin-bottom: 0.3rem !important;
+  }
+  
+  .detalle-producto-precio {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .detalle-producto-descripcion-corta {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .detalle-producto-divider {
+    margin: 0.5rem 0 !important;
+  }
+  
+  /* Cuando no hay descripción corta, eliminar margen del divider */
+  .detalle-producto-info-col.sin-descripcion-corta .detalle-producto-divider {
+    margin-bottom: 0 !important;
+  }
+  
+  /* Eliminar márgenes adicionales en elementos internos */
+  .detalle-producto-info-col .campo-editable {
+    margin-bottom: 0;
+  }
 }
 
 .descripcion-corta-wrapper {
   position: relative;
-  min-height: 2rem;
   width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cuando la descripción está vacía, no mostrar el container */
+.descripcion-corta-wrapper:empty {
+  display: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.detalle-producto-descripcion-corta:empty {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* ================================== */
 /* IMAGEN EDITABLE                    */
 /* ================================== */
-.imagen-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 .imagen-edit-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
@@ -192,7 +300,7 @@
   transition: opacity 0.3s ease;
 }
 
-.imagen-container:hover .imagen-edit-overlay {
+.detalle-producto-imagen-container:hover .imagen-edit-overlay {
   opacity: 1;
 }
 
@@ -230,6 +338,7 @@
   margin: 0;
   padding: 0;
   gap: 0;
+  border-bottom: 1px solid #eee; /* Añadir borde inferior base */
 }
 
 .detalle-tabs button {
@@ -245,15 +354,22 @@
   text-transform: inherit;
   box-shadow: none;
   outline: none;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 44px; /* Altura mínima táctil para móviles */
+  align-items: center;
+  justify-content: center;
 }
 
 .detalle-tabs button.active {
   border-bottom: 2px solid var(--primary-color);
   font-weight: 500;
+  color: var(--primary-color);
 }
 
 .detalle-tabs button:hover {
   color: var(--primary-color);
+  background-color: rgba(75, 89, 69, 0.05);
 }
 
 .detalle-tabs button:focus,
@@ -263,6 +379,14 @@
   outline: none;
   box-shadow: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Efecto de toque para móviles */
+@media (hover: none) and (pointer: coarse) {
+  .detalle-tabs button:active {
+    background-color: rgba(75, 89, 69, 0.1) !important;
+    transform: scale(0.98);
+  }
 }
 
 .detalle-tabs-content {
@@ -319,6 +443,19 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  min-height: 44px; /* Altura mínima táctil */
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Efectos de toque para móviles */
+@media (hover: none) and (pointer: coarse) {
+  .btn-editar-detalle:active,
+  .btn-eliminar-detalle:active,
+  .btn-guardar-cambios:active,
+  .btn-cancelar-cambios:active {
+    transform: scale(0.95);
+  }
 }
 
 .btn-editar-detalle {
@@ -467,48 +604,369 @@
 /* ================================== */
 /* MEDIA QUERIES RESPONSIVE          */
 /* ================================== */
-@media (max-width: 900px) {
+
+/* Desktop grandes (más de 1400px) */
+@media (min-width: 1400px) {
+  .detalle-producto-flex-container {
+    flex-direction: row;
+    gap: 3.5rem;
+    align-items: flex-start;
+  }
+  
+  .detalle-producto-imagen-container {
+    flex: 0 0 500px;
+    width: 500px;
+    max-width: 500px;
+    aspect-ratio: 1;
+    align-self: flex-start;
+  }
+  
+  .detalle-producto-info-col {
+    flex: 1;
+    align-self: flex-start;
+    padding-top: 0;
+  }
+}
+
+/* Desktop medianos (1024px - 1399px) - Incluye iPad Pro */
+@media (max-width: 1399px) and (min-width: 1024px) {
+  .detalle-producto-flex-container {
+    flex-direction: row;
+    gap: 2.5rem;
+    align-items: flex-start;
+  }
+  
+  .detalle-producto-imagen-container {
+    flex: 0 0 400px;
+    width: 400px;
+    max-width: 400px;
+    aspect-ratio: 1;
+    align-self: flex-start;
+  }
+  
+  .detalle-producto-info-col {
+    flex: 1;
+    min-width: 0;
+    align-self: flex-start;
+    padding-top: 0;
+  }
+}
+
+/* Tablets (768px - 1023px) - Para tablets más pequeños como iPad Air/mini */
+@media (max-width: 1023px) and (min-width: 768px) {
   .page-wrapper {
     padding: 0 1.5rem;
+    padding-top: 50px;
   }
 
   .detalle-producto-flex-container {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-    gap: 2.2rem;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 3rem 0;
+    gap: 1.5rem;
   }
 
-  .detalle-producto-img-col, .detalle-producto-info-col {
+  .detalle-producto-imagen-container {
+    flex: 0 0 280px;
+    width: 280px;
+    max-width: 280px;
+    aspect-ratio: 1;
+    align-self: flex-start;
+  }
+
+  .detalle-producto-info-col {
+    flex: 1;
     min-width: 0;
-    max-width: 100%;
-  }
-
-  .detalle-producto-img-col {
-    height: 320px;
-    max-width: 95vw;
-  }
-
-  .detalle-producto-img {
-    max-width: 100%;
-    height: 100%;
-    min-height: 180px;
-    object-fit: contain;
+    align-self: flex-start;
+    padding-top: 0;
+    text-align: left;
   }
 
   .detalle-producto-nombre,
   .nombre-input {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   .detalle-producto-precio,
   .precio-input {
+    font-size: 2.2rem;
+  }
+
+  .detalle-producto-descripcion-corta,
+  .descripcion-corta-input {
+    font-size: 1.3rem;
+  }
+
+  .detalle-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .detalle-tabs button {
+    padding: 0.8rem 1.2rem;
     font-size: 1.4rem;
+  }
+
+  .botones-admin-detalle {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .btn-editar-detalle,
+  .btn-eliminar-detalle,
+  .btn-guardar-cambios,
+  .btn-cancelar-cambios {
+    min-width: 200px;
+  }
+}
+
+/* Móviles grandes (600px - 768px) */
+@media (max-width: 767px) {
+  .page-wrapper {
+    padding: 0 1rem;
+    padding-top: 50px;
+  }
+
+  .detalle-producto-flex-container {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
+    flex-direction: column;
+  }
+
+  .detalle-producto-imagen-container {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    align-self: center;
+  }
+
+  .detalle-producto-img {
+    border-radius: 12px !important;
+  }
+
+  .imagen-edit-overlay {
+    border-radius: 12px;
+  }
+
+  .detalle-producto-info-col {
+    text-align: left;
+    padding-top: 0;
+    width: 100%;
+    max-width: 400px;
+    align-self: center;
+    position: relative;
+    gap: 0.5rem;
+  }
+
+  .detalle-producto-nombre,
+  .nombre-input {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+
+  .detalle-producto-precio,
+  .precio-input {
+    font-size: 1.8rem;
+  }
+
+  .detalle-producto-descripcion-corta,
+  .descripcion-corta-input {
+    font-size: 1.2rem;
+  }
+
+  .detalle-tabs-container {
+    padding-bottom: 5rem;
+  }
+
+  .detalle-tabs {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .detalle-tabs button {
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .detalle-tabs button.active {
+    border-bottom: 2px solid var(--primary-color);
+    background-color: rgba(75, 89, 69, 0.05);
   }
 
   .detalle-tab-panel {
     padding: 1.5rem 0;
+  }
+
+  .botones-admin-detalle {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0 1rem;
+  }
+  
+  .btn-editar-detalle,
+  .btn-eliminar-detalle,
+  .btn-guardar-cambios,
+  .btn-cancelar-cambios {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .descripcion-corta-input,
+  .descripcion-input,
+  .medidas-input {
+    min-height: 100px;
+    font-size: 1.1rem;
+  }
+
+  .modo-edicion .page-wrapper::before {
+    bottom: 15px;
+    left: 15px;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Mejoras para el modal en tablets */
+  .modal-content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .modal-actions button {
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Móviles pequeños (hasta 600px) */
+@media (max-width: 600px) {
+  .page-wrapper {
+    padding: 0 0.8rem;
+    padding-top: 75px;
+  }
+
+  .detalle-producto-flex-container {
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+    gap: 0.3rem;
+    flex-direction: column;
+  }
+
+  .detalle-producto-imagen-container {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1;
+    align-self: center;
+  }
+
+  .detalle-producto-img {
+    border-radius: 8px !important;
+  }
+
+  .imagen-edit-overlay {
+    border-radius: 8px;
+  }
+
+  .detalle-producto-info-col {
+    padding-top: 0;
+    width: 100%;
+    max-width: 300px;
+    align-self: center;
+    position: relative;
+    gap: 0.3rem;
+  }
+
+  /* Reducir márgenes internos para móviles medianos */
+  .detalle-producto-nombre,
+  .nombre-input {
+    margin-bottom: 0.3rem !important;
+  }
+
+  .detalle-producto-precio,
+  .precio-input {
+    margin-bottom: 0.4rem !important;
+  }
+
+  .detalle-producto-descripcion-corta,
+  .descripcion-corta-input {
+    margin-bottom: 0.4rem !important;
+  }
+
+  .detalle-producto-nombre,
+  .nombre-input {
+    font-size: 1.8rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .detalle-producto-precio,
+  .precio-input {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .detalle-producto-descripcion-corta,
+  .descripcion-corta-input {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .detalle-tabs-container {
+    padding-bottom: 5rem;
+  }
+
+  .detalle-tabs button {
+    padding: 0.8rem;
+    font-size: 1.2rem;
+  }
+
+  .detalle-tab-panel {
+    padding: 1rem 0;
+  }
+
+  .detalle-producto-descripcion,
+  .detalle-producto-medidas,
+  .detalle-producto-envios {
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+
+  .btn-cambiar-imagen {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .botones-admin-detalle {
+    padding: 0 0.8rem;
+  }
+
+  .btn-editar-detalle,
+  .btn-eliminar-detalle,
+  .btn-guardar-cambios,
+  .btn-cancelar-cambios {
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .descripcion-corta-input,
+  .descripcion-input,
+  .medidas-input {
+    min-height: 80px;
+    font-size: 1rem;
+    padding: 0.8rem;
   }
 
   .modo-edicion .page-wrapper::before {
@@ -519,68 +977,184 @@
   }
 }
 
-@media (max-width: 768px) {
-  .botones-admin-detalle {
-    flex-direction: column;
-  }
-  
-  .btn-editar-detalle,
-  .btn-eliminar-detalle,
-  .btn-guardar-cambios,
-  .btn-cancelar-cambios {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .descripcion-corta-input,
-  .descripcion-input,
-  .medidas-input {
-    min-height: 80px;
-  }
-}
-
-@media (max-width: 600px) {
+/* Móviles muy pequeños (hasta 400px) */
+@media (max-width: 400px) {
   .page-wrapper {
     padding: 0 0.5rem;
+    padding-top: 70px;
   }
 
   .detalle-producto-flex-container {
-    margin-top: 1.2rem;
-    margin-bottom: 1.2rem;
-    gap: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+    gap: 0.2rem;
+    flex-direction: column;
   }
 
-  .detalle-producto-img-col {
-    height: 200px;
-    max-width: 100vw;
+  .detalle-producto-imagen-container {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 1;
+    align-self: center;
   }
 
   .detalle-producto-img {
-    min-height: 100px;
+    border-radius: 8px;
   }
 
-  .detalle-tab-panel {
-    padding: 1rem 0;
+  .imagen-edit-overlay {
+    border-radius: 8px;
+  }
+
+  .detalle-producto-info-col {
+    padding-top: 0;
+    width: 100%;
+    max-width: 280px;
+    align-self: center;
+    position: relative;
+    gap: 0.2rem;
+  }
+
+  /* Reducir márgenes internos para móviles pequeños */
+  .detalle-producto-nombre,
+  .nombre-input {
+    font-size: 1.6rem;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .detalle-producto-precio,
+  .precio-input {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .detalle-producto-descripcion-corta,
+  .descripcion-corta-input {
+    font-size: 1rem;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .detalle-tabs-container {
+    padding-bottom: 5rem;
+  }
+
+  .detalle-tabs button {
+    padding: 0.7rem;
+    font-size: 1.1rem;
+  }
+
+  .detalle-producto-descripcion,
+  .detalle-producto-medidas,
+  .detalle-producto-envios {
+    font-size: 1.2rem;
+  }
+
+  .modal-content {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  .btn-cambiar-imagen {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .botones-admin-detalle {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Móviles pequeños (menos de 700px) */
+@media (max-width: 699px) {
+  .page-wrapper {
+    padding: 0 1rem;
+    padding-top: 78px;
+  }
+
+  .detalle-producto-flex-container {
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+    gap: 0.3rem;
+    flex-direction: column;
+  }
+
+  .detalle-producto-imagen-container {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1;
+    align-self: center;
+  }
+
+  .detalle-producto-img {
+    border-radius: 8px;
+  }
+
+  .imagen-edit-overlay {
+    border-radius: 8px;
+  }
+
+  .detalle-producto-info-col {
+    text-align: left;
+    padding-top: 0;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+    position: relative;
+    gap: 0.3rem;
   }
 
   .detalle-producto-nombre,
   .nombre-input {
     font-size: 1.8rem;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
   }
 
   .detalle-producto-precio,
   .precio-input {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .detalle-producto-descripcion-corta,
   .descripcion-corta-input {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.4;
   }
 
-  .btn-cambiar-imagen {
-    padding: 0.8rem 1rem;
-    font-size: 0.9rem;
+  .detalle-producto-divider {
+    margin: 1.2rem 0;
+  }
+
+  .detalle-tabs-container {
+    padding-bottom: 4rem;
+  }
+
+  .detalle-tabs button {
+    font-size: 1.1rem;
+    padding: 0.8rem;
+  }
+
+  .detalle-tab-panel {
+    padding: 1.2rem 0;
+  }
+
+  .botones-admin-detalle {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0 0.5rem;
+  }
+
+  .btn-editar-detalle,
+  .btn-eliminar-detalle,
+  .btn-guardar-cambios,
+  .btn-cancelar-cambios {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+    min-width: 120px;
+    width: 100%;
+    max-width: 250px;
   }
 }
 
