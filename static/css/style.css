@@ -381,7 +381,8 @@ header {
 
     .mobile-nav-footer {
         margin-top: auto;
-        padding: 2rem;
+        padding: 2rem 2rem 4rem 2rem; /* Aumentamos el padding inferior para evitar las barras del navegador */
+        padding-bottom: max(4rem, env(safe-area-inset-bottom, 2rem)); /* Usar safe-area cuando esté disponible */
     }
 
     .btn-registrarse {
@@ -397,10 +398,14 @@ header {
         text-transform: uppercase;
         border-radius: 8px;
         transition: background-color 0.3s ease;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem; /* Aumentamos el margen inferior */
         border: none;
         cursor: pointer;
         font-family: inherit;
+    }
+
+    .btn-registrarse:last-child {
+        margin-bottom: 0; /* El último botón no necesita margen inferior */
     }
 
     .btn-registrarse:hover {
