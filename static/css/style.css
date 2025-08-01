@@ -50,6 +50,23 @@ html{
     max-width: 120rem;
     margin: 0 auto;
     padding: 0 1.5rem;
+    width: 100%; /* Asegura que use el ancho completo disponible */
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+}
+
+/* Responsive para container principal */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+        max-width: 100%; /* Usa todo el ancho disponible en tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.5rem;
+        max-width: 100%; /* Usa todo el ancho disponible en móvil */
+    }
 }
 
 /************************/        
@@ -831,7 +848,8 @@ header {
     padding: 0.3rem 0 0.8rem;
     color: white;
     display: block;
-    margin: 0.8rem auto 2rem auto;
+    margin-bottom: 2rem;
+    margin-top: 0.8rem;
     width: 80%;
     max-width: 250px;
     font-family: inherit;
@@ -854,8 +872,6 @@ header {
     font-family: inherit;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 
 .content button:hover {
@@ -902,12 +918,6 @@ header {
 
     .content input {
         margin-bottom: 2rem;
-    }
-
-    .content input {
-        margin-bottom: 2rem;
-        width: 90%;
-        max-width: 280px;
     }
 
     .content button {
