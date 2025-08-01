@@ -889,8 +889,7 @@ header {
     padding: 0.3rem 0 0.8rem;
     color: white;
     display: block;
-    margin-bottom: 2rem;
-    margin-top: 0.8rem;
+    margin: 0.8rem auto 2rem auto;
     width: 80%;
     max-width: 250px;
     font-family: inherit;
@@ -928,6 +927,19 @@ header {
 }
 
 /* Responsive Footer */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .content input {
+        width: 85%;
+        max-width: 260px;
+        margin: 1rem auto 2rem auto;
+    }
+
+    .content button {
+        margin: 0 auto;
+        display: block;
+    }
+}
+
 @media (max-width: 767px) {
     .container-inferior {
         padding: 2rem 1rem;
@@ -958,12 +970,18 @@ header {
     }
 
     .content input {
-        margin-bottom: 2rem;
+        width: 80%;
+        max-width: 240px;
+        margin: 1rem auto 2rem auto;
+        font-size: 0.9rem;
     }
 
     .content button {
         width: 100%;
-        max-width: 200px;
+        max-width: 180px;
+        margin: 0 auto;
+        display: block;
+        font-size: 1rem;
     }
 }
 
@@ -981,6 +999,23 @@ header {
     .informacion ul li,
     .content p {
         font-size: 1rem;
+    }
+
+    .content input {
+        width: 85%;
+        max-width: 220px;
+        margin: 1rem auto 2rem auto;
+        font-size: 0.85rem;
+        padding: 0.25rem 0 0.6rem;
+    }
+
+    .content button {
+        width: 100%;
+        max-width: 160px;
+        margin: 0 auto;
+        display: block;
+        font-size: 0.95rem;
+        padding: 0.7rem 1.2rem;
     }
 
     .copyright p {
