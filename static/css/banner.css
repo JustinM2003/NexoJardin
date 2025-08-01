@@ -183,7 +183,7 @@ html, body {
 }
 
 /* Responsive Banner */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .banner {
         min-height: 400px;
         height: 60vh;
@@ -220,10 +220,48 @@ html, body {
         font-size: 1.3rem;
     }
     
-    /* Ocultar flechas de navegación en móvil */
+    /* Ocultar flechas de navegación en móvil y tablets */
     .swiper-button-next,
     .swiper-button-prev {
         display: none !important;
+    }
+}
+
+/* Ajustes específicos para tablets más grandes */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .banner {
+        min-height: 500px;
+        height: 65vh;
+        max-height: 700px;
+    }
+    
+    .swiper-container {
+        min-height: 500px;
+        max-height: 700px;
+    }
+    
+    .swiper-slide {
+        min-height: 500px;
+        max-height: 700px;
+    }
+    
+    .banner-img {
+        min-height: 500px;
+        max-height: 700px;
+    }
+    
+    .banner-content {
+        padding: 0 3rem;
+    }
+    
+    .banner-content h2 {
+        font-size: 3.2rem;
+        margin-bottom: 1.6rem;
+    }
+    
+    .banner-btn {
+        padding: 1.1rem 2.2rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -262,6 +300,14 @@ html, body {
     .banner-btn {
         padding: 0.9rem 1.8rem;
         font-size: 1.2rem;
+    }
+}
+
+/* Mostrar flechas solo en desktop (1025px en adelante) */
+@media (min-width: 1025px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: flex !important;
     }
 }
 

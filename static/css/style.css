@@ -24,8 +24,8 @@ body {
     background-color: var(--background-color);
 }
 
-/* Media query para móvil */
-@media (max-width: 767px) {
+/* Media query para móvil y tablets */
+@media (max-width: 1024px) {
     body {
         padding-top: 80px; /* Espacio reducido para header móvil */
     }
@@ -94,6 +94,8 @@ header {
     padding: 3rem;
     position: relative;
     min-height: 100px;
+    max-width: 1200px; /* Limitar ancho máximo */
+    margin: 0 auto; /* Centrar el contenido */
 }
 
 /* Logo centrado en desktop */
@@ -234,8 +236,8 @@ header {
     display: none;
 }
 
-/* ===== ESTILOS MÓVILES ===== */
-@media (max-width: 767px) {
+/* ===== ESTILOS MÓVILES Y TABLETS ===== */
+@media (max-width: 1024px) {
     .superior {
         padding: 1rem 1.5rem;
         min-height: 60px;
@@ -252,7 +254,7 @@ header {
         font-size: 2rem;
     }
 
-    /* Ocultar elementos desktop en móvil */
+    /* Ocultar elementos desktop en móvil y tablets */
     .search-form {
         display: none;
     }
@@ -476,15 +478,30 @@ header {
     }
 }
 
-/* Estilos para tablets */
-@media (min-width: 768px) and (max-width: 991px) {
+/* Ajustes específicos para tablets más grandes */
+@media (min-width: 768px) and (max-width: 1024px) {
     .superior {
-        padding: 2rem;
-        min-height: 80px;
+        padding: 1.2rem 2rem;
+        min-height: 70px;
     }
     
     .logo-container h1 a {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
+    }
+    
+    .search-toggle,
+    .icon-button {
+        font-size: 2rem;
+        padding: 0.7rem;
+    }
+    
+    .mobile-nav {
+        width: 320px; /* Menú más ancho en tablets */
+    }
+    
+    .mobile-nav a {
+        padding: 1.8rem 2.5rem;
+        font-size: 1.6rem;
     }
 }
 
@@ -534,8 +551,8 @@ header {
     color: var(--primary-color);
 }
 
-/* Ocultar navegación desktop en móvil */
-@media (max-width: 767px) {
+/* Ocultar navegación desktop en móvil y tablets */
+@media (max-width: 1024px) {
     .container-navegacion {
         display: none;
     }
@@ -635,57 +652,69 @@ header {
     font-size: 1.2rem;
 }
 
-/* Estilos para tablets y pantallas más grandes */
-@media (min-width: 768px) {
+/* Estilos para tablets y pantallas más grandes (pero menores a 1025px) */
+@media (min-width: 768px) and (max-width: 1024px) {
     body {
-        padding-top: 90px;
-    }
-    
-    .superior {
-        padding: 1.5rem 2rem;
-        min-height: 70px;
-    }
-    
-    .logo-container h1 a {
-        font-size: 2.5rem;
-    }
-    
-    .icon-button {
-        font-size: 2rem;
-    }
-    
-    .mobile-nav a {
-        padding: 2rem;
-        font-size: 1.6rem;
+        padding-top: 85px; /* Ajuste específico para tablets */
     }
 }
 
-/* Estilos para desktop */
-@media (min-width: 992px) {
+/* Estilos para desktop (1025px en adelante) */
+@media (min-width: 1025px) {
     body {
-        padding-top: 120px;
+        padding-top: 188px; /* Header completo de desktop */
     }
     
     .superior {
-        padding: 2rem 3rem;
-        min-height: 80px;
+        padding: 3rem;
+        min-height: 100px;
+        max-width: 1200px; /* Limitar ancho máximo */
+        margin: 0 auto; /* Centrar el contenido */
     }
     
     .logo-container h1 a {
         font-size: 3rem;
     }
     
-    .header-icons {
-        gap: 1.5rem;
+    /* Mostrar elementos desktop */
+    .search-form {
+        display: flex;
     }
     
+    .dropdown-cuenta {
+        display: flex;
+    }
+    
+    .header-icons .dropdown-cuenta {
+        display: flex;
+    }
+    
+    /* Ocultar elementos móviles */
+    .menu-toggle,
+    .search-toggle,
     .icon-button {
-        font-size: 2.2rem;
-        padding: 0.7rem;
+        display: none;
     }
     
-    .mobile-nav a {
-        font-size: 1.8rem;
+    .mobile-nav {
+        display: none;
+    }
+    
+    .search-bar-mobile {
+        display: none;
+    }
+    
+    /* Mostrar navegación desktop */
+    .container-navegacion {
+        display: block;
+    }
+}
+
+/* Ajustes para pantallas muy grandes */
+@media (min-width: 1400px) {
+    .superior {
+        max-width: 1400px; /* Ancho mayor para pantallas grandes */
+        padding: 3rem 4rem;
     }
 }
 

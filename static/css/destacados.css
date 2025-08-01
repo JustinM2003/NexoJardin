@@ -143,6 +143,17 @@
     }
 }
 
+/* Ocultar flechas en tablets y móviles */
+@media (max-width: 1024px) {
+    .carrusel-flecha {
+        display: none !important; /* Ocultar flechas en tablets y móviles */
+    }
+    
+    .carrusel-contenedor-exterior {
+        gap: 0; /* Sin espacio para flechas */
+    }
+}
+
 @media (max-width: 900px) {
     .producto-card { 
         flex-basis: calc(50% - 12px); 
@@ -243,10 +254,6 @@
         margin: 0 auto;
     }
     
-    .carrusel-flecha {
-        display: none; /* Ocultamos las flechas en móvil */
-    }
-    
     .producto-card {
         flex-basis: calc(52% - 6px);
         min-width: calc(52% - 6px);
@@ -257,5 +264,12 @@
     .producto-nombre,
     .producto-precio {
         font-size: 1rem;
+    }
+}
+
+/* Mostrar flechas solo en desktop (1025px en adelante) */
+@media (min-width: 1025px) {
+    .carrusel-flecha {
+        display: flex !important;
     }
 }
