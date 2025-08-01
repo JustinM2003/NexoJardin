@@ -20,32 +20,50 @@
                 <span>Por compras sobre 30.000 CLP, envíos gratuitos dentro de la región metropolitana.</span>
             </div>
         </div>
-        <!-- Barra superior con logo y búsqueda -->
+        <!-- Barra superior con logo y botones -->
         <div class="container-superior">
             <div class="container superior">
+                <!-- Botón menú hamburguesa (solo móvil) -->
+                <button class="menu-toggle" id="menu-toggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <!-- Barra de búsqueda (solo desktop) -->
                 <form class="search-form" action="{% url 'ver-todo' %}" method="GET">
-                    <span class="search-icon">
+                    <div class="search-icon">
                         <i class="fa-solid fa-magnifying-glass icon-lupa"></i>
-                    </span>
-                    <input type="search" placeholder="Buscar producto" id="search-input" name="q">
+                    </div>
+                    <input type="search" placeholder="Buscar producto" name="q">
+                    <div class="search-dropdown" id="search-dropdown"></div>
                 </form>
 
                 <div class="logo-container">
                     <h1 class="logo"><a href="{% url 'home' %}">Nexo Jardín</a></h1>
                 </div>
 
-                <div class="contacto-container">
-                    <!-- Espacio vacío para mantener el centrado del logo -->
+                <!-- Elementos del lado derecho -->
+                <div class="header-icons">
+                    <!-- Iconos móviles -->
+                    <button class="search-toggle" id="search-toggle">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    
+                    <!-- Cuenta de usuario (solo desktop) -->
                     <div class="dropdown-cuenta">
                         {% if user.is_authenticated %}
                             <form action="{% url 'logout' %}" method="post" class="form-logout">
                                 {% csrf_token %}
-                                <span class="btn-logout">Cerrar sesión</span>
+                                <button type="submit" class="btn-logout">
+                                    <i class="fa-solid fa-sign-out-alt icon-user"></i>
+                                    <span class="span-ingresar">SALIR</span>
+                                </button>
                             </form>
                         {% else %}
-                            <a href="{% url 'login' %}" class="btn-ingresar" id="btn-ingresar">
+                            <a href="{% url 'login' %}" class="btn-ingresar">
                                 <i class="fa-solid fa-user icon-user"></i>
-                                <span class="span-ingresar">Ingresar</span>
+                                <span class="span-ingresar">INGRESAR</span>
                             </a>
                         {% endif %}
                     </div>
@@ -53,16 +71,60 @@
             </div>
         </div>
 
-        <!-- Barra de navegación principal -->
+        <!-- Navegación desktop -->
         <div class="container-navegacion">
-            <nav class="container navegacion">
+            <div class="container navegacion">
                 <ul class="menu">
                     <li><a href="{% url 'home' %}">INICIO</a></li>
                     <li><a href="{% url 'plantas' %}">PLANTAS</a></li>
                     <li><a href="{% url 'materiales' %}">MATERIALES</a></li>
                     <li><a href="{% url 'ver-todo' %}">VER TODO</a></li>
                 </ul>
-            </nav>
+            </div>
+        </div>
+
+        <!-- Overlay para menú móvil -->
+        <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+
+        <!-- Menú desplegable de navegación móvil -->
+        <div class="mobile-nav" id="mobile-nav">
+            <div class="mobile-nav-content">
+                <nav class="navegacion-mobile">
+                    <ul class="menu-mobile">
+                        <li><a href="{% url 'home' %}">INICIO</a></li>
+                        <li><a href="{% url 'plantas' %}">PLANTAS</a></li>
+                        <li><a href="{% url 'materiales' %}">MATERIALES</a></li>
+                        <li><a href="{% url 'ver-todo' %}">VER TODO</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="mobile-nav-footer">
+                <a href="{% url 'login' %}" class="btn-registrarse">Registrarse</a>
+                {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post" class="form-logout-mobile">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-registrarse" style="background-color: #d86461;">
+                            Cerrar Sesión
+                        </button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn-registrarse" style="background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color);">
+                        Iniciar Sesión
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Barra de búsqueda desplegable -->
+        <div class="search-bar-mobile" id="search-bar-mobile">
+            <div class="container">
+                <form class="search-form-mobile" action="{% url 'ver-todo' %}" method="GET">
+                    <input type="search" placeholder="Buscar producto" id="search-input-mobile" name="q">
+                    <button type="button" class="search-close" id="search-close">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </form>
+            </div>
         </div>
     </header>
 
@@ -153,11 +215,107 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.btn-logout').forEach(function(el) {
-    el.addEventListener('click', function() {
-      this.closest('form').submit();
+    // Logout functionality
+    document.querySelectorAll('.btn-logout, .form-logout-mobile button').forEach(function(el) {
+        el.addEventListener('click', function() {
+            this.closest('form').submit();
+        });
     });
-  });
+
+    // Elementos del DOM
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+    const searchToggle = document.getElementById('search-toggle');
+    const searchBarMobile = document.getElementById('search-bar-mobile');
+    const searchClose = document.getElementById('search-close');
+
+    // Función para abrir menú móvil
+    function openMobileMenu() {
+        if (mobileNav && mobileNavOverlay) {
+            mobileNav.classList.add('active');
+            mobileNavOverlay.classList.add('active');
+            menuToggle.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        }
+    }
+
+    // Función para cerrar menú móvil
+    function closeMobileMenu() {
+        if (mobileNav && mobileNavOverlay) {
+            mobileNav.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+            document.body.style.overflow = ''; // Restaurar scroll
+        }
+    }
+
+    // Mobile menu toggle (solo para móvil)
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            if (mobileNav.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+                // Cerrar búsqueda móvil si está abierta
+                if (searchBarMobile && searchBarMobile.classList.contains('active')) {
+                    searchBarMobile.classList.remove('active');
+                    if (searchToggle) searchToggle.classList.remove('active');
+                }
+            }
+        });
+    }
+
+    // Cerrar menú con overlay
+    if (mobileNavOverlay) {
+        mobileNavOverlay.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+    }
+
+    // Search toggle (solo para móvil)
+    if (searchToggle && searchBarMobile) {
+        searchToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            searchBarMobile.classList.toggle('active');
+            // Cerrar menú móvil si está abierto
+            if (mobileNav && mobileNav.classList.contains('active')) {
+                closeMobileMenu();
+            }
+            // Focus en el input si se abre
+            if (searchBarMobile.classList.contains('active')) {
+                const searchInput = document.getElementById('search-input-mobile');
+                if (searchInput) searchInput.focus();
+            }
+        });
+    }
+
+    // Close search (solo para móvil)
+    if (searchClose && searchBarMobile) {
+        searchClose.addEventListener('click', function() {
+            searchBarMobile.classList.remove('active');
+            if (searchToggle) searchToggle.classList.remove('active');
+        });
+    }
+
+    // Manejar cambios de tamaño de ventana
+    window.addEventListener('resize', function() {
+        // Si la pantalla es grande, asegurar que los menús móviles estén cerrados
+        if (window.innerWidth > 767) {
+            closeMobileMenu();
+            if (searchBarMobile) searchBarMobile.classList.remove('active');
+            if (searchToggle) searchToggle.classList.remove('active');
+        }
+    });
+
+    // Cerrar menú al hacer clic en enlaces de navegación
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+    mobileNavLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            // Pequeño delay para que la navegación se complete
+            setTimeout(closeMobileMenu, 100);
+        });
+    });
 });
 </script>
 </html>
