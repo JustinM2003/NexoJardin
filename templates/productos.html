@@ -228,7 +228,6 @@
                             {{ producto.nombre }}
                         </a>
                     </h3>
-                    <p class="producto-categoria">{{ producto.categoria.nombre }}</p>
                     <p class="producto-precio">${{ producto.precio|puntomiles }}</p>
                     <a href="{% url detalle_producto_url producto.id %}" class="btn-ver-producto">
                         Ver producto

@@ -352,6 +352,7 @@
     font-weight: 400;
     flex: 0 0 auto;
     color: var(--dark-text);
+    padding-top: 1rem;
 }
 
 .btn-ver-producto {

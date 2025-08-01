@@ -38,12 +38,14 @@
                 <!-- Imagen editable -->
                 <div class="imagen-container">
                     <img id="producto-imagen" src="{% if producto.imagen %}{{ producto.imagen.url }}{% else %}{% static 'img/default.jpg' %}{% endif %}" alt="{{ producto.nombre }}" class="detalle-producto-img">
+                    {% if user.is_authenticated and user.is_staff %}
                     <div class="imagen-edit-overlay" style="display: none;">
                         <input type="file" id="imagen_edit" name="imagen" accept="image/*" style="display: none;">
                         <button type="button" class="btn-cambiar-imagen" onclick="document.getElementById('imagen_edit').click()">
                             <i class="fas fa-camera"></i> Cambiar imagen
                         </button>
                     </div>
+                    {% endif %}
                 </div>
             </div>
             
@@ -51,13 +53,17 @@
                 <!-- Nombre editable -->
                 <div class="campo-editable">
                     <h1 class="detalle-producto-nombre" id="nombre-display">{{ producto.nombre }}</h1>
+                    {% if user.is_authenticated and user.is_staff %}
                     <input type="text" class="input-edicion nombre-input" id="nombre-input" name="nombre" value="{{ producto.nombre }}" style="display: none;">
+                    {% endif %}
                 </div>
                 
                 <!-- Precio editable -->
                 <div class="campo-editable">
                     <div class="detalle-producto-precio" id="precio-display">${{ producto.precio|puntomiles }}</div>
+                    {% if user.is_authenticated and user.is_staff %}
                     <input type="number" class="input-edicion precio-input" id="precio-input" name="precio" value="{{ producto.precio }}" min="0" step="0.01" style="display: none;">
+                    {% endif %}
                 </div>
                 
                 <hr class="detalle-producto-divider">
@@ -70,59 +76,65 @@
                         {% else %}
                             <div class="detalle-producto-descripcion-corta" id="descripcion-corta-display" style="display: none;"></div>
                         {% endif %}
+                        {% if user.is_authenticated and user.is_staff %}
                         <textarea class="input-edicion descripcion-corta-input" id="descripcion-corta-input" name="descripcion_corta" placeholder="Descripción corta..." style="display: none;">{{ producto.descripcion_corta }}</textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tabs principales del producto -->
-        <div class="detalle-tabs-container">
-            <div class="detalle-tabs">
-                <button type="button" class="detalle-tab active" data-tab="descripcion">Descripción y cuidados</button>
-                <button type="button" class="detalle-tab" data-tab="medidas">Medidas</button>
-                <button type="button" class="detalle-tab" data-tab="envios">Envíos</button>
-            </div>
-            <div class="detalle-tabs-content">
-                <!-- Tab Descripción -->
-                <div class="detalle-tab-panel active" id="tab-descripcion">
-                    <div class="campo-editable">
-                        {% if producto.descripcion %}
-                            <div class="detalle-producto-descripcion" id="descripcion-display">{{ producto.descripcion|linebreaksbr }}</div>
-                        {% else %}
-                            <div class="detalle-producto-descripcion" id="descripcion-display">Sin descripción disponible.</div>
                         {% endif %}
-                        <textarea class="input-edicion descripcion-input" id="descripcion-input" name="descripcion" placeholder="Descripción completa..." style="display: none;">{{ producto.descripcion }}</textarea>
-                    </div>
-                </div>
-                
-                <!-- Tab Medidas -->
-                <div class="detalle-tab-panel" id="tab-medidas">
-                    <div class="campo-editable">
-                        {% if producto.medidas %}
-                            <div class="detalle-producto-medidas" id="medidas-display">{{ producto.medidas|linebreaksbr }}</div>
-                        {% else %}
-                            <div class="detalle-producto-medidas" id="medidas-display">Medidas del producto no disponibles.</div>
-                        {% endif %}
-                        <textarea class="input-edicion medidas-input" id="medidas-input" name="medidas" placeholder="Medidas del producto..." style="display: none;">{{ producto.medidas }}</textarea>
-                    </div>
-                </div>
-                
-                <!-- Tab Envíos -->
-                <div class="detalle-tab-panel" id="tab-envios">
-                    <div class="detalle-producto-envios" style="text-align: center;">
-                        <h3 style="font-weight: 400;">RETIRO EN BODEGA</h3>
-                        <p>Sin costo en Camino Interior El Chacayal 1540.<br>
-                        Coordinar previamente por WhatsApp o Instagram.</p>
-                        
-                        <h3 style="font-weight: 400;">DESPACHO A DOMICILIO</h3>
-                        <p>Solo Región Metropolitana - Jueves<br>
-                        $10.000 CLP (Gratis sobre $30.000)</p>
                     </div>
                 </div>
             </div>
         </div>
     </form>
+
+    <!-- Tabs principales del producto (fuera del formulario para que todos puedan usarlas) -->
+    <div class="detalle-tabs-container">
+        <div class="detalle-tabs">
+            <button type="button" class="detalle-tab active" data-tab="descripcion">Descripción y cuidados</button>
+            <button type="button" class="detalle-tab" data-tab="medidas">Medidas</button>
+            <button type="button" class="detalle-tab" data-tab="envios">Envíos</button>
+        </div>
+        <div class="detalle-tabs-content">
+            <!-- Tab Descripción -->
+            <div class="detalle-tab-panel active" id="tab-descripcion">
+                <div class="campo-editable">
+                    {% if producto.descripcion %}
+                        <div class="detalle-producto-descripcion" id="descripcion-display">{{ producto.descripcion|linebreaksbr }}</div>
+                    {% else %}
+                        <div class="detalle-producto-descripcion" id="descripcion-display">Sin descripción disponible.</div>
+                    {% endif %}
+                    {% if user.is_authenticated and user.is_staff %}
+                    <textarea class="input-edicion descripcion-input" id="descripcion-input" name="descripcion" placeholder="Descripción completa..." style="display: none;">{{ producto.descripcion }}</textarea>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Tab Medidas -->
+            <div class="detalle-tab-panel" id="tab-medidas">
+                <div class="campo-editable">
+                    {% if producto.medidas %}
+                        <div class="detalle-producto-medidas" id="medidas-display">{{ producto.medidas|linebreaksbr }}</div>
+                    {% else %}
+                        <div class="detalle-producto-medidas" id="medidas-display">Medidas del producto no disponibles.</div>
+                    {% endif %}
+                    {% if user.is_authenticated and user.is_staff %}
+                    <textarea class="input-edicion medidas-input" id="medidas-input" name="medidas" placeholder="Medidas del producto..." style="display: none;">{{ producto.medidas }}</textarea>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Tab Envíos -->
+            <div class="detalle-tab-panel" id="tab-envios">
+                <div class="detalle-producto-envios" style="text-align: center;">
+                    <h3 style="font-weight: 300;">RETIRO EN BODEGA</h3>
+                    <p>Sin costo en Camino Interior El Chacayal 1540.<br>
+                    Coordinar previamente por WhatsApp o Instagram.</p>
+                    
+                    <h3 style="font-weight: 300;">DESPACHO A DOMICILIO</h3>
+                    <p>Solo Región Metropolitana - Jueves<br>
+                    $10.000 CLP (Gratis sobre $30.000)</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Modal Confirmar Eliminar Producto -->
@@ -145,10 +157,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    let modoEdicion = false;
-    let datosOriginales = {};
-
-    // TABS PRINCIPALES DEL PRODUCTO
+    // TABS PRINCIPALES DEL PRODUCTO - FUNCIONAN PARA TODOS LOS USUARIOS
     function initMainTabs() {
         const tabs = document.querySelectorAll('.detalle-tabs .detalle-tab');
         const panels = document.querySelectorAll('.detalle-tabs-content .detalle-tab-panel');
@@ -171,7 +180,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // FUNCIONES DE EDICIÓN INLINE
+    // Inicializar tabs (para todos los usuarios)
+    initMainTabs();
+
+    {% if user.is_authenticated and user.is_staff %}
+    // FUNCIONES DE EDICIÓN INLINE - SOLO PARA ADMINISTRADORES
+    let modoEdicion = false;
+    let datosOriginales = {};
+
     function guardarDatosOriginales() {
         datosOriginales = {
             nombre: document.getElementById('nombre-input').value,
@@ -214,65 +230,64 @@ document.addEventListener('DOMContentLoaded', function() {
         ocultarCamposEdicion();
     }
 
-
-function mostrarCamposEdicion() {
-    // Nombre
-    document.getElementById('nombre-display').style.display = 'none';
-    document.getElementById('nombre-input').style.display = 'block';
-    
-    // Precio
-    document.getElementById('precio-display').style.display = 'none';
-    document.getElementById('precio-input').style.display = 'block';
-    
-    // Descripción corta - CORRECCIÓN AQUÍ
-    document.getElementById('descripcion-corta-display').style.display = 'none';
-    document.getElementById('descripcion-corta-input').style.display = 'block';
-    
-    // Descripción
-    document.getElementById('descripcion-display').style.display = 'none';
-    document.getElementById('descripcion-input').style.display = 'block';
-    
-    // Medidas
-    document.getElementById('medidas-display').style.display = 'none';
-    document.getElementById('medidas-input').style.display = 'block';
-    
-    // Imagen overlay
-    document.querySelector('.imagen-edit-overlay').style.display = 'flex';
-}
-
-function ocultarCamposEdicion() {
-    // Nombre
-    document.getElementById('nombre-display').style.display = 'block';
-    document.getElementById('nombre-input').style.display = 'none';
-    
-    // Precio
-    document.getElementById('precio-display').style.display = 'block';
-    document.getElementById('precio-input').style.display = 'none';
-    
-    // Descripción corta - CORRECCIÓN AQUÍ
-    const descCortaInput = document.getElementById('descripcion-corta-input');
-    const descCortaDisplay = document.getElementById('descripcion-corta-display');
-    
-    descCortaInput.style.display = 'none';
-    
-    // Solo mostrar el display si hay contenido
-    if (descCortaInput.value.trim()) {
-        descCortaDisplay.style.display = 'block';
-    } else {
-        descCortaDisplay.style.display = 'none';
+    function mostrarCamposEdicion() {
+        // Nombre
+        document.getElementById('nombre-display').style.display = 'none';
+        document.getElementById('nombre-input').style.display = 'block';
+        
+        // Precio
+        document.getElementById('precio-display').style.display = 'none';
+        document.getElementById('precio-input').style.display = 'block';
+        
+        // Descripción corta
+        document.getElementById('descripcion-corta-display').style.display = 'none';
+        document.getElementById('descripcion-corta-input').style.display = 'block';
+        
+        // Descripción
+        document.getElementById('descripcion-display').style.display = 'none';
+        document.getElementById('descripcion-input').style.display = 'block';
+        
+        // Medidas
+        document.getElementById('medidas-display').style.display = 'none';
+        document.getElementById('medidas-input').style.display = 'block';
+        
+        // Imagen overlay
+        document.querySelector('.imagen-edit-overlay').style.display = 'flex';
     }
-    
-    // Descripción
-    document.getElementById('descripcion-display').style.display = 'block';
-    document.getElementById('descripcion-input').style.display = 'none';
-    
-    // Medidas
-    document.getElementById('medidas-display').style.display = 'block';
-    document.getElementById('medidas-input').style.display = 'none';
-    
-    // Imagen overlay
-    document.querySelector('.imagen-edit-overlay').style.display = 'none';
-}
+
+    function ocultarCamposEdicion() {
+        // Nombre
+        document.getElementById('nombre-display').style.display = 'block';
+        document.getElementById('nombre-input').style.display = 'none';
+        
+        // Precio
+        document.getElementById('precio-display').style.display = 'block';
+        document.getElementById('precio-input').style.display = 'none';
+        
+        // Descripción corta
+        const descCortaInput = document.getElementById('descripcion-corta-input');
+        const descCortaDisplay = document.getElementById('descripcion-corta-display');
+        
+        descCortaInput.style.display = 'none';
+        
+        // Solo mostrar el display si hay contenido
+        if (descCortaInput.value.trim()) {
+            descCortaDisplay.style.display = 'block';
+        } else {
+            descCortaDisplay.style.display = 'none';
+        }
+        
+        // Descripción
+        document.getElementById('descripcion-display').style.display = 'block';
+        document.getElementById('descripcion-input').style.display = 'none';
+        
+        // Medidas
+        document.getElementById('medidas-display').style.display = 'block';
+        document.getElementById('medidas-input').style.display = 'none';
+        
+        // Imagen overlay
+        document.querySelector('.imagen-edit-overlay').style.display = 'none';
+    }
 
     function actualizarVisualizacion() {
         // Actualizar nombre
@@ -312,7 +327,7 @@ function ocultarCamposEdicion() {
         actualizarVisualizacion();
     }
 
-    // EVENT LISTENERS
+    // EVENT LISTENERS PARA ADMINISTRADORES
     document.getElementById('btn-toggle-edicion').addEventListener('click', function() {
         if (!modoEdicion) {
             activarModoEdicion();
@@ -369,11 +384,10 @@ function ocultarCamposEdicion() {
         })
         .catch(() => showMessage('Error inesperado', 'error'));
     });
-
-    // Inicializar tabs
-    initMainTabs();
+    {% endif %}
 });
 
+{% if user.is_authenticated and user.is_staff %}
 function showMessage(message, type) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message message-${type}`;
@@ -404,8 +418,7 @@ function abrirModalEliminarProducto(id, nombre) {
         modal.style.display = 'flex';
     }
 }
-
-
+{% endif %}
 </script>
 {% endblock %}
 

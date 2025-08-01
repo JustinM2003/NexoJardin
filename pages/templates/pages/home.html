@@ -9,7 +9,7 @@
 
 <h2 class="titulo-carrusel">Productos Destacados</h2>
 <div class="carrusel-contenedor-exterior">
-  <button class="carrusel-flecha carrusel-flecha-izq" onclick="moverCarrusel(-1)" disabled>&#10094;</button>
+  <button class="carrusel-flecha carrusel-flecha-izq" onclick="moverCarrusel(-1)">&#10094;</button>
   <div class="carrusel-wrapper">
     <div class="carrusel-destacados" id="carruselDestacados">
       {% for producto in productos_destacados %}
@@ -52,50 +52,139 @@
 </div>
 
 <script>
-// El script no necesita cambios. Se mantiene el anterior.
+// Carrusel infinito con auto-play
 let carruselPos = 0;
 let isAnimating = false;
+let autoPlayInterval;
 const carrusel = document.getElementById('carruselDestacados');
 const flechaIzq = document.querySelector('.carrusel-flecha-izq');
 const flechaDer = document.querySelector('.carrusel-flecha-der');
 
-function updateArrowState() {
-    if (!carrusel || !flechaIzq || !flechaDer) return;
-    const maxScrollLeft = carrusel.scrollWidth - carrusel.clientWidth;
-    // Se usa un margen de 1px por posibles decimales en el cálculo del scroll
-    flechaIzq.disabled = carrusel.scrollLeft <= 0;
-    flechaDer.disabled = carrusel.scrollLeft >= maxScrollLeft - 1;
+// Función para obtener el número de cards visibles
+function getVisibleCards() {
+    if (!carrusel) return 1;
+    const containerWidth = carrusel.clientWidth;
+    const cards = carrusel.querySelectorAll('.producto-card');
+    if (cards.length === 0) return 1;
+    const cardWidth = cards[0].offsetWidth;
+    const gap = parseFloat(window.getComputedStyle(carrusel).gap) || 24;
+    return Math.floor(containerWidth / (cardWidth + gap));
 }
 
+// Función para calcular el índice máximo
+function getMaxIndex() {
+    const cards = carrusel.querySelectorAll('.producto-card');
+    const visibleCards = getVisibleCards();
+    return Math.max(0, cards.length - visibleCards);
+}
+
+function updateArrowState() {
+    // En carrusel infinito, las flechas siempre están habilitadas si hay más de 1 card
+    const cards = carrusel.querySelectorAll('.producto-card');
+    const hasMultipleCards = cards.length > 1;
+    
+    if (flechaIzq) flechaIzq.disabled = !hasMultipleCards;
+    if (flechaDer) flechaDer.disabled = !hasMultipleCards;
+}
+
+// Función para mover el carrusel de forma infinita
+function moverCarrusel(dir, isAutoPlay = false) {
+    if (!carrusel || isAnimating) return;
+    
+    const cards = carrusel.querySelectorAll('.producto-card');
+    if (cards.length === 0) return;
+    
+    // Si solo hay una card o menos cards visibles que el total, no hacer nada
+    const visibleCards = getVisibleCards();
+    if (cards.length <= visibleCards) return;
+    
+    isAnimating = true;
+    
+    // Pausar auto-play si es movimiento manual
+    if (!isAutoPlay) {
+        pauseAutoPlay();
+    }
+    
+    const cardWidth = cards[0].offsetWidth;
+    const gap = parseFloat(window.getComputedStyle(carrusel).gap) || 24;
+    const totalCard = cardWidth + gap;
+    
+    // Calcular nueva posición
+    carruselPos += dir;
+    
+    // Hacer el carrusel infinito
+    const maxIndex = getMaxIndex();
+    if (carruselPos > maxIndex) {
+        carruselPos = 0; // Volver al inicio
+    } else if (carruselPos < 0) {
+        carruselPos = maxIndex; // Ir al final
+    }
+    
+    const newScrollLeft = carruselPos * totalCard;
+    carrusel.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
+    
+    setTimeout(() => {
+        isAnimating = false;
+        updateArrowState();
+        
+        // Reanudar auto-play si es movimiento manual
+        if (!isAutoPlay) {
+            startAutoPlay();
+        }
+    }, 400);
+}
+
+// Funciones para el auto-play
+function startAutoPlay() {
+    if (autoPlayInterval) clearInterval(autoPlayInterval);
+    
+    autoPlayInterval = setInterval(() => {
+        const cards = carrusel.querySelectorAll('.producto-card');
+        const visibleCards = getVisibleCards();
+        
+        // Solo auto-play si hay más cards que las visibles
+        if (cards.length > visibleCards) {
+            moverCarrusel(1, true);
+        }
+    }, 10000); // 10 segundos
+}
+
+function pauseAutoPlay() {
+    if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+    }
+}
+
+// Event listeners para pausar auto-play en interacción
 if (carrusel) {
+    // Pausar en hover
+    carrusel.addEventListener('mouseenter', pauseAutoPlay);
+    carrusel.addEventListener('mouseleave', startAutoPlay);
+    
+    // Pausar en scroll manual
     carrusel.addEventListener('scroll', () => {
         if (!isAnimating) {
-            updateArrowState();
+            pauseAutoPlay();
+            // Reanudar después de un tiempo sin scroll
+            setTimeout(startAutoPlay, 3000);
         }
     });
-    // Llamada inicial para establecer el estado correcto de los botones al cargar
-    setTimeout(updateArrowState, 100); 
+    
+    // Sincronizar posición con scroll manual
+    carrusel.addEventListener('scroll', () => {
+        if (!isAnimating) {
+            const cardWidth = carrusel.querySelector('.producto-card')?.offsetWidth || 0;
+            const gap = parseFloat(window.getComputedStyle(carrusel).gap) || 24;
+            const totalCard = cardWidth + gap;
+            if (totalCard > 0) {
+                carruselPos = Math.round(carrusel.scrollLeft / totalCard);
+            }
+        }
+    });
 }
 
-
-function moverCarrusel(dir) {
-  if (!carrusel) return;
-  const cards = carrusel.querySelectorAll('.producto-card');
-  if (cards.length === 0) return;
-  const cardWidth = cards[0].offsetWidth;
-  const gap = parseFloat(window.getComputedStyle(carrusel).gap) || 24;
-  const totalCard = cardWidth + gap;
-  // Calcular el índice del primer card visible
-  const scrollLeft = carrusel.scrollLeft;
-  let index = Math.round(scrollLeft / totalCard);
-  // Nuevo índice destino
-  let newIndex = index + dir;
-  newIndex = Math.max(0, Math.min(cards.length - 1, newIndex));
-  const newScrollLeft = newIndex * totalCard;
-  carrusel.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
-  setTimeout(updateArrowState, 400);
-}
-
+// Inicialización
 window.addEventListener('resize', () => {
     updateArrowState();
     igualarAlturaTarjetasCarrusel();
@@ -103,57 +192,81 @@ window.addEventListener('resize', () => {
 
 // Igualar altura de todas las .producto-card en el carrusel
 function igualarAlturaTarjetasCarrusel() {
-  const cards = document.querySelectorAll('.carrusel-destacados .producto-card');
-  let max = 0;
-  // Reset heights
-  cards.forEach(card => { card.style.height = 'auto'; });
-  // Buscar la mayor altura
-  cards.forEach(card => {
-    if (card.offsetHeight > max) max = card.offsetHeight;
-  });
-  // Asignar la mayor altura a todas
-  cards.forEach(card => { card.style.height = max + 'px'; });
+    const cards = document.querySelectorAll('.carrusel-destacados .producto-card');
+    let max = 0;
+    // Reset heights
+    cards.forEach(card => { card.style.height = 'auto'; });
+    // Buscar la mayor altura
+    cards.forEach(card => {
+        if (card.offsetHeight > max) max = card.offsetHeight;
+    });
+    // Asignar la mayor altura a todas
+    cards.forEach(card => { card.style.height = max + 'px'; });
 }
 
 // Ejecutar al cargar
-window.addEventListener('DOMContentLoaded', igualarAlturaTarjetasCarrusel);
-// Ejecutar también tras cargar imágenes (por si cambian el alto)
-window.addEventListener('load', igualarAlturaTarjetasCarrusel);
+window.addEventListener('DOMContentLoaded', () => {
+    igualarAlturaTarjetasCarrusel();
+    updateArrowState();
+    startAutoPlay(); // Iniciar auto-play
+});
+
+// Ejecutar también tras cargar imágenes
+window.addEventListener('load', () => {
+    igualarAlturaTarjetasCarrusel();
+    updateArrowState();
+});
+
+// Limpiar interval al cerrar página
+window.addEventListener('beforeunload', pauseAutoPlay);
 
 // --- Toggle destacado desde el home ---
 function toggleDestacado(productoId) {
-  const btn = document.querySelector(`.btn-destacado[onclick="toggleDestacado(${productoId})"]`);
-  if (!btn) return;
-  btn.disabled = true;
-  fetch(`/productos/toggle-destacado/${productoId}/`, {
-    method: 'POST',
-    headers: {
-      'X-Requested-With': 'XMLHttpRequest',
-      'X-CSRFToken': getCSRFToken(),
-    },
-  })
+    const btn = document.querySelector(`.btn-destacado[onclick="toggleDestacado(${productoId})"]`);
+    if (!btn) return;
+    btn.disabled = true;
+    fetch(`/productos/toggle-destacado/${productoId}/`, {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': getCSRFToken(),
+        },
+    })
     .then(response => response.json())
     .then(data => {
-      if (data.success) {
-        if (!data.destacado) {
-          // Si ya no es destacado, eliminar la tarjeta del DOM
-          const card = btn.closest('.producto-card');
-          if (card) {
-            card.remove();
-            igualarAlturaTarjetasCarrusel();
-          }
+        if (data.success) {
+            if (!data.destacado) {
+                // Si ya no es destacado, eliminar la tarjeta del DOM
+                const card = btn.closest('.producto-card');
+                if (card) {
+                    card.remove();
+                    igualarAlturaTarjetasCarrusel();
+                    updateArrowState(); // Actualizar estado de flechas
+                    
+                    // Ajustar posición del carrusel si es necesario
+                    const remainingCards = carrusel.querySelectorAll('.producto-card').length;
+                    const maxIndex = getMaxIndex();
+                    if (carruselPos > maxIndex) {
+                        carruselPos = Math.max(0, maxIndex);
+                        const cardWidth = carrusel.querySelector('.producto-card')?.offsetWidth || 0;
+                        const gap = parseFloat(window.getComputedStyle(carrusel).gap) || 24;
+                        const totalCard = cardWidth + gap;
+                        const newScrollLeft = carruselPos * totalCard;
+                        carrusel.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
+                    }
+                }
+            } else {
+                btn.classList.add('destacado');
+            }
+            const icon = btn.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-solid', data.destacado);
+                icon.classList.toggle('fa-regular', !data.destacado);
+            }
+            btn.title = data.destacado ? 'Quitar de destacados' : 'Marcar como destacado';
         } else {
-          btn.classList.add('destacado');
+            alert('No se pudo cambiar el estado de destacado.');
         }
-        const icon = btn.querySelector('i');
-        if (icon) {
-          icon.classList.toggle('fa-solid', data.destacado);
-          icon.classList.toggle('fa-regular', !data.destacado);
-        }
-        btn.title = data.destacado ? 'Quitar de destacados' : 'Marcar como destacado';
-      } else {
-        alert('No se pudo cambiar el estado de destacado.');
-      }
     })
     .catch(() => alert('Error de red.'))
     .finally(() => { btn.disabled = false; });
@@ -161,15 +274,15 @@ function toggleDestacado(productoId) {
 
 // Obtener CSRF token de la cookie
 function getCSRFToken() {
-  let name = 'csrftoken=';
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for(let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') c = c.substring(1);
-    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-  }
-  return '';
+    let name = 'csrftoken=';
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return '';
 }
 </script>
 
