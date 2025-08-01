@@ -1,6 +1,82 @@
 {% extends "base.html" %}
+{% load static %}
 {% block banner %}{% endblock banner %}
+
+{% block extra_css %}
+<style>
+    .informacion-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+        text-align: center;
+    }
+
+    .informacion-title {
+        font-size: 3.2rem;
+        font-weight: 300;
+        color: var(--dark-text);
+        margin-bottom: 4rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .texto-simple {
+        font-size: 1.6rem;
+        line-height: 1.8;
+        color: #555;
+        text-align: left;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .texto-simple h3 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: var(--dark-text);
+        margin: 2rem 0 1rem 0;
+        text-transform: uppercase;
+    }
+
+    .texto-simple p {
+        margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .informacion-container {
+            padding: 3rem 1.5rem;
+        }
+
+        .informacion-title {
+            font-size: 2.8rem;
+        }
+
+        .texto-simple {
+            font-size: 1.4rem;
+        }
+
+        .texto-simple h3 {
+            font-size: 1.6rem;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<h2>Información y cuidados</h2>
-<p>Contenido de la sección Información y cuidados.</p>
+<div class="informacion-container">
+    <h1 class="informacion-title">Información de Envíos</h1>
+    
+    <div class="texto-simple">
+        <h3>Retiro en Bodega</h3>
+        <p>Puedes retirar tus productos sin costo en nuestra bodega ubicada en Camino Interior El Chacayal 1540.</p>
+        <p>Solo debes coordinar previamente por WhatsApp o Instagram, para confirmar que tu pedido esté listo.</p>
+        <p>El retiro está disponible dentro de los horarios de atención publicados en nuestras redes sociales y sitio web.</p>
+
+        <h3>Despacho a Domicilio</h3>
+        <p>Actualmente ofrecemos despachos únicamente dentro de la Región Metropolitana.</p>
+        <p>Los despachos se realizan todos los días jueves.</p>
+        <p>El valor del envío es de $10.000 CLP.</p>
+        <p>Compras iguales o superiores a $30.000 CLP tienen envío gratuito.</p>
+        <p>El valor del despacho (si aplica) se incluye en el total a pagar según el medio de pago elegido.</p>
+    </div>
+</div>
 {% endblock content %}

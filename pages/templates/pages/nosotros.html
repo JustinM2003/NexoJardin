@@ -1,4 +1,218 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    /* Estilos del diseño original minimalista */
+    .about-section {
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+        padding: 6rem 0;
+        min-height: 70vh;
+    }
+
+    .about-text, .about-images {
+        flex: 1; /* Ambas columnas ocupan el 50% del espacio */
+    }
+
+    .about-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Título superior pequeño ("Nuestra Historia") */
+    .about-subtitle {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: var(--dark-text);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 2rem;
+    }
+
+    /* Título principal grande y en mayúsculas */
+    .about-main-title {
+        font-size: 2.8rem;
+        font-weight: 600;
+        color: var(--dark-text);
+        line-height: 1.4;
+        margin-bottom: 3rem;
+        text-transform: uppercase;
+    }
+
+    /* Párrafos del cuerpo del texto */
+    .about-body p {
+        font-size: 1.6rem;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 2rem;
+    }
+    .about-body p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Estilo para las palabras destacadas en color */
+    .text-highlight {
+        color: var(--primary-color);
+        font-weight: 500;
+    }
+
+    /* Carrusel simple y funcional */
+    .nosotros-carousel {
+        position: relative;
+        width: 100%;
+        height: 55vh;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #f0f0f0;
+    }
+
+    .carousel-images {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .carousel-image.active {
+        opacity: 1;
+    }
+
+    .carousel-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .carousel-btn {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background: transparent;
+        border: none;
+        font-size: 2.6rem;
+        font-weight: 700;
+        color: #fff;
+        cursor: pointer;
+        width: 54px;
+        border-radius: 0;
+        z-index: 10;
+        opacity: 0.85;
+        transition: background 0.22s, opacity 0.22s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+        opacity: 1;
+    }
+
+    .prev-btn {
+        left: 0;
+        right: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .next-btn {
+        right: 0;
+        left: auto;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+        .about-section {
+            flex-direction: column;
+            gap: 4rem;
+            padding: 4rem 0;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block banner %}{% endblock banner %}
+
 {% block content %}
-{% endblock content %}
+<section class="about-section">
+    <div class="about-text">
+        <h2 class="about-subtitle">Nuestra Historia</h2>
+        
+        <p class="about-main-title">
+            Una conexión con lo vivo, lo simple y lo esencial.
+        </p>
+
+        <div class="about-body">
+            <p>
+                Somos un equipo joven con <span class="text-highlight">raíces verdes</span> y <span class="text-highlight">sueños grandes</span>. Formado por una Licenciada en Geografía y estudiantes universitarios apasionados por la naturaleza, en <strong>Nexojardín</strong> vivimos el amor por las plantas todos los días.
+            </p>
+            <p>
+                Creemos que cada planta puede transformar un espacio… <em class="text-highlight">y una vida</em>. Por eso, queremos acercar la naturaleza a cada hogar, creando vínculos auténticos entre las personas y las plantas que transforman espacios en santuarios de vida y bienestar.
+            </p>
+        </div>
+    </div>
+
+    <div class="about-images">
+        <div class="nosotros-carousel">
+            <div class="carousel-images">
+                <div class="carousel-image active">
+                    <img src="{% static 'img/nosotros1.jpg' %}" alt="Imagen descriptiva de NexoJardín 1">
+                </div>
+                <div class="carousel-image">
+                    <img src="{% static 'img/nosotros2.jpg' %}" alt="Imagen descriptiva de NexoJardín 2">
+                </div>
+                <div class="carousel-image">
+                    <img src="{% static 'img/nosotros3.jpg' %}" alt="Imagen descriptiva de NexoJardín 3">
+                </div>
+            </div>
+            <button class="carousel-btn prev-btn" id="prev-btn">❮</button>
+            <button class="carousel-btn next-btn" id="next-btn">❯</button>
+        </div>
+    </div>
+</section>
+
+<script>
+let currentSlide = 0;
+const totalSlides = 3;
+
+function showSlide(index) {
+    const images = document.querySelectorAll('.carousel-image');
+    images.forEach(img => img.classList.remove('active'));
+    images[index].classList.add('active');
+}
+
+function changeSlide(direction) {
+    currentSlide += direction;
+    if (currentSlide >= totalSlides) currentSlide = 0;
+    if (currentSlide < 0) currentSlide = totalSlides - 1;
+    showSlide(currentSlide);
+}
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    showSlide(0);
+    
+    document.getElementById('prev-btn').addEventListener('click', () => changeSlide(-1));
+    document.getElementById('next-btn').addEventListener('click', () => changeSlide(1));
+    
+    // Autoplay cada 4 segundos
+    setInterval(() => {
+        changeSlide(1);
+    }, 4000);
+});
+</script>
+{% endblock %}

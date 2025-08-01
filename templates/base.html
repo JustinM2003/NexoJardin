@@ -17,7 +17,7 @@
     <header>
         <div class="envio-bar-header">
             <div class="envio-marquee">
-                <span>Por compras sobre 15.000 CLP, envíos gratuitos dentro de Santiago.</span>
+                <span>Por compras sobre 30.000 CLP, envíos gratuitos dentro de la región metropolitana.</span>
             </div>
         </div>
         <!-- Barra superior con logo y búsqueda -->
@@ -37,15 +37,16 @@
                 <div class="contacto-container">
                     <!-- Espacio vacío para mantener el centrado del logo -->
                     <div class="dropdown-cuenta">
-                        <a href="{% url 'login' %}" class="btn-ingresar" id="btn-ingresar">
-                            <i class="fa-solid fa-user icon-user"></i>
-                            <span class="span-ingresar">Ingresar</span>
-                        </a>
-                        {% if user.is_authenticated and user.is_superuser %}
-                        <form action="{% url 'logout' %}" method="post" class="form-logout">
-                            {% csrf_token %}
-                            <span class="btn-logout">Cerrar sesión</span>
-                        </form>
+                        {% if user.is_authenticated %}
+                            <form action="{% url 'logout' %}" method="post" class="form-logout">
+                                {% csrf_token %}
+                                <span class="btn-logout">Cerrar sesión</span>
+                            </form>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="btn-ingresar" id="btn-ingresar">
+                                <i class="fa-solid fa-user icon-user"></i>
+                                <span class="span-ingresar">Ingresar</span>
+                            </a>
                         {% endif %}
                     </div>
                 </div>
@@ -119,7 +120,7 @@
                     <p class="title-inferior">INFORMACIÓN</p>
                     <ul>
                         <li><a href="{% url 'nosotros' %}">Acerca de Nosotros</a></li>
-                        <li><a href="#">Información de envios</a></li>
+                        <li><a href="{% url 'informacion' %}">Información de envios</a></li>
                     </ul>
                 </div>
 

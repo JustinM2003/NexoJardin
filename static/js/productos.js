@@ -185,7 +185,7 @@ function eliminarImagenEdit() {
     }
     
     if (uploadIcon) {
-        uploadIcon.textContent = '�️';
+        uploadIcon.textContent = '🗑️';
         uploadIcon.style.color = '#dc3545';
     }
     
@@ -470,6 +470,110 @@ function actualizarSelectConFiltro(select, categorias, tipoFiltro) {
     });
 }
 
+// FUNCIONES PARA FILTROS PERSONALIZADOS
+function toggleDropdown(tipo) {
+    // Cerrar todos los dropdowns
+    document.querySelectorAll('.custom-dropdown').forEach(dropdown => {
+        dropdown.classList.remove('active');
+    });
+    
+    // Abrir el dropdown seleccionado
+    const dropdown = document.getElementById(`dropdown-${tipo}`);
+    if (dropdown) {
+        dropdown.classList.add('active');
+    }
+}
+
+function setFiltro(tipo, valor) {
+    const url = new URL(window.location);
+    
+    // Limpiar el parámetro
+    url.searchParams.delete(tipo);
+    
+    // Agregar el nuevo valor si no está vacío
+    if (valor) {
+        url.searchParams.set(tipo, valor);
+    }
+    
+    // Cerrar dropdown
+    document.querySelectorAll('.custom-dropdown').forEach(dropdown => {
+        dropdown.classList.remove('active');
+    });
+    
+    // Actualizar la página
+    window.location.href = url.toString();
+}
+
+function setFiltroOrden(valor, texto) {
+    const url = new URL(window.location);
+    
+    // Limpiar el parámetro
+    url.searchParams.delete('orden_precio');
+    
+    // Agregar el nuevo valor si no está vacío
+    if (valor) {
+        url.searchParams.set('orden_precio', valor);
+    }
+    
+    // Actualizar el texto del botón
+    const ordenSelected = document.getElementById('orden-selected');
+    if (ordenSelected) {
+        ordenSelected.textContent = texto;
+    }
+    
+    // Cerrar dropdown
+    document.querySelectorAll('.custom-dropdown').forEach(dropdown => {
+        dropdown.classList.remove('active');
+    });
+    
+    // Actualizar la página
+    window.location.href = url.toString();
+}
+
+// Función para inicializar los textos de los filtros según la URL actual
+function inicializarFiltros() {
+    const url = new URL(window.location);
+    
+    // Inicializar filtro de tipo
+    const tipoParam = url.searchParams.get('tipo');
+    const tipoSelected = document.getElementById('tipo-selected');
+    if (tipoSelected) {
+        if (tipoParam === 'planta') {
+            tipoSelected.textContent = 'plantas';
+        } else if (tipoParam === 'material') {
+            tipoSelected.textContent = 'materiales';
+        } else {
+            tipoSelected.textContent = 'tipo';
+        }
+    }
+    
+    // Inicializar filtro de categoría
+    const categoriaParam = url.searchParams.get('categoria');
+    const categoriaSelected = document.getElementById('categoria-selected');
+    if (categoriaSelected && categoriaParam) {
+        // Buscar el nombre de la categoría seleccionada
+        const dropdownItems = document.querySelectorAll('#dropdown-categoria .dropdown-item');
+        dropdownItems.forEach(item => {
+            if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(`'${categoriaParam}'`)) {
+                categoriaSelected.textContent = item.textContent.toLowerCase();
+            }
+        });
+    }
+    
+    // Inicializar filtro de orden
+    const ordenParam = url.searchParams.get('orden_precio');
+    const ordenSelected = document.getElementById('orden-selected');
+    if (ordenSelected) {
+        if (ordenParam === 'menor') {
+            ordenSelected.textContent = 'precio, menor a mayor';
+        } else if (ordenParam === 'mayor') {
+            ordenSelected.textContent = 'precio, mayor a menor';
+        } else {
+            ordenSelected.textContent = 'características';
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Carrusel de productos destacados (home)
     const carruselTrack = document.getElementById('carruselTrack');
@@ -504,6 +608,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Inicializar drag and drop para upload de imágenes
     setupDragAndDrop();
+
+    // Inicializar filtros personalizados
+    inicializarFiltros();
+
+    // Cerrar dropdowns al hacer clic fuera
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.custom-dropdown')) {
+            document.querySelectorAll('.custom-dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
 
     // Modal Eliminar Producto
     window.abrirModalEliminarProducto = function(productoId, productoNombre) {
@@ -596,6 +712,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         });
     };
+    
     // Modal Producto
     document.getElementById('openModalProductoBtn').onclick = async function() {
       // No recargar categorías aquí porque el modal ya viene con las categorías correctas del template
@@ -639,6 +756,7 @@ document.addEventListener('DOMContentLoaded', function() {
         mensajeError.style.display = 'block';
       }
     }
+    
     // Modal Categoría
     document.getElementById('openModalCategoriaBtn').onclick = function() {
       // Limpiar mensajes al abrir
@@ -704,6 +822,7 @@ document.addEventListener('DOMContentLoaded', function() {
         mensajeError.style.display = 'block';
       }
     }
+    
     // Modal Eliminar Categoría
     document.getElementById('openModalEliminarCategoriaBtn').onclick = async function() {
         // Limpiar mensajes al abrir

@@ -97,64 +97,50 @@
 /* Flechas del Swiper blancas y transparentes */
 .swiper-button-next,
 .swiper-button-prev {
-    color: #fff;
-    background: transparent;
-    border-radius: 0;
-    width: 54px;
-    height: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.85;
-    transition: background 0.22s, opacity 0.22s;
-    box-shadow: none;
-    z-index: 2;
+    color: #fff !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    width: 54px !important;
+    height: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0.85 !important;
+    transition: background 0.22s, opacity 0.22s !important;
+    box-shadow: none !important;
+    z-index: 2 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
 }
+
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-    background: rgba(255,255,255,0.13);
-    opacity: 1;
+    background: rgba(255,255,255,0.22) !important;
+    opacity: 1 !important;
 }
+
 .swiper-button-next {
-    right: 0;
-    left: auto;
-    margin: 0;
-    padding: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    /* Pegado al borde derecho, sin espacio extra */
-    transform: none;
+    right: 0 !important;
+    left: auto !important;
+    transform: none !important;
 }
+
 .swiper-button-prev {
-    left: 0;
-    right: auto;
-    margin: 0;
-    padding: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    /* Pegado al borde izquierdo, sin espacio extra */
-    transform: none;
+    left: 0 !important;
+    right: auto !important;
+    transform: none !important;
 }
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background: rgba(255,255,255,0.22);
-    opacity: 1;
-}
+
 .swiper-button-next::after,
 .swiper-button-prev::after {
-    color: #fff;
-    font-size: 2.6rem;
-    font-weight: 700;
-    text-shadow: none;
+    color: #fff !important;
+    font-size: 2.6rem !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
 }
 .envio-marquee {
     width: 100%;
