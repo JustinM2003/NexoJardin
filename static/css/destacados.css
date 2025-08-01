@@ -137,27 +137,125 @@
     }
 }
 
-@media (max-width: 900px) {
-  .producto-card { flex-basis: calc(33.33% - 16px); }
+@media (max-width: 1200px) {
+    .producto-card { 
+        flex-basis: calc(33.33% - 16px); 
+    }
 }
+
+@media (max-width: 900px) {
+    .producto-card { 
+        flex-basis: calc(50% - 12px); 
+    }
+}
+
 @media (max-width: 700px) {
-  .producto-card { flex-basis: calc(50% - 12px); }
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .titulo-carrusel {
+        font-size: 1.8rem;
+        margin-top: 24px;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+    
+    .carrusel-contenedor-exterior {
+        margin: 0 auto 32px auto;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .carrusel-wrapper {
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .carrusel-destacados {
+        gap: 16px;
+        padding: 0 1rem;
+        width: calc(100% - 2rem);
+        margin: 0 auto;
+    }
+    
+    .producto-card { 
+        flex-basis: calc(52% - 8px);
+        min-width: calc(52% - 8px);
+        max-width: calc(52% - 8px);
+    }
+    
+    .producto-nombre,
+    .producto-precio {
+        font-size: 1.2rem;
+    }
+    
+    .carrusel-flecha {
+        width: 36px;
+        height: 36px;
+        font-size: 1.8rem;
+    }
 }
 
 @media (max-width: 480px) {
-  .carrusel-contenedor-exterior {
-      width: 100%;
-  }
-  .carrusel-wrapper {
-      padding: 0;
-  }
-  .carrusel-destacados {
-      padding: 0 1rem;
-  }
-  .carrusel-flecha {
-      display: none; /* Ocultamos las flechas en móvil, se usa scroll táctil */
-  }
-  .producto-card {
-      flex-basis: 80%;
-  }
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .titulo-carrusel {
+        font-size: 1.6rem;
+        margin-top: 20px;
+        margin-bottom: 14px;
+        text-align: center;
+    }
+    
+    .carrusel-contenedor-exterior {
+        width: 100%;
+        margin: 0 auto 24px auto;
+        padding: 0;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    .carrusel-wrapper {
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .carrusel-destacados {
+        padding: 0 1rem;
+        gap: 12px;
+        width: calc(100% - 2rem);
+        margin: 0 auto;
+    }
+    
+    .carrusel-flecha {
+        display: none; /* Ocultamos las flechas en móvil */
+    }
+    
+    .producto-card {
+        flex-basis: calc(52% - 6px);
+        min-width: calc(52% - 6px);
+        max-width: calc(52% - 6px);
+        box-sizing: border-box;
+    }
+    
+    .producto-nombre,
+    .producto-precio {
+        font-size: 1rem;
+    }
 }
