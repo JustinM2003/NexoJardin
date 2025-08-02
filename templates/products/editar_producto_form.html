@@ -30,6 +30,16 @@
                 <label for="id_descripcion_edit">Descripción:</label>
                 <textarea name="descripcion" id="id_descripcion_edit" class="input-full" autocomplete="off">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
             </div>
+        {% elif field.name == 'descripcion_corta' %}
+            <div class="form-group">
+                <label for="id_descripcion_corta_edit">Descripción corta:</label>
+                <textarea name="descripcion_corta" id="id_descripcion_corta_edit" class="input-full" placeholder="Descripción breve del producto..." autocomplete="off">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
+            </div>
+        {% elif field.name == 'medidas' %}
+            <div class="form-group">
+                <label for="id_medidas_edit">Medidas:</label>
+                <textarea name="medidas" id="id_medidas_edit" class="input-full" placeholder="Dimensiones y especificaciones del producto..." autocomplete="off">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
+            </div>
         {% elif field.name == 'precio' %}
             <div class="form-group">
                 <label for="id_precio_edit">Precio:</label>
@@ -219,6 +229,19 @@
 /* Disable resize for textarea */
 textarea.input-full {
     resize: vertical;
+    min-height: 100px;
+}
+
+/* Estilos específicos para cada tipo de textarea */
+textarea[name="descripcion"] {
+    min-height: 160px;
+}
+
+textarea[name="descripcion_corta"] {
+    min-height: 80px;
+}
+
+textarea[name="medidas"] {
     min-height: 100px;
 }
 

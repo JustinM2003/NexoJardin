@@ -551,6 +551,19 @@ textarea[name='descripcion'] {
   height: 160px;
 }
 
+/* Estilos para textareas de descripción corta y medidas */
+textarea[name='descripcion_corta'] {
+  resize: vertical;
+  height: 80px;
+  min-height: 60px;
+}
+
+textarea[name='medidas'] {
+  resize: vertical;
+  height: 100px;
+  min-height: 80px;
+}
+
 /* Estilos para botones consistentes */
 .btn-agregar, .btn-eliminar, .btn-editar {
     border: none;

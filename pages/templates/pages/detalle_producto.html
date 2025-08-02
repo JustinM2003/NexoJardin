@@ -38,6 +38,11 @@
             <div id="image-container">
                 <img id="product-image" src="{% if producto.imagen %}{{ producto.imagen.url }}{% else %}{% static 'img/default.jpg' %}{% endif %}" alt="{{ producto.nombre }}">
                 {% if user.is_authenticated and user.is_staff %}
+                <button class="btn-destacado {% if producto.destacado %}destacado{% endif %}" 
+                        onclick="toggleDestacado({{ producto.id }})" 
+                        title="{% if producto.destacado %}Quitar de destacados{% else %}Marcar como destacado{% endif %}">
+                    <i class="fa-star {% if producto.destacado %}fa-solid{% else %}fa-regular{% endif %}"></i>
+                </button>
                 <div id="image-overlay">
                     <input type="file" id="image-input" name="imagen" accept="image/*">
                     <button type="button" id="btn-change-image" onclick="document.getElementById('image-input').click()">
@@ -533,6 +538,42 @@ function closeDeleteModal() {
         deleteModal.style.display = 'none';
         console.log('Modal closed');
     }
+}
+
+// Función para alternar destacado
+function toggleDestacado(productoId) {
+    fetch(`/products/toggle-destacado/${productoId}/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const btn = document.querySelector('.btn-destacado');
+            const icon = btn.querySelector('i');
+            
+            if (data.destacado) {
+                btn.classList.add('destacado');
+                icon.className = 'fa-star fa-solid';
+                btn.title = 'Quitar de destacados';
+            } else {
+                btn.classList.remove('destacado');
+                icon.className = 'fa-star fa-regular';
+                btn.title = 'Marcar como destacado';
+            }
+            
+            showMessage(data.destacado ? 'Producto destacado' : 'Producto quitado de destacados', 'success');
+        } else {
+            showMessage('Error al actualizar el estado de destacado', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showMessage('Error al actualizar el estado de destacado', 'error');
+    });
 }
 {% endif %}
 </script>

@@ -42,6 +42,16 @@
                             <label for="id_descripcion">Descripción:</label>
                             <textarea name="descripcion" id="id_descripcion">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
                         </div>
+                    {% elif field.name == 'descripcion_corta' %}
+                        <div class="form-group">
+                            <label for="id_descripcion_corta">Descripción corta:</label>
+                            <textarea name="descripcion_corta" id="id_descripcion_corta" placeholder="Descripción breve del producto...">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
+                        </div>
+                    {% elif field.name == 'medidas' %}
+                        <div class="form-group">
+                            <label for="id_medidas">Medidas:</label>
+                            <textarea name="medidas" id="id_medidas" placeholder="Dimensiones y especificaciones del producto...">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
+                        </div>
                     {% elif field.name == 'precio' %}
                         <div class="form-group">
                             <label for="id_precio">Precio:</label>
