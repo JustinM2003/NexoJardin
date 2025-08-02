@@ -11,122 +11,112 @@
 {% endblock %}
 
 {% block content %}
-<!-- Botones de admin (solo para staff) -->
+<!-- Botones de administración (solo para staff) -->
 {% if user.is_authenticated and user.is_staff %}
-    <div class="botones-admin-detalle">
-        <button type="button" class="btn-editar-detalle" id="btn-toggle-edicion">
-            <i class="fas fa-edit"></i> <span id="texto-btn-edicion">Activar edición</span>
+    <div id="admin-controls">
+        <button type="button" id="btn-edit-toggle">
+            <i class="fas fa-edit"></i> <span id="edit-text">Activar edición</span>
         </button>
-        <button type="button" class="btn-guardar-cambios" id="btn-guardar-cambios" style="display: none;">
+        <button type="button" id="btn-save">
             <i class="fas fa-save"></i> Guardar cambios
         </button>
-        <button type="button" class="btn-cancelar-cambios" id="btn-cancelar-cambios" style="display: none;">
+        <button type="button" id="btn-cancel">
             <i class="fas fa-times"></i> Cancelar
         </button>
-        <button type="button" class="btn-eliminar-detalle" onclick="abrirModalEliminarProducto({{ producto.id }}, '{{ producto.nombre|escapejs }}')">
+        <button type="button" id="btn-delete" onclick="openDeleteModal({{ producto.id }}, '{{ producto.nombre|escapejs }}')">
             <i class="fas fa-trash"></i> Eliminar producto
         </button>
     </div>
 {% endif %}
 
-<div class="page-wrapper">
-    <form id="form-edicion-inline" data-producto-id="{{ producto.id }}">
+<div id="product-container">
+    <form id="edit-form" data-producto-id="{{ producto.id }}">
         {% csrf_token %}
         
-        <div class="detalle-producto-flex-container">
-            <!-- Contenedor de imagen para mantener proporciones -->
-            <div class="detalle-producto-imagen-container">
-                <img id="producto-imagen" src="{% if producto.imagen %}{{ producto.imagen.url }}{% else %}{% static 'img/default.jpg' %}{% endif %}" alt="{{ producto.nombre }}" class="detalle-producto-img">
+        <div id="product-main">
+            <!-- Imagen del producto -->
+            <div id="image-container">
+                <img id="product-image" src="{% if producto.imagen %}{{ producto.imagen.url }}{% else %}{% static 'img/default.jpg' %}{% endif %}" alt="{{ producto.nombre }}">
                 {% if user.is_authenticated and user.is_staff %}
-                <div class="imagen-edit-overlay" style="display: none;">
-                    <input type="file" id="imagen_edit" name="imagen" accept="image/*" style="display: none;">
-                    <button type="button" class="btn-cambiar-imagen" onclick="document.getElementById('imagen_edit').click()">
+                <div id="image-overlay">
+                    <input type="file" id="image-input" name="imagen" accept="image/*">
+                    <button type="button" id="btn-change-image" onclick="document.getElementById('image-input').click()">
                         <i class="fas fa-camera"></i> Cambiar imagen
                     </button>
                 </div>
                 {% endif %}
             </div>
             
-            <div class="detalle-producto-info-col">
-                <!-- Nombre editable -->
-                <div class="campo-editable">
-                    <h1 class="detalle-producto-nombre" id="nombre-display">{{ producto.nombre }}</h1>
+            <!-- Información del producto -->
+            <div id="product-info">
+                <!-- Nombre -->
+                <div class="field-group">
+                    <h1 id="name-display">{{ producto.nombre }}</h1>
                     {% if user.is_authenticated and user.is_staff %}
-                    <input type="text" class="input-edicion nombre-input" id="nombre-input" name="nombre" value="{{ producto.nombre }}" style="display: none;">
+                    <input type="text" id="name-input" name="nombre" value="{{ producto.nombre }}">
                     {% endif %}
                 </div>
                 
-                <!-- Precio editable -->
-                <div class="campo-editable">
-                    <div class="detalle-producto-precio" id="precio-display">${{ producto.precio|puntomiles }}</div>
+                <!-- Precio -->
+                <div class="field-group">
+                    <div id="price-display">${{ producto.precio|puntomiles }}</div>
                     {% if user.is_authenticated and user.is_staff %}
-                    <input type="number" class="input-edicion precio-input" id="precio-input" name="precio" value="{{ producto.precio }}" min="0" step="0.01" style="display: none;">
+                    <input type="number" id="price-input" name="precio" value="{{ producto.precio }}" min="0" step="0.01">
                     {% endif %}
                 </div>
                 
-                <hr class="detalle-producto-divider">
+                <hr id="divider">
                 
-                <!-- Descripción corta editable -->
-                <div class="campo-editable descripcion-corta-container">
-                    <div class="descripcion-corta-wrapper">
-                        {% if producto.descripcion_corta %}
-                            <div class="detalle-producto-descripcion-corta" id="descripcion-corta-display">{{ producto.descripcion_corta|linebreaksbr }}</div>
-                        {% else %}
-                            <div class="detalle-producto-descripcion-corta" id="descripcion-corta-display" style="display: none;"></div>
-                        {% endif %}
-                        {% if user.is_authenticated and user.is_staff %}
-                        <textarea class="input-edicion descripcion-corta-input" id="descripcion-corta-input" name="descripcion_corta" placeholder="Descripción corta..." style="display: none;">{{ producto.descripcion_corta }}</textarea>
-                        {% endif %}
-                    </div>
+                <!-- Descripción corta -->
+                {% if producto.descripcion_corta %}
+                <div class="field-group" id="short-desc-container">
+                    <div id="short-desc-display">{{ producto.descripcion_corta|linebreaksbr }}</div>
+                    {% if user.is_authenticated and user.is_staff %}
+                    <textarea id="short-desc-input" name="descripcion_corta" placeholder="Descripción corta...">{{ producto.descripcion_corta }}</textarea>
+                    {% endif %}
                 </div>
+                {% endif %}
             </div>
         </div>
     </form>
 
-    <!-- Tabs principales del producto (fuera del formulario para que todos puedan usarlas) -->
-    <div class="detalle-tabs-container">
-        <div class="detalle-tabs">
-            <button type="button" class="detalle-tab active" data-tab="descripcion">Descripción y cuidados</button>
-            <button type="button" class="detalle-tab" data-tab="medidas">Medidas</button>
-            <button type="button" class="detalle-tab" data-tab="envios">Envíos</button>
+    <!-- Tabs -->
+    <div id="tabs-container">
+        <div id="tabs">
+            <button type="button" class="tab active" data-tab="descripcion">Descripción y cuidados</button>
+            <button type="button" class="tab" data-tab="medidas">Medidas</button>
+            <button type="button" class="tab" data-tab="envios">Envíos</button>
         </div>
-        <div class="detalle-tabs-content">
+        
+        <div id="tab-content">
             <!-- Tab Descripción -->
-            <div class="detalle-tab-panel active" id="tab-descripcion">
-                <div class="campo-editable">
-                    {% if producto.descripcion %}
-                        <div class="detalle-producto-descripcion" id="descripcion-display">{{ producto.descripcion|linebreaksbr }}</div>
-                    {% else %}
-                        <div class="detalle-producto-descripcion" id="descripcion-display">Sin descripción disponible.</div>
-                    {% endif %}
+            <div class="tab-panel active" id="panel-descripcion">
+                <div class="field-group">
+                    <div id="desc-display">{{ producto.descripcion|default:"Sin descripción disponible."|linebreaksbr }}</div>
                     {% if user.is_authenticated and user.is_staff %}
-                    <textarea class="input-edicion descripcion-input" id="descripcion-input" name="descripcion" placeholder="Descripción completa..." style="display: none;">{{ producto.descripcion }}</textarea>
+                    <textarea id="desc-input" name="descripcion" placeholder="Descripción completa...">{{ producto.descripcion }}</textarea>
                     {% endif %}
                 </div>
             </div>
             
             <!-- Tab Medidas -->
-            <div class="detalle-tab-panel" id="tab-medidas">
-                <div class="campo-editable">
-                    {% if producto.medidas %}
-                        <div class="detalle-producto-medidas" id="medidas-display">{{ producto.medidas|linebreaksbr }}</div>
-                    {% else %}
-                        <div class="detalle-producto-medidas" id="medidas-display">Medidas del producto no disponibles.</div>
-                    {% endif %}
+            <div class="tab-panel" id="panel-medidas">
+                <div class="field-group">
+                    <div id="measures-display">{{ producto.medidas|default:"Medidas del producto no disponibles."|linebreaksbr }}</div>
                     {% if user.is_authenticated and user.is_staff %}
-                    <textarea class="input-edicion medidas-input" id="medidas-input" name="medidas" placeholder="Medidas del producto..." style="display: none;">{{ producto.medidas }}</textarea>
+                    <textarea id="measures-input" name="medidas" placeholder="Medidas del producto...">{{ producto.medidas }}</textarea>
                     {% endif %}
                 </div>
             </div>
             
             <!-- Tab Envíos -->
-            <div class="detalle-tab-panel" id="tab-envios">
-                <div class="detalle-producto-envios" style="text-align: center;">
-                    <h3 style="font-weight: 300;">RETIRO EN BODEGA</h3>
+            <div class="tab-panel" id="panel-envios">
+                <div id="shipping-info">
+                    <h3>RETIRO EN BODEGA</h3>
                     <p>Sin costo en Camino Interior El Chacayal 1540.<br>
                     Coordinar previamente por WhatsApp o Instagram.</p>
                     
-                    <h3 style="font-weight: 300;">DESPACHO A DOMICILIO</h3>
+                    <h3>DESPACHO A DOMICILIO</h3>
                     <p>Solo Región Metropolitana - Jueves<br>
                     $10.000 CLP (Gratis sobre $30.000)</p>
                 </div>
@@ -135,18 +125,18 @@
     </div>
 </div>
 
-<!-- Modal Confirmar Eliminar Producto -->
+<!-- Modal de confirmación para eliminar -->
 {% if user.is_authenticated and user.is_staff %}
-<div id="modalConfirmarEliminarProducto" class="modal" style="display:none;">
+<div id="delete-modal" class="modal">
     <div class="modal-content">
-        <span class="modal-close" onclick="document.getElementById('modalConfirmarEliminarProducto').style.display='none'">&times;</span>
+        <span class="modal-close" onclick="closeDeleteModal()">&times;</span>
         <h2>Confirmar eliminación</h2>
-        <p id="textoConfirmarEliminarProducto"></p>
-        <form id="formConfirmarEliminarProducto" method="post">
+        <p id="delete-text"></p>
+        <form id="delete-form" method="post">
             {% csrf_token %}
             <div class="modal-actions">
-                <button type="submit" class="btn-eliminar">Eliminar</button>
-                <button type="button" class="btn-cancelar" onclick="document.getElementById('modalConfirmarEliminarProducto').style.display='none'">Cancelar</button>
+                <button type="submit" class="btn-delete">Eliminar</button>
+                <button type="button" class="btn-cancel" onclick="closeDeleteModal()">Cancelar</button>
             </div>
         </form>
     </div>
@@ -154,311 +144,343 @@
 {% endif %}
 
 <script>
+// Inicialización del DOM
 document.addEventListener('DOMContentLoaded', function() {
-    // TABS PRINCIPALES DEL PRODUCTO - FUNCIONAN PARA TODOS LOS USUARIOS
-    function initMainTabs() {
-        const tabs = document.querySelectorAll('.detalle-tabs .detalle-tab');
-        const panels = document.querySelectorAll('.detalle-tabs-content .detalle-tab-panel');
-        
-        function activateMainTab(tabName) {
-            tabs.forEach(t => t.classList.remove('active'));
-            panels.forEach(p => p.classList.remove('active'));
-            
-            const tabBtn = Array.from(tabs).find(t => t.dataset.tab === tabName);
-            const tabPanel = document.getElementById('tab-' + tabName);
-            
-            if (tabBtn) tabBtn.classList.add('active');
-            if (tabPanel) tabPanel.classList.add('active');
-        }
-        
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                activateMainTab(this.dataset.tab);
-            });
-        });
-    }
-
-    // Inicializar tabs (para todos los usuarios)
-    initMainTabs();
+    initTabs();
+    initShortDescription();
     
-    // Verificar descripción corta inicial
-    const descCortaInitial = document.getElementById('descripcion-corta-display');
-    const descCortaContainer = document.querySelector('.descripcion-corta-container');
-    const infoCol = document.querySelector('.detalle-producto-info-col');
-    
-    function actualizarEspaciadoInfoCol() {
-        const divider = document.querySelector('.detalle-producto-divider');
-        
-        if (descCortaInitial && (!descCortaInitial.textContent.trim() || descCortaInitial.style.display === 'none')) {
-            descCortaContainer.style.display = 'none';
-            infoCol.classList.add('sin-descripcion-corta');
-            // También ocultar o ajustar el divider
-            if (divider) divider.style.marginBottom = '0';
-        } else {
-            descCortaContainer.style.display = 'block';
-            infoCol.classList.remove('sin-descripcion-corta');
-            // Restaurar el divider
-            if (divider) divider.style.marginBottom = '';
-        }
-    }
-    
-    // Ejecutar verificación inicial
-    actualizarEspaciadoInfoCol();
-
     {% if user.is_authenticated and user.is_staff %}
-    // FUNCIONES DE EDICIÓN INLINE - SOLO PARA ADMINISTRADORES
-    let modoEdicion = false;
-    let datosOriginales = {};
-
-    function guardarDatosOriginales() {
-        datosOriginales = {
-            nombre: document.getElementById('nombre-input').value,
-            precio: document.getElementById('precio-input').value,
-            descripcion_corta: document.getElementById('descripcion-corta-input').value,
-            descripcion: document.getElementById('descripcion-input').value,
-            medidas: document.getElementById('medidas-input').value,
-            imagen: document.getElementById('producto-imagen').src
-        };
-    }
-
-    function activarModoEdicion() {
-        modoEdicion = true;
-        document.body.classList.add('modo-edicion');
-        
-        // Cambiar botones
-        document.getElementById('btn-toggle-edicion').style.display = 'none';
-        document.getElementById('btn-guardar-cambios').style.display = 'inline-flex';
-        document.getElementById('btn-cancelar-cambios').style.display = 'inline-flex';
-        document.getElementById('texto-btn-edicion').textContent = 'Salir de edición';
-        
-        // Mostrar campos de edición y ocultar displays
-        mostrarCamposEdicion();
-        
-        // Guardar datos originales
-        guardarDatosOriginales();
-    }
-
-    function desactivarModoEdicion() {
-        modoEdicion = false;
-        document.body.classList.remove('modo-edicion');
-        
-        // Cambiar botones
-        document.getElementById('btn-toggle-edicion').style.display = 'inline-flex';
-        document.getElementById('btn-guardar-cambios').style.display = 'none';
-        document.getElementById('btn-cancelar-cambios').style.display = 'none';
-        document.getElementById('texto-btn-edicion').textContent = 'Activar edición';
-        
-        // Ocultar campos de edición y mostrar displays
-        ocultarCamposEdicion();
-    }
-
-    function mostrarCamposEdicion() {
-        // Nombre
-        document.getElementById('nombre-display').style.display = 'none';
-        document.getElementById('nombre-input').style.display = 'block';
-        
-        // Precio
-        document.getElementById('precio-display').style.display = 'none';
-        document.getElementById('precio-input').style.display = 'block';
-        
-        // Descripción corta
-        document.getElementById('descripcion-corta-display').style.display = 'none';
-        document.getElementById('descripcion-corta-input').style.display = 'block';
-        
-        // Descripción
-        document.getElementById('descripcion-display').style.display = 'none';
-        document.getElementById('descripcion-input').style.display = 'block';
-        
-        // Medidas
-        document.getElementById('medidas-display').style.display = 'none';
-        document.getElementById('medidas-input').style.display = 'block';
-        
-        // Imagen overlay
-        document.querySelector('.imagen-edit-overlay').style.display = 'flex';
-    }
-
-    function ocultarCamposEdicion() {
-        // Nombre
-        document.getElementById('nombre-display').style.display = 'block';
-        document.getElementById('nombre-input').style.display = 'none';
-        
-        // Precio
-        document.getElementById('precio-display').style.display = 'block';
-        document.getElementById('precio-input').style.display = 'none';
-        
-        // Descripción corta
-        const descCortaInput = document.getElementById('descripcion-corta-input');
-        const descCortaDisplay = document.getElementById('descripcion-corta-display');
-        const descCortaContainer = document.querySelector('.descripcion-corta-container');
-        const infoCol = document.querySelector('.detalle-producto-info-col');
-        const divider = document.querySelector('.detalle-producto-divider');
-        
-        descCortaInput.style.display = 'none';
-        
-        // Solo mostrar el display y container si hay contenido
-        if (descCortaInput.value.trim()) {
-            descCortaDisplay.style.display = 'block';
-            descCortaContainer.style.display = 'block';
-            infoCol.classList.remove('sin-descripcion-corta');
-            if (divider) divider.style.marginBottom = '';
-        } else {
-            descCortaDisplay.style.display = 'none';
-            descCortaContainer.style.display = 'none';
-            infoCol.classList.add('sin-descripcion-corta');
-            if (divider) divider.style.marginBottom = '0';
-        }
-        
-        // Descripción
-        document.getElementById('descripcion-display').style.display = 'block';
-        document.getElementById('descripcion-input').style.display = 'none';
-        
-        // Medidas
-        document.getElementById('medidas-display').style.display = 'block';
-        document.getElementById('medidas-input').style.display = 'none';
-        
-        // Imagen overlay
-        document.querySelector('.imagen-edit-overlay').style.display = 'none';
-    }
-
-    function actualizarVisualizacion() {
-        // Actualizar nombre
-        const nombre = document.getElementById('nombre-input').value;
-        document.getElementById('nombre-display').textContent = nombre;
-        
-        // Actualizar precio
-        const precio = document.getElementById('precio-input').value;
-        document.getElementById('precio-display').textContent = '$' + new Intl.NumberFormat('es-CL').format(precio);
-        
-        // Actualizar descripción corta
-        const descCorta = document.getElementById('descripcion-corta-input').value;
-        const descCortaDisplay = document.getElementById('descripcion-corta-display');
-        const descCortaContainer = document.querySelector('.descripcion-corta-container');
-        const infoCol = document.querySelector('.detalle-producto-info-col');
-        const divider = document.querySelector('.detalle-producto-divider');
-        
-        descCortaDisplay.innerHTML = descCorta.replace(/\n/g, '<br>');
-        
-        if (descCorta.trim()) {
-            descCortaDisplay.style.display = 'block';
-            descCortaContainer.style.display = 'block';
-            infoCol.classList.remove('sin-descripcion-corta');
-            if (divider) divider.style.marginBottom = '';
-        } else {
-            descCortaDisplay.style.display = 'none';
-            descCortaContainer.style.display = 'none';
-            infoCol.classList.add('sin-descripcion-corta');
-            if (divider) divider.style.marginBottom = '0';
-        }
-        
-        // Actualizar descripción
-        const desc = document.getElementById('descripcion-input').value;
-        document.getElementById('descripcion-display').innerHTML = desc ? desc.replace(/\n/g, '<br>') : 'Sin descripción disponible.';
-        
-        // Actualizar medidas
-        const medidas = document.getElementById('medidas-input').value;
-        document.getElementById('medidas-display').innerHTML = medidas ? medidas.replace(/\n/g, '<br>') : 'Medidas del producto no disponibles.';
-    }
-
-    function restaurarDatosOriginales() {
-        document.getElementById('nombre-input').value = datosOriginales.nombre;
-        document.getElementById('precio-input').value = datosOriginales.precio;
-        document.getElementById('descripcion-corta-input').value = datosOriginales.descripcion_corta;
-        document.getElementById('descripcion-input').value = datosOriginales.descripcion;
-        document.getElementById('medidas-input').value = datosOriginales.medidas;
-        document.getElementById('producto-imagen').src = datosOriginales.imagen;
-        
-        actualizarVisualizacion();
-    }
-
-    // EVENT LISTENERS PARA ADMINISTRADORES
-    document.getElementById('btn-toggle-edicion').addEventListener('click', function() {
-        if (!modoEdicion) {
-            activarModoEdicion();
-        }
-    });
-
-    document.getElementById('btn-cancelar-cambios').addEventListener('click', function() {
-        restaurarDatosOriginales();
-        desactivarModoEdicion();
-    });
-
-    // Actualizar visualización en tiempo real
-    document.getElementById('nombre-input').addEventListener('input', actualizarVisualizacion);
-    document.getElementById('precio-input').addEventListener('input', actualizarVisualizacion);
-    document.getElementById('descripcion-corta-input').addEventListener('input', actualizarVisualizacion);
-    document.getElementById('descripcion-input').addEventListener('input', actualizarVisualizacion);
-    document.getElementById('medidas-input').addEventListener('input', actualizarVisualizacion);
-
-    // Previsualización de imagen
-    document.getElementById('imagen_edit').addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(ev) {
-                document.getElementById('producto-imagen').src = ev.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // Guardar cambios
-    document.getElementById('btn-guardar-cambios').addEventListener('click', function() {
-        const formData = new FormData(document.getElementById('form-edicion-inline'));
-        const productoId = document.getElementById('form-edicion-inline').dataset.productoId;
-        
-        fetch(`/products/editar-descripciones/${productoId}/`, {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                showMessage('Producto actualizado correctamente', 'success');
-                desactivarModoEdicion();
-                // Actualizar datos originales con los nuevos valores
-                setTimeout(guardarDatosOriginales, 100);
-            } else {
-                showMessage('Error al actualizar el producto', 'error');
-            }
-        })
-        .catch(() => showMessage('Error inesperado', 'error'));
-    });
+    initEditMode();
     {% endif %}
 });
 
+// Sistema de tabs
+function initTabs() {
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.tab-panel');
+    
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const tabName = this.dataset.tab;
+            
+            // Remover active de todos
+            tabs.forEach(t => t.classList.remove('active'));
+            panels.forEach(p => p.classList.remove('active'));
+            
+            // Activar el seleccionado
+            this.classList.add('active');
+            document.getElementById('panel-' + tabName).classList.add('active');
+        });
+    });
+}
+
+// Manejo de descripción corta vacía
+function initShortDescription() {
+    const shortDescDisplay = document.getElementById('short-desc-display');
+    const shortDescContainer = document.getElementById('short-desc-container');
+    
+    if (shortDescContainer && (!shortDescDisplay || !shortDescDisplay.textContent.trim())) {
+        shortDescContainer.remove();
+    }
+}
+
 {% if user.is_authenticated and user.is_staff %}
+// Sistema de edición (solo para administradores)
+let editMode = false;
+let originalData = {};
+
+function initEditMode() {
+    const btnEditToggle = document.getElementById('btn-edit-toggle');
+    const btnSave = document.getElementById('btn-save');
+    const btnCancel = document.getElementById('btn-cancel');
+    const imageInput = document.getElementById('image-input');
+    
+    if (btnEditToggle) btnEditToggle.addEventListener('click', toggleEditMode);
+    if (btnSave) btnSave.addEventListener('click', saveChanges);
+    if (btnCancel) btnCancel.addEventListener('click', cancelEdit);
+    
+    // Listeners para actualización en tiempo real
+    const inputs = ['name-input', 'price-input', 'short-desc-input', 'desc-input', 'measures-input'];
+    inputs.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.addEventListener('input', updateDisplay);
+        }
+    });
+    
+    // Preview de imagen
+    if (imageInput) {
+        imageInput.addEventListener('change', previewImage);
+    }
+}
+
+function toggleEditMode() {
+    if (!editMode) {
+        enterEditMode();
+    } else {
+        exitEditMode();
+    }
+}
+
+function enterEditMode() {
+    editMode = true;
+    document.body.classList.add('edit-mode');
+    
+    // Guardar datos originales
+    saveOriginalData();
+    
+    // Cambiar controles
+    const btnEditToggle = document.getElementById('btn-edit-toggle');
+    const btnSave = document.getElementById('btn-save');
+    const btnCancel = document.getElementById('btn-cancel');
+    
+    if (btnEditToggle) btnEditToggle.classList.add('hidden');
+    if (btnSave) btnSave.classList.add('show');
+    if (btnCancel) btnCancel.classList.add('show');
+    
+    // Mostrar campos de edición
+    showEditFields();
+}
+
+function exitEditMode() {
+    editMode = false;
+    document.body.classList.remove('edit-mode');
+    
+    // Cambiar controles
+    const btnEditToggle = document.getElementById('btn-edit-toggle');
+    const btnSave = document.getElementById('btn-save');
+    const btnCancel = document.getElementById('btn-cancel');
+    
+    if (btnEditToggle) btnEditToggle.classList.remove('hidden');
+    if (btnSave) btnSave.classList.remove('show');
+    if (btnCancel) btnCancel.classList.remove('show');
+    
+    // Ocultar campos de edición
+    hideEditFields();
+}
+
+function showEditFields() {
+    // Ocultar displays, mostrar inputs
+    const nameDisplay = document.getElementById('name-display');
+    const nameInput = document.getElementById('name-input');
+    if (nameDisplay && nameInput) {
+        nameDisplay.classList.add('hidden');
+        nameInput.classList.add('show');
+    }
+    
+    const priceDisplay = document.getElementById('price-display');
+    const priceInput = document.getElementById('price-input');
+    if (priceDisplay && priceInput) {
+        priceDisplay.classList.add('hidden');
+        priceInput.classList.add('show');
+    }
+    
+    const shortDescDisplay = document.getElementById('short-desc-display');
+    const shortDescInput = document.getElementById('short-desc-input');
+    if (shortDescDisplay && shortDescInput) {
+        shortDescDisplay.classList.add('hidden');
+        shortDescInput.classList.add('show');
+    }
+    
+    const descDisplay = document.getElementById('desc-display');
+    const descInput = document.getElementById('desc-input');
+    if (descDisplay && descInput) {
+        descDisplay.classList.add('hidden');
+        descInput.classList.add('show');
+    }
+    
+    const measuresDisplay = document.getElementById('measures-display');
+    const measuresInput = document.getElementById('measures-input');
+    if (measuresDisplay && measuresInput) {
+        measuresDisplay.classList.add('hidden');
+        measuresInput.classList.add('show');
+    }
+    
+    const imageOverlay = document.getElementById('image-overlay');
+    if (imageOverlay) {
+        imageOverlay.classList.add('show');
+    }
+}
+
+function hideEditFields() {
+    // Mostrar displays, ocultar inputs
+    const nameDisplay = document.getElementById('name-display');
+    const nameInput = document.getElementById('name-input');
+    if (nameDisplay && nameInput) {
+        nameDisplay.classList.remove('hidden');
+        nameInput.classList.remove('show');
+    }
+    
+    const priceDisplay = document.getElementById('price-display');
+    const priceInput = document.getElementById('price-input');
+    if (priceDisplay && priceInput) {
+        priceDisplay.classList.remove('hidden');
+        priceInput.classList.remove('show');
+    }
+    
+    const shortDescDisplay = document.getElementById('short-desc-display');
+    const shortDescInput = document.getElementById('short-desc-input');
+    if (shortDescDisplay && shortDescInput) {
+        shortDescDisplay.classList.remove('hidden');
+        shortDescInput.classList.remove('show');
+    }
+    
+    const descDisplay = document.getElementById('desc-display');
+    const descInput = document.getElementById('desc-input');
+    if (descDisplay && descInput) {
+        descDisplay.classList.remove('hidden');
+        descInput.classList.remove('show');
+    }
+    
+    const measuresDisplay = document.getElementById('measures-display');
+    const measuresInput = document.getElementById('measures-input');
+    if (measuresDisplay && measuresInput) {
+        measuresDisplay.classList.remove('hidden');
+        measuresInput.classList.remove('show');
+    }
+    
+    const imageOverlay = document.getElementById('image-overlay');
+    if (imageOverlay) {
+        imageOverlay.classList.remove('show');
+    }
+}
+
+function saveOriginalData() {
+    const nameInput = document.getElementById('name-input');
+    const priceInput = document.getElementById('price-input');
+    const shortDescInput = document.getElementById('short-desc-input');
+    const descInput = document.getElementById('desc-input');
+    const measuresInput = document.getElementById('measures-input');
+    const productImage = document.getElementById('product-image');
+    
+    originalData = {
+        nombre: nameInput ? nameInput.value : '',
+        precio: priceInput ? priceInput.value : '',
+        descripcion_corta: shortDescInput ? shortDescInput.value : '',
+        descripcion: descInput ? descInput.value : '',
+        medidas: measuresInput ? measuresInput.value : '',
+        imagen: productImage ? productImage.src : ''
+    };
+}
+
+function updateDisplay() {
+    // Actualizar nombre
+    const nameInput = document.getElementById('name-input');
+    const nameDisplay = document.getElementById('name-display');
+    if (nameInput && nameDisplay) {
+        nameDisplay.textContent = nameInput.value;
+    }
+    
+    // Actualizar precio
+    const priceInput = document.getElementById('price-input');
+    const priceDisplay = document.getElementById('price-display');
+    if (priceInput && priceDisplay) {
+        priceDisplay.textContent = '$' + new Intl.NumberFormat('es-CL').format(priceInput.value);
+    }
+    
+    // Actualizar descripción corta
+    const shortDescInput = document.getElementById('short-desc-input');
+    const shortDescDisplay = document.getElementById('short-desc-display');
+    if (shortDescInput && shortDescDisplay) {
+        shortDescDisplay.innerHTML = shortDescInput.value.replace(/\n/g, '<br>');
+    }
+    
+    // Actualizar descripción
+    const descInput = document.getElementById('desc-input');
+    const descDisplay = document.getElementById('desc-display');
+    if (descInput && descDisplay) {
+        descDisplay.innerHTML = descInput.value ? descInput.value.replace(/\n/g, '<br>') : 'Sin descripción disponible.';
+    }
+    
+    // Actualizar medidas
+    const measuresInput = document.getElementById('measures-input');
+    const measuresDisplay = document.getElementById('measures-display');
+    if (measuresInput && measuresDisplay) {
+        measuresDisplay.innerHTML = measuresInput.value ? measuresInput.value.replace(/\n/g, '<br>') : 'Medidas del producto no disponibles.';
+    }
+}
+
+function previewImage(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            document.getElementById('product-image').src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function cancelEdit() {
+    // Restaurar datos originales
+    const nameInput = document.getElementById('name-input');
+    const priceInput = document.getElementById('price-input');
+    const shortDescInput = document.getElementById('short-desc-input');
+    const descInput = document.getElementById('desc-input');
+    const measuresInput = document.getElementById('measures-input');
+    const productImage = document.getElementById('product-image');
+    
+    if (nameInput) nameInput.value = originalData.nombre;
+    if (priceInput) priceInput.value = originalData.precio;
+    if (shortDescInput) shortDescInput.value = originalData.descripcion_corta;
+    if (descInput) descInput.value = originalData.descripcion;
+    if (measuresInput) measuresInput.value = originalData.medidas;
+    if (productImage) productImage.src = originalData.imagen;
+    
+    updateDisplay();
+    exitEditMode();
+}
+
+function saveChanges() {
+    const formData = new FormData(document.getElementById('edit-form'));
+    const productId = document.getElementById('edit-form').dataset.productoId;
+    
+    fetch(`/products/editar-descripciones/${productId}/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showMessage('Producto actualizado correctamente', 'success');
+            exitEditMode();
+            saveOriginalData(); // Actualizar datos originales
+        } else {
+            showMessage('Error al actualizar el producto', 'error');
+        }
+    })
+    .catch(() => showMessage('Error inesperado', 'error'));
+}
+
 function showMessage(message, type) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message message-${type}`;
     messageDiv.textContent = message;
-    messageDiv.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 20px;
-        border-radius: 5px;
-        color: white;
-        z-index: 1000;
-        font-weight: 500;
-        background-color: ${type === 'success' ? '#28a745' : '#dc3545'};
-    `;
     document.body.appendChild(messageDiv);
-    setTimeout(() => { messageDiv.remove(); }, 3000);
+    setTimeout(() => messageDiv.remove(), 3000);
 }
 
-function abrirModalEliminarProducto(id, nombre) {
-    const modal = document.getElementById('modalConfirmarEliminarProducto');
-    const texto = document.getElementById('textoConfirmarEliminarProducto');
-    const form = document.getElementById('formConfirmarEliminarProducto');
+// Modal de eliminación
+function openDeleteModal(id, name) {
+    const deleteText = document.getElementById('delete-text');
+    const deleteForm = document.getElementById('delete-form');
+    const deleteModal = document.getElementById('delete-modal');
     
-    if (modal && texto && form) {
-        texto.textContent = `¿Estás seguro de que deseas eliminar el producto "${nombre}"?`;
-        form.action = `/products/eliminar/${id}/`;
-        modal.style.display = 'flex';
+    if (deleteText && deleteForm && deleteModal) {
+        deleteText.textContent = `¿Estás seguro de que deseas eliminar el producto "${name}"?`;
+        deleteForm.action = `/products/eliminar/${id}/`;
+        deleteModal.classList.add('show');
+    }
+}
+
+function closeDeleteModal() {
+    const deleteModal = document.getElementById('delete-modal');
+    if (deleteModal) {
+        deleteModal.classList.remove('show');
     }
 }
 {% endif %}
