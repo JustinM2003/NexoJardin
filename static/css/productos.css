@@ -564,6 +564,42 @@ textarea[name='medidas'] {
   min-height: 80px;
 }
 
+/* Estilos para campos de precio */
+.help-text {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+.precio-calculado {
+  background-color: #f8f9fa;
+  border: 2px solid #28a745;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.precio-calculado strong {
+  color: #28a745;
+}
+
+/* Checkbox de IVA */
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+}
+
+label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+}
+
 /* Estilos para botones consistentes */
 .btn-agregar, .btn-eliminar, .btn-editar {
     border: none;

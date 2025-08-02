@@ -66,7 +66,22 @@
                 <div class="field-group">
                     <div id="price-display">${{ producto.precio|puntomiles }}</div>
                     {% if user.is_authenticated and user.is_staff %}
-                    <input type="number" id="price-input" name="precio" value="{{ producto.precio }}" min="0" step="0.01">
+                    <div class="price-edit-container" id="price-edit-container">
+                        <label for="price-base-input">Precio base:</label>
+                        <input type="number" id="price-base-input" name="precio_base" value="{{ producto.precio_base }}" min="0" step="0.01" oninput="updatePricePreview()">
+                        
+                        <label for="percentage-input">Porcentaje extra (%):</label>
+                        <input type="number" id="percentage-input" name="porcentaje_extra" value="{{ producto.porcentaje_extra }}" min="0" max="999" step="0.01" oninput="updatePricePreview()">
+                        
+                        <label for="iva-checkbox">
+                            <input type="checkbox" id="iva-checkbox" name="incluir_iva" {% if producto.incluir_iva %}checked{% endif %} onchange="updatePricePreview()">
+                            Incluir IVA (19%)
+                        </label>
+                        
+                        <div class="price-preview">
+                            <strong>Precio final: $<span id="price-preview-display">{{ producto.precio|puntomiles }}</span></strong>
+                        </div>
+                    </div>
                     {% endif %}
                 </div>
                 
@@ -224,13 +239,27 @@ function initEditMode() {
     }
     
     // Listeners para actualización en tiempo real
-    const inputs = ['name-input', 'price-input', 'short-desc-input', 'desc-input', 'measures-input'];
+    const inputs = ['name-input', 'short-desc-input', 'desc-input', 'measures-input'];
     inputs.forEach(id => {
         const element = document.getElementById(id);
         if (element) {
             element.addEventListener('input', updateDisplay);
         }
     });
+    
+    // Listeners específicos para campos de precio
+    const priceInputs = ['price-base-input', 'percentage-input'];
+    priceInputs.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.addEventListener('input', updateDisplay);
+        }
+    });
+    
+    const ivaCheckbox = document.getElementById('iva-checkbox');
+    if (ivaCheckbox) {
+        ivaCheckbox.addEventListener('change', updateDisplay);
+    }
     
     // Preview de imagen
     if (imageInput) {
@@ -293,10 +322,10 @@ function showEditFields() {
     }
     
     const priceDisplay = document.getElementById('price-display');
-    const priceInput = document.getElementById('price-input');
-    if (priceDisplay && priceInput) {
+    const priceEditContainer = document.getElementById('price-edit-container');
+    if (priceDisplay && priceEditContainer) {
         priceDisplay.classList.add('hidden');
-        priceInput.classList.add('show');
+        priceEditContainer.classList.add('show');
     }
     
     const shortDescDisplay = document.getElementById('short-desc-display');
@@ -336,10 +365,10 @@ function hideEditFields() {
     }
     
     const priceDisplay = document.getElementById('price-display');
-    const priceInput = document.getElementById('price-input');
-    if (priceDisplay && priceInput) {
+    const priceEditContainer = document.getElementById('price-edit-container');
+    if (priceDisplay && priceEditContainer) {
         priceDisplay.classList.remove('hidden');
-        priceInput.classList.remove('show');
+        priceEditContainer.classList.remove('show');
     }
     
     const shortDescDisplay = document.getElementById('short-desc-display');
@@ -402,12 +431,8 @@ function updateDisplay() {
         nameDisplay.textContent = nameInput.value;
     }
     
-    // Actualizar precio
-    const priceInput = document.getElementById('price-input');
-    const priceDisplay = document.getElementById('price-display');
-    if (priceInput && priceDisplay) {
-        priceDisplay.textContent = '$' + new Intl.NumberFormat('es-CL').format(priceInput.value);
-    }
+    // Actualizar precio con cálculos
+    updatePricePreview();
     
     // Actualizar descripción corta
     const shortDescInput = document.getElementById('short-desc-input');
@@ -436,6 +461,41 @@ function updateDisplay() {
     const measuresDisplay = document.getElementById('measures-display');
     if (measuresInput && measuresDisplay) {
         measuresDisplay.innerHTML = measuresInput.value ? measuresInput.value.replace(/\n/g, '<br>') : 'Medidas del producto no disponibles.';
+    }
+}
+
+function updatePricePreview() {
+    const priceBaseInput = document.getElementById('price-base-input');
+    const percentageInput = document.getElementById('percentage-input');
+    const ivaCheckbox = document.getElementById('iva-checkbox');
+    const priceDisplay = document.getElementById('price-display');
+    const pricePreviewDisplay = document.getElementById('price-preview-display');
+    
+    if (!priceBaseInput) return;
+    
+    const precioBase = parseFloat(priceBaseInput.value || 0);
+    const porcentajeExtra = parseFloat(percentageInput?.value || 0);
+    const incluirIva = ivaCheckbox?.checked || false;
+    
+    let precioFinal = precioBase;
+    
+    // Aplicar porcentaje extra
+    if (porcentajeExtra > 0) {
+        precioFinal = precioFinal * (1 + porcentajeExtra / 100);
+    }
+    
+    // Aplicar IVA
+    if (incluirIva) {
+        precioFinal = precioFinal * 1.19;
+    }
+    
+    // Actualizar displays
+    const precioFormateado = '$' + new Intl.NumberFormat('es-CL').format(Math.round(precioFinal));
+    if (priceDisplay) {
+        priceDisplay.textContent = precioFormateado;
+    }
+    if (pricePreviewDisplay) {
+        pricePreviewDisplay.textContent = new Intl.NumberFormat('es-CL').format(Math.round(precioFinal));
     }
 }
 

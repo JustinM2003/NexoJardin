@@ -52,10 +52,27 @@
                             <label for="id_medidas">Medidas:</label>
                             <textarea name="medidas" id="id_medidas" placeholder="Dimensiones y especificaciones del producto...">{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}</textarea>
                         </div>
-                    {% elif field.name == 'precio' %}
+                    {% elif field.name == 'precio_base' %}
                         <div class="form-group">
-                            <label for="id_precio">Precio:</label>
-                            <input type="number" name="precio" id="id_precio" class="no-spin" value="{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}" min="0" step="0.01">
+                            <label for="id_precio_base">Precio base:</label>
+                            <input type="number" name="precio_base" id="id_precio_base" class="no-spin" value="{% if field.value and field.value != 'None' %}{{ field.value }}{% endif %}" min="0" step="0.01" oninput="calcularPrecioFinal()">
+                            <small class="help-text">Precio sin IVA ni porcentajes adicionales</small>
+                        </div>
+                    {% elif field.name == 'porcentaje_extra' %}
+                        <div class="form-group">
+                            <label for="id_porcentaje_extra">Porcentaje extra (%):</label>
+                            <input type="number" name="porcentaje_extra" id="id_porcentaje_extra" class="no-spin" value="{% if field.value and field.value != 'None' %}{{ field.value }}{% else %}0{% endif %}" min="0" max="999" step="0.01" oninput="calcularPrecioFinal()">
+                            <small class="help-text">Porcentaje adicional a aplicar (ej: 30 para 30%)</small>
+                        </div>
+                    {% elif field.name == 'incluir_iva' %}
+                        <div class="form-group">
+                            <label for="id_incluir_iva">
+                                <input type="checkbox" name="incluir_iva" id="id_incluir_iva" {% if field.value %}checked{% endif %} onchange="calcularPrecioFinal()">
+                                Incluir IVA (19%)
+                            </label>
+                        </div>
+                        <div class="precio-calculado">
+                            <strong>Precio final: $<span id="precio-final-display">0</span></strong>
                         </div>
                     {% elif field.name == 'imagen' %}
                         <div class="form-group">
@@ -330,6 +347,36 @@ function toggleDestacado(productoId) {
         alert('Error al actualizar el estado de destacado');
     });
 }
+
+// Función para calcular precio final en tiempo real
+function calcularPrecioFinal() {
+    const precioBase = parseFloat(document.getElementById('id_precio_base')?.value || 0);
+    const porcentajeExtra = parseFloat(document.getElementById('id_porcentaje_extra')?.value || 0);
+    const incluirIva = document.getElementById('id_incluir_iva')?.checked || false;
+    
+    let precioFinal = precioBase;
+    
+    // Aplicar porcentaje extra
+    if (porcentajeExtra > 0) {
+        precioFinal = precioFinal * (1 + porcentajeExtra / 100);
+    }
+    
+    // Aplicar IVA
+    if (incluirIva) {
+        precioFinal = precioFinal * 1.19;
+    }
+    
+    // Mostrar el precio final formateado
+    const precioDisplay = document.getElementById('precio-final-display');
+    if (precioDisplay) {
+        precioDisplay.textContent = new Intl.NumberFormat('es-CL').format(Math.round(precioFinal));
+    }
+}
+
+// Calcular precio inicial al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    calcularPrecioFinal();
+});
 </script>
 {% endblock content %}
 
