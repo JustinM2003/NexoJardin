@@ -397,6 +397,10 @@
   display: flex !important;
 }
 
+#delete-modal.show {
+  display: flex !important;
+}
+
 .modal-content {
   background: white;
   border-radius: var(--border-radius);

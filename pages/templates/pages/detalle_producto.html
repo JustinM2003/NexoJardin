@@ -23,7 +23,7 @@
         <button type="button" id="btn-cancel">
             <i class="fas fa-times"></i> Cancelar
         </button>
-        <button type="button" id="btn-delete" onclick="openDeleteModal({{ producto.id }}, '{{ producto.nombre|escapejs }}')">
+        <button type="button" id="btn-delete" data-product-id="{{ producto.id }}" data-product-name="{{ producto.nombre|escapejs }}">
             <i class="fas fa-trash"></i> Eliminar producto
         </button>
     </div>
@@ -68,14 +68,16 @@
                 <hr id="divider">
                 
                 <!-- Descripción corta -->
-                {% if producto.descripcion_corta %}
                 <div class="field-group" id="short-desc-container">
+                    {% if producto.descripcion_corta %}
                     <div id="short-desc-display">{{ producto.descripcion_corta|linebreaksbr }}</div>
+                    {% else %}
+                    <div id="short-desc-display" style="display: none;"></div>
+                    {% endif %}
                     {% if user.is_authenticated and user.is_staff %}
-                    <textarea id="short-desc-input" name="descripcion_corta" placeholder="Descripción corta...">{{ producto.descripcion_corta }}</textarea>
+                    <textarea id="short-desc-input" name="descripcion_corta" placeholder="Descripción corta...">{{ producto.descripcion_corta|default:"" }}</textarea>
                     {% endif %}
                 </div>
-                {% endif %}
             </div>
         </div>
     </form>
@@ -146,11 +148,16 @@
 <script>
 // Inicialización del DOM
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing...');
+    
     initTabs();
     initShortDescription();
     
     {% if user.is_authenticated and user.is_staff %}
+    console.log('User is staff, initializing edit mode');
     initEditMode();
+    {% else %}
+    console.log('User is not staff or not authenticated');
     {% endif %}
 });
 
@@ -179,9 +186,13 @@ function initShortDescription() {
     const shortDescDisplay = document.getElementById('short-desc-display');
     const shortDescContainer = document.getElementById('short-desc-container');
     
-    if (shortDescContainer && (!shortDescDisplay || !shortDescDisplay.textContent.trim())) {
-        shortDescContainer.remove();
+    // Si no hay contenido en la descripción corta, ocultar solo el display
+    if (shortDescDisplay && !shortDescDisplay.textContent.trim()) {
+        shortDescDisplay.style.display = 'none';
     }
+    
+    // Asegurar que el contenedor siempre esté presente para el modo de edición
+    // No eliminar el contenedor completo
 }
 
 {% if user.is_authenticated and user.is_staff %}
@@ -193,11 +204,19 @@ function initEditMode() {
     const btnEditToggle = document.getElementById('btn-edit-toggle');
     const btnSave = document.getElementById('btn-save');
     const btnCancel = document.getElementById('btn-cancel');
+    const btnDelete = document.getElementById('btn-delete');
     const imageInput = document.getElementById('image-input');
     
     if (btnEditToggle) btnEditToggle.addEventListener('click', toggleEditMode);
     if (btnSave) btnSave.addEventListener('click', saveChanges);
     if (btnCancel) btnCancel.addEventListener('click', cancelEdit);
+    if (btnDelete) {
+        btnDelete.addEventListener('click', function() {
+            const productId = this.getAttribute('data-product-id');
+            const productName = this.getAttribute('data-product-name');
+            openDeleteModal(productId, productName);
+        });
+    }
     
     // Listeners para actualización en tiempo real
     const inputs = ['name-input', 'price-input', 'short-desc-input', 'desc-input', 'measures-input'];
@@ -323,6 +342,13 @@ function hideEditFields() {
     if (shortDescDisplay && shortDescInput) {
         shortDescDisplay.classList.remove('hidden');
         shortDescInput.classList.remove('show');
+        
+        // Verificar si hay contenido para mostrar u ocultar el display
+        if (!shortDescInput.value.trim()) {
+            shortDescDisplay.style.display = 'none';
+        } else {
+            shortDescDisplay.style.display = 'block';
+        }
     }
     
     const descDisplay = document.getElementById('desc-display');
@@ -382,7 +408,15 @@ function updateDisplay() {
     const shortDescInput = document.getElementById('short-desc-input');
     const shortDescDisplay = document.getElementById('short-desc-display');
     if (shortDescInput && shortDescDisplay) {
-        shortDescDisplay.innerHTML = shortDescInput.value.replace(/\n/g, '<br>');
+        const content = shortDescInput.value.replace(/\n/g, '<br>');
+        shortDescDisplay.innerHTML = content;
+        
+        // Mostrar u ocultar el display según si hay contenido
+        if (shortDescInput.value.trim()) {
+            shortDescDisplay.style.display = 'block';
+        } else {
+            shortDescDisplay.style.display = 'none';
+        }
     }
     
     // Actualizar descripción
@@ -466,14 +500,29 @@ function showMessage(message, type) {
 
 // Modal de eliminación
 function openDeleteModal(id, name) {
+    console.log('openDeleteModal called with:', id, name);
+    
     const deleteText = document.getElementById('delete-text');
     const deleteForm = document.getElementById('delete-form');
     const deleteModal = document.getElementById('delete-modal');
+    
+    console.log('Elements found:', {
+        deleteText: !!deleteText,
+        deleteForm: !!deleteForm,
+        deleteModal: !!deleteModal
+    });
     
     if (deleteText && deleteForm && deleteModal) {
         deleteText.textContent = `¿Estás seguro de que deseas eliminar el producto "${name}"?`;
         deleteForm.action = `/products/eliminar/${id}/`;
         deleteModal.classList.add('show');
+        // Forzar el display como backup
+        deleteModal.style.display = 'flex';
+        console.log('Modal should be visible now');
+        console.log('Modal classes:', deleteModal.className);
+        console.log('Modal computed style display:', window.getComputedStyle(deleteModal).display);
+    } else {
+        console.error('Some modal elements are missing');
     }
 }
 
@@ -481,6 +530,8 @@ function closeDeleteModal() {
     const deleteModal = document.getElementById('delete-modal');
     if (deleteModal) {
         deleteModal.classList.remove('show');
+        deleteModal.style.display = 'none';
+        console.log('Modal closed');
     }
 }
 {% endif %}
