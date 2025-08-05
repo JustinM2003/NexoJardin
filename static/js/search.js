@@ -174,9 +174,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Formatear precio
+    // Formatear precio sin decimales
     function formatearPrecio(precio) {
-        return new Intl.NumberFormat('es-CL').format(precio);
+        return new Intl.NumberFormat('es-CL', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(precio);
     }
 
     // Event listeners
