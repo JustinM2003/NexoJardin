@@ -92,12 +92,27 @@ if DEBUG:
         }
     }
 else:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default='postgresql://postgres:postgres@localhost:5432/mysite',
-            conn_max_age=600
-        )
-    }
+    # Configuration for production (Render)
+    database_url = os.environ.get('DATABASE_URL')
+    if database_url:
+        DATABASES = {
+            'default': dj_database_url.config(
+                default=database_url,
+                conn_max_age=600
+            )
+        }
+    else:
+        # Fallback configuration if DATABASE_URL is not set
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': os.environ.get('DB_NAME', 'nexojardin'),
+                'USER': os.environ.get('DB_USER', 'postgres'),
+                'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+                'HOST': os.environ.get('DB_HOST', 'localhost'),
+                'PORT': os.environ.get('DB_PORT', '5432'),
+            }
+        }
 
 
 # Password validation
