@@ -20,7 +20,7 @@
     "pk": 1,
     "fields": {
       "nombre": "Philodendron orange marmalade M13",
-      "descripcion": "Luz: Luz brillante indirecta, evitar sol directo\r\nRiego: Moderado, dejar secar sustrato entre riegos\r\nSuelo: Nutritivo y bien aireado, con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante etapa activa\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz brillante indirecta, evitar sol directo\r\nRiego: Moderado, dejar secar sustrato entre riegos\r\nSuelo: Nutritivo y bien aireado, con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual durante etapa activa\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con vibrante tono naranja en hojas nuevas",
       "medidas": "None",
       "precio_base": "18000.00",
@@ -38,8 +38,8 @@
     "pk": 2,
     "fields": {
       "nombre": "Ficus shivereana M13",
-      "descripcion": "Luz: Luz indirecta brillante para mantener variegaci¾n\r\nRiego: Moderado, permitir que la superficie del sustrato se seque entre riegos\r\nSuelo: Sustrato nutritivo, aireado y con buen drenaje\r\nTemperatura: Temperaturas cßlidas y estables, evitar cambios bruscos\r\nHumedad: Humedad ambiental moderada, nebulizaciones ocasionales\r\nFertilizaci¾n: Mensual durante primavera y verano con fertilizante equilibrado\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Variedad de Ficus con hojas variegadas en tonos crema y verde. Requiere estabilidad en sus condiciones para evitar la caÝda de hojas",
+      "descripcion": "Luz: Luz indirecta brillante para mantener variegación\r\nRiego: Moderado, permitir que la superficie del sustrato se seque entre riegos\r\nSuelo: Sustrato nutritivo, aireado y con buen drenaje\r\nTemperatura: Temperaturas cálidas y estables, evitar cambios bruscos\r\nHumedad: Humedad ambiental moderada, nebulizaciones ocasionales\r\nFertilización: Mensual durante primavera y verano con fertilizante equilibrado\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Variedad de Ficus con hojas variegadas en tonos crema y verde. Requiere estabilidad en sus condiciones para evitar la caída de hojas",
       "medidas": "None",
       "precio_base": "3900.00",
       "porcentaje_extra": "30.00",
@@ -56,8 +56,8 @@
     "pk": 3,
     "fields": {
       "nombre": "Ficus lyrata bambino M13",
-      "descripcion": "Luz: Luz indirecta brillante\r\nRiego: Regulares, evitar exceso de agua para prevenir enfermedades en raÝces\r\nSuelo: Aireado, nutritivo y con buen drenaje, turba, perlita y compost\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad moderada, nebulizaciones ocasionales\r\nFertilizaci¾n: Cada 4 semanas en primavera y verano con fertilizante equilibrado\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Versi¾n compacta del Ficus Lyrata con hojas mßs peque±as y gruesas",
+      "descripcion": "Luz: Luz indirecta brillante\r\nRiego: Regulares, evitar exceso de agua para prevenir enfermedades en raíces\r\nSuelo: Aireado, nutritivo y con buen drenaje, turba, perlita y compost\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad moderada, nebulizaciones ocasionales\r\nFertilización: Cada 4 semanas en primavera y verano con fertilizante equilibrado\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Versión compacta del Ficus Lyrata con hojas más pequeñas y gruesas",
       "medidas": "None",
       "precio_base": "5000.00",
       "porcentaje_extra": "30.00",
@@ -74,7 +74,7 @@
     "pk": 4,
     "fields": {
       "nombre": "Philodendron pluto M17",
-      "descripcion": "Luz: Luz brillante e indirecta, evitar luz directa\r\nRiego: Moderado, asegurar buen drenaje evitando encharcamiento\r\nSuelo: Rico en nutrientes, aireado y ligero\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Una vez al mes en temporada de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz brillante e indirecta, evitar luz directa\r\nRiego: Moderado, asegurar buen drenaje evitando encharcamiento\r\nSuelo: Rico en nutrientes, aireado y ligero\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Una vez al mes en temporada de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con follaje oscuro y brillante muy elegante",
       "medidas": "None",
       "precio_base": "12500.00",
@@ -92,7 +92,7 @@
     "pk": 5,
     "fields": {
       "nombre": "Syngonium podophyllum pixie M11",
-      "descripcion": "Luz: Luz brillante indirecta, evitar luz directa\r\nRiego: Regulares, permitir secado ligero entre riegos\r\nSuelo: Ricos en nutrientes, aireados y bien drenados\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual\r\nNivel: Fßcil - Novato Verde\r\n\r\n",
+      "descripcion": "Luz: Luz brillante indirecta, evitar luz directa\r\nRiego: Regulares, permitir secado ligero entre riegos\r\nSuelo: Ricos en nutrientes, aireados y bien drenados\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual\r\nNivel: Fácil - Novato Verde\r\n\r\n",
       "descripcion_corta": "Syngonium compacto con follaje variegado",
       "medidas": "None",
       "precio_base": "3000.00",
@@ -110,7 +110,7 @@
     "pk": 6,
     "fields": {
       "nombre": "Syngonium silver fox M9",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares, permitir secado ligero entre riegos\r\nSuelo: Rico en materia orgßnica, aireado y bien drenado\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde\r\n\r\n",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares, permitir secado ligero entre riegos\r\nSuelo: Rico en materia orgánica, aireado y bien drenado\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde\r\n\r\n",
       "descripcion_corta": "Syngonium con follaje plateado con tonalidades verdes",
       "medidas": "None",
       "precio_base": "3500.00",
@@ -128,8 +128,8 @@
     "pk": 7,
     "fields": {
       "nombre": "Aglaonema commutatum Nightsparkle M11",
-      "descripcion": "Luz: Luz indirecta brillante, tolera luz media pero puede perder intensidad de color\r\nRiego: Moderado, mantener sustrato ligeramente h·medo sin encharcar\r\nSuelo: Sustrato suelto y bien drenado\r\nTemperatura: Ambientes cßlidos, no tolera temperaturas bajo 13░C\r\nHumedad: Buena humedad ambiental, pulverizaciones ocasionales o humidificador\r\nFertilizaci¾n: Cada 4-6 semanas en primavera y verano con abono lÝquido balanceado diluido\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Variedad con hojas oscuras salpicadas de plateado que crea un efecto nocturno brillante. Mantiene su coloraci¾n con buena iluminaci¾n",
+      "descripcion": "Luz: Luz indirecta brillante, tolera luz media pero puede perder intensidad de color\r\nRiego: Moderado, mantener sustrato ligeramente húmedo sin encharcar\r\nSuelo: Sustrato suelto y bien drenado\r\nTemperatura: Ambientes cálidos, no tolera temperaturas bajo 13░C\r\nHumedad: Buena humedad ambiental, pulverizaciones ocasionales o humidificador\r\nFertilización: Cada 4-6 semanas en primavera y verano con abono líquido balanceado diluido\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Variedad con hojas oscuras salpicadas de plateado que crea un efecto nocturno brillante. Mantiene su coloración con buena iluminación",
       "medidas": "None",
       "precio_base": "6529.00",
       "porcentaje_extra": "30.00",
@@ -146,7 +146,7 @@
     "pk": 8,
     "fields": {
       "nombre": "Aglaonema commutatum auspicious red M11",
-      "descripcion": "Luz: Luz indirecta brillante para conservar el color rojo intenso\r\nRiego: Moderado, sustrato ligeramente h·medo evitando encharcamiento\r\nSuelo: Sustrato suelto y bien drenado\r\nTemperatura: Ambientes cßlidos y estables, evitar corrientes de aire frÝo\r\nHumedad: Alta humedad ambiental, usar humidificador o pulverizaciones suaves\r\nFertilizaci¾n: Cada 4-6 semanas durante primavera y verano con fertilizante lÝquido diluido\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta brillante para conservar el color rojo intenso\r\nRiego: Moderado, sustrato ligeramente húmedo evitando encharcamiento\r\nSuelo: Sustrato suelto y bien drenado\r\nTemperatura: Ambientes cálidos y estables, evitar corrientes de aire frío\r\nHumedad: Alta humedad ambiental, usar humidificador o pulverizaciones suaves\r\nFertilización: Cada 4-6 semanas durante primavera y verano con fertilizante líquido diluido\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Variedad con hojas rojas intensas y bordes verdes que aporta color vibrante al interior. Requiere luz adecuada para mantener su tonalidad roja",
       "medidas": "None",
       "precio_base": "6529.00",
@@ -164,8 +164,8 @@
     "pk": 9,
     "fields": {
       "nombre": "Ficus altissima Variegata M17",
-      "descripcion": "Luz: Luz indirecta intensa, no tolera sol directo\r\nRiego: Regulares, permitir que capa superior se seque ligeramente\r\nSuelo: Nutritivo, bien aireado y con buen drenaje, mezcla de turba, compost y perlita\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad moderada\r\nFertilizaci¾n: Mensual en primavera y verano con fertilizante equilibrado\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Ficus con hojas variegadas que requiere buena iluminaci¾n",
+      "descripcion": "Luz: Luz indirecta intensa, no tolera sol directo\r\nRiego: Regulares, permitir que capa superior se seque ligeramente\r\nSuelo: Nutritivo, bien aireado y con buen drenaje, mezcla de turba, compost y perlita\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad moderada\r\nFertilización: Mensual en primavera y verano con fertilizante equilibrado\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Ficus con hojas variegadas que requiere buena iluminación",
       "medidas": "None",
       "precio_base": "5500.00",
       "porcentaje_extra": "30.00",
@@ -182,7 +182,7 @@
     "pk": 10,
     "fields": {
       "nombre": "Syngonium podophyllum holly M15",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Moderado, dejar secar ligeramente entre riegos\r\nSuelo: FÚrtil, aireado y bien drenado\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Una vez al mes durante temporada activa\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Moderado, dejar secar ligeramente entre riegos\r\nSuelo: FÚrtil, aireado y bien drenado\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Una vez al mes durante temporada activa\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Syngonium con forma de hoja de acebo y colores vivos",
       "medidas": "None",
       "precio_base": "3800.00",
@@ -200,8 +200,8 @@
     "pk": 11,
     "fields": {
       "nombre": "Caladium hilo beauty M11",
-      "descripcion": "Luz: Luz indirecta brillante o semisombra, evitar sol directo\r\nRiego: Regulares, sustrato ligeramente h·medo sin encharcamientos, dejar secar superficie entre riegos\r\nSuelo: Suelto, rico en materia orgßnica y bien drenado, mezcla de turba, fibra de coco y perlita\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos, buena humedad ambiental o humidificador\r\nFertilizaci¾n: Una vez al mes en temporada activa con fertilizante lÝquido equilibrado y diluido\r\nMantenimiento: En invierno reducir riegos y dejar entrar en reposo\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Planta con hojas delicadas y transparentes que requiere cuidados especÝficos",
+      "descripcion": "Luz: Luz indirecta brillante o semisombra, evitar sol directo\r\nRiego: Regulares, sustrato ligeramente húmedo sin encharcamientos, dejar secar superficie entre riegos\r\nSuelo: Suelto, rico en materia orgánica y bien drenado, mezcla de turba, fibra de coco y perlita\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos, buena humedad ambiental o humidificador\r\nFertilización: Una vez al mes en temporada activa con fertilizante líquido equilibrado y diluido\r\nMantenimiento: En invierno reducir riegos y dejar entrar en reposo\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Planta con hojas delicadas y transparentes que requiere cuidados específicos",
       "medidas": "None",
       "precio_base": "9000.00",
       "porcentaje_extra": "30.00",
@@ -218,8 +218,8 @@
     "pk": 12,
     "fields": {
       "nombre": "Alocasia tiny dancer M11",
-      "descripcion": "Luz: Luz indirecta brillante o luz filtrada, puede adaptarse a sombra parcial\r\nRiego: Moderado y regular, sustrato h·medo al tacto pero nunca encharcado\r\nSuelo: Aireado y con excelente drenaje, mezclado con perlita, turba y corteza\r\nTemperatura: Temperaturas cßlidas\r\nHumedad: Humedad ambiental elevada, espacios h·medos o humidificadores\r\nFertilizaci¾n: Cada 3-5 semanas en primavera y verano con fertilizante lÝquido equilibrado\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Variedad compacta que requiere cuidados especÝficos para mantener su vigor",
+      "descripcion": "Luz: Luz indirecta brillante o luz filtrada, puede adaptarse a sombra parcial\r\nRiego: Moderado y regular, sustrato húmedo al tacto pero nunca encharcado\r\nSuelo: Aireado y con excelente drenaje, mezclado con perlita, turba y corteza\r\nTemperatura: Temperaturas cálidas\r\nHumedad: Humedad ambiental elevada, espacios húmedos o humidificadores\r\nFertilización: Cada 3-5 semanas en primavera y verano con fertilizante líquido equilibrado\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Variedad compacta que requiere cuidados específicos para mantener su vigor",
       "medidas": "None",
       "precio_base": "7500.00",
       "porcentaje_extra": "30.00",
@@ -236,7 +236,7 @@
     "pk": 13,
     "fields": {
       "nombre": "Philodendron birkin M13",
-      "descripcion": "Luz: Luz indirecta brillante, evitar luz directa\r\nRiego: Equilibrado, permitir que capa superficial se seque entre riegos\r\nSuelo: Nutritivo y bien drenado, turba, perlita y compost\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Media a alta\r\nFertilizaci¾n: Mensual en primavera y verano\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta brillante, evitar luz directa\r\nRiego: Equilibrado, permitir que capa superficial se seque entre riegos\r\nSuelo: Nutritivo y bien drenado, turba, perlita y compost\r\nTemperatura: Ambientes cálidos\r\nHumedad: Media a alta\r\nFertilización: Mensual en primavera y verano\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Philodendron con contraste blanco y verde muy popular",
       "medidas": "None",
       "precio_base": "5700.00",
@@ -254,8 +254,8 @@
     "pk": 14,
     "fields": {
       "nombre": "Philodendron florida M15",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Constantes, permitir ligero secado superficial entre riegos\r\nSuelo: Rico en materia orgßnica, aireado y con buen drenaje\r\nTemperatura: Temperaturas cßlidas\r\nHumedad: Humedad ambiental media\r\nFertilizaci¾n: Mensual en Úpoca de crecimiento\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Philodendron con hojas distintivas que requiere buena iluminaci¾n",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Constantes, permitir ligero secado superficial entre riegos\r\nSuelo: Rico en materia orgánica, aireado y con buen drenaje\r\nTemperatura: Temperaturas cálidas\r\nHumedad: Humedad ambiental media\r\nFertilización: Mensual en Úpoca de crecimiento\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Philodendron con hojas distintivas que requiere buena iluminación",
       "medidas": "None",
       "precio_base": "6500.00",
       "porcentaje_extra": "30.00",
@@ -272,7 +272,7 @@
     "pk": 15,
     "fields": {
       "nombre": "Philodendron billietiae M11",
-      "descripcion": "Luz: Luz indirecta intensa, evitar sol directo\r\nRiego: Moderado, dejar secar superficie entre riegos\r\nSuelo: Ligero, aireado y rico en materia orgßnica\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual con abono lÝquido\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta intensa, evitar sol directo\r\nRiego: Moderado, dejar secar superficie entre riegos\r\nSuelo: Ligero, aireado y rico en materia orgánica\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual con abono líquido\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con hojas largas y delgadas muy elegante",
       "medidas": "None",
       "precio_base": "6500.00",
@@ -290,7 +290,7 @@
     "pk": 16,
     "fields": {
       "nombre": "Aglaonema commutatum Eileen M11",
-      "descripcion": "Luz: Luz indirecta brillante, se adapta a luz media\r\nRiego: Moderado, permitir que el sustrato se seque ligeramente entre riegos\r\nSuelo: Sustrato aireado y bien drenado\r\nTemperatura: Temperaturas cßlidas estables, no menor a 15░C\r\nHumedad: Humedad ambiental moderada a alta, nebulizaciones ocasionales\r\nFertilizaci¾n: Cada 4-6 semanas en temporada de crecimiento con abono balanceado diluido\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta brillante, se adapta a luz media\r\nRiego: Moderado, permitir que el sustrato se seque ligeramente entre riegos\r\nSuelo: Sustrato aireado y bien drenado\r\nTemperatura: Temperaturas cálidas estables, no menor a 15░C\r\nHumedad: Humedad ambiental moderada a alta, nebulizaciones ocasionales\r\nFertilización: Cada 4-6 semanas en temporada de crecimiento con abono balanceado diluido\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Variedad compacta con hojas verdes y patrones plateados distintivos. Ideal para espacios interiores por su tolerancia a diferentes condiciones de luz",
       "medidas": "None",
       "precio_base": "6500.00",
@@ -308,8 +308,8 @@
     "pk": 17,
     "fields": {
       "nombre": "Aglaonema commutatum Sunshine M11",
-      "descripcion": "Luz: Luz indirecta brillante para mantener tonos dorados\r\nRiego: Moderado, sustrato ligeramente h·medo sin saturar\r\nSuelo: Sustrato ligero y bien drenado\r\nTemperatura: Ambientes cßlidos, proteger de temperaturas frÝas\r\nHumedad: Buena humedad ambiental, humidificador o pulverizaciones ligeras\r\nFertilizaci¾n: Cada 4-6 semanas durante primavera y verano con fertilizante lÝquido diluido\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Variedad con hojas amarillo-verdosas brillantes que aporta luminosidad a los espacios. Su coloraci¾n dorada requiere buena iluminaci¾n para mantenerse vibrante",
+      "descripcion": "Luz: Luz indirecta brillante para mantener tonos dorados\r\nRiego: Moderado, sustrato ligeramente húmedo sin saturar\r\nSuelo: Sustrato ligero y bien drenado\r\nTemperatura: Ambientes cálidos, proteger de temperaturas frías\r\nHumedad: Buena humedad ambiental, humidificador o pulverizaciones ligeras\r\nFertilización: Cada 4-6 semanas durante primavera y verano con fertilizante líquido diluido\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Variedad con hojas amarillo-verdosas brillantes que aporta luminosidad a los espacios. Su coloración dorada requiere buena iluminación para mantenerse vibrante",
       "medidas": "None",
       "precio_base": "6500.00",
       "porcentaje_extra": "30.00",
@@ -326,8 +326,8 @@
     "pk": 18,
     "fields": {
       "nombre": "Aglaonema commutatum Thai Snowflakes M12",
-      "descripcion": "Luz: Luz indirecta brillante, puede adaptarse a luz media\r\nRiego: Moderado, sustrato ligeramente h·medo evitando exceso de agua\r\nSuelo: Sustrato bien aireado y drenante\r\nTemperatura: Temperaturas cßlidas, no tolera frÝo ni cambios bruscos\r\nHumedad: Buena humedad, estar cerca de otras plantas o nebulizaciones suaves\r\nFertilizaci¾n: Cada 4-6 semanas en primavera y verano con fertilizante lÝquido balanceado diluido a la mitad\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Variedad con atractivo patr¾n blanco en las hojas que requiere buena iluminaci¾n",
+      "descripcion": "Luz: Luz indirecta brillante, puede adaptarse a luz media\r\nRiego: Moderado, sustrato ligeramente húmedo evitando exceso de agua\r\nSuelo: Sustrato bien aireado y drenante\r\nTemperatura: Temperaturas cálidas, no tolera frío ni cambios bruscos\r\nHumedad: Buena humedad, estar cerca de otras plantas o nebulizaciones suaves\r\nFertilización: Cada 4-6 semanas en primavera y verano con fertilizante líquido balanceado diluido a la mitad\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Variedad con atractivo patrón blanco en las hojas que requiere buena iluminación",
       "medidas": "None",
       "precio_base": "4000.00",
       "porcentaje_extra": "30.00",
@@ -344,8 +344,8 @@
     "pk": 19,
     "fields": {
       "nombre": "Alocasia batik var M11",
-      "descripcion": "Luz: Luz indirecta brillante a media, evitar sol directo\r\nRiego: Regular para mantener sustrato h·medo pero bien drenado\r\nSuelo: Sustrato rico en materia orgßnica, suelto y con excelente drenaje\r\nTemperatura: Ambientes cßlidos y estables\r\nHumedad: Alta humedad ambiental, usar humidificador o bandejas con agua\r\nFertilizaci¾n: Cada 3-4 semanas durante crecimiento activo con fertilizante lÝquido equilibrado\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Variedad con hojas que presentan patrones ·nicos similares al batik, con venas contrastantes. Requiere cuidados especÝficos como otras Alocasias",
+      "descripcion": "Luz: Luz indirecta brillante a media, evitar sol directo\r\nRiego: Regular para mantener sustrato húmedo pero bien drenado\r\nSuelo: Sustrato rico en materia orgánica, suelto y con excelente drenaje\r\nTemperatura: Ambientes cálidos y estables\r\nHumedad: Alta humedad ambiental, usar humidificador o bandejas con agua\r\nFertilización: Cada 3-4 semanas durante crecimiento activo con fertilizante líquido equilibrado\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Variedad con hojas que presentan patrones únicos similares al batik, con venas contrastantes. Requiere cuidados específicos como otras Alocasias",
       "medidas": "None",
       "precio_base": "12000.00",
       "porcentaje_extra": "30.00",
@@ -362,8 +362,8 @@
     "pk": 20,
     "fields": {
       "nombre": "Alocasia melo M9",
-      "descripcion": "Luz: Luz suave e indirecta, evitar sol directo\r\nRiego: Controlados, sustrato ligeramente h·medo pero nunca empapado\r\nSuelo: Muy poroso y drenante, idealmente con perlita, corteza y turba\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Alta humedad relativa, buena ventilaci¾n o acompa±ada de otras plantas\r\nFertilizaci¾n: Cada 4 semanas durante periodo activo con abono lÝquido suave y balanceado\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Planta con hojas gruesas y texturizadas que requiere cuidados especÝficos",
+      "descripcion": "Luz: Luz suave e indirecta, evitar sol directo\r\nRiego: Controlados, sustrato ligeramente húmedo pero nunca empapado\r\nSuelo: Muy poroso y drenante, idealmente con perlita, corteza y turba\r\nTemperatura: Ambientes cálidos\r\nHumedad: Alta humedad relativa, buena ventilación o acompañada de otras plantas\r\nFertilización: Cada 4 semanas durante periodo activo con abono líquido suave y balanceado\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Planta con hojas gruesas y texturizadas que requiere cuidados específicos",
       "medidas": "None",
       "precio_base": "12000.00",
       "porcentaje_extra": "30.00",
@@ -380,8 +380,8 @@
     "pk": 21,
     "fields": {
       "nombre": "Asplenium nidus crispy wave M11",
-      "descripcion": "Luz: Luz indirecta suave a media, evitar sol directo\r\nRiego: Frecuente pero ligero, mantener sustrato constantemente h·medo\r\nSuelo: Sustrato rico en materia orgßnica con buena retenci¾n de humedad pero drenante\r\nTemperatura: Ambientes cßlidos y estables\r\nHumedad: Muy alta humedad ambiental, ideal para ba±os o con humidificador\r\nFertilizaci¾n: Mensual con fertilizante orgßnico o especÝfico para helechos, siempre diluido\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Helecho con frondas onduladas y bordes rizados que le dan una apariencia ·nica. Mßs tolerante que otros helechos pero requiere humedad constante",
+      "descripcion": "Luz: Luz indirecta suave a media, evitar sol directo\r\nRiego: Frecuente pero ligero, mantener sustrato constantemente húmedo\r\nSuelo: Sustrato rico en materia orgánica con buena retención de humedad pero drenante\r\nTemperatura: Ambientes cálidos y estables\r\nHumedad: Muy alta humedad ambiental, ideal para baños o con humidificador\r\nFertilización: Mensual con fertilizante orgánico o específico para helechos, siempre diluido\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Helecho con frondas onduladas y bordes rizados que le dan una apariencia única. Más tolerante que otros helechos pero requiere humedad constante",
       "medidas": "None",
       "precio_base": "4800.00",
       "porcentaje_extra": "30.00",
@@ -398,7 +398,7 @@
     "pk": 22,
     "fields": {
       "nombre": "Asplenium nidus variegata M13",
-      "descripcion": "Luz: Luz indirecta suave o semisombra, evitar sol directo\r\nRiego: Frecuentes pero ligeros, sustrato constantemente h·medo sin exceso\r\nSuelo: Rico en materia orgßnica, buena retenci¾n de humedad pero con drenaje, mezcla de turba, fibra de coco y perlita\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Muy h·medos, ba±os iluminados o humidificador\r\nFertilizaci¾n: Fertilizante orgßnico o lÝquido diluido una vez al mes, evitar alto contenido de sales minerales\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta suave o semisombra, evitar sol directo\r\nRiego: Frecuentes pero ligeros, sustrato constantemente húmedo sin exceso\r\nSuelo: Rico en materia orgánica, buena retención de humedad pero con drenaje, mezcla de turba, fibra de coco y perlita\r\nTemperatura: Ambientes cálidos\r\nHumedad: Muy húmedos, baños iluminados o humidificador\r\nFertilización: Fertilizante orgánico o líquido diluido una vez al mes, evitar alto contenido de sales minerales\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Helecho con frondas variegadas que requiere alta humedad para prosperar",
       "medidas": "None",
       "precio_base": "8000.00",
@@ -416,8 +416,8 @@
     "pk": 23,
     "fields": {
       "nombre": "Asplenium nidus venus M13",
-      "descripcion": "Luz: Luz indirecta media a baja, evitar sol directo\r\nRiego: Frecuente y controlado, sustrato siempre ligeramente h·medo sin encharcar\r\nSuelo: Rico en materia orgßnica, buena retenci¾n de humedad pero bien aireado, mezcla de turba, humus y fibra de coco\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos, interiores con buena humedad relativa o ba±os con luz natural\r\nFertilizaci¾n: Cada 4-5 semanas en temporada activa con fertilizante orgßnico lÝquido o especÝfico para helechos, siempre diluido\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Helecho con frondas rizadas y ornamentales que necesita condiciones especÝficas",
+      "descripcion": "Luz: Luz indirecta media a baja, evitar sol directo\r\nRiego: Frecuente y controlado, sustrato siempre ligeramente húmedo sin encharcar\r\nSuelo: Rico en materia orgánica, buena retención de humedad pero bien aireado, mezcla de turba, humus y fibra de coco\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos, interiores con buena humedad relativa o baños con luz natural\r\nFertilización: Cada 4-5 semanas en temporada activa con fertilizante orgánico líquido o específico para helechos, siempre diluido\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Helecho con frondas rizadas y ornamentales que necesita condiciones específicas",
       "medidas": "None",
       "precio_base": "4800.00",
       "porcentaje_extra": "30.00",
@@ -434,7 +434,7 @@
     "pk": 24,
     "fields": {
       "nombre": "Calathea makoyana M11",
-      "descripcion": "Luz: Luz indirecta suave o semisombra, evitar luz directa\r\nRiego: Regulares, sustrato constantemente h·medo pero nunca encharcado\r\nSuelo: Ligero, bien drenado y rico en materia orgßnica, mezcla de turba, perlita y fibra de coco\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Alta humedad, espacios con humedad ambiental elevada o humidificador\r\nFertilizaci¾n: Una vez al mes durante crecimiento activo con fertilizante lÝquido diluido, preferiblemente en primavera y verano\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta suave o semisombra, evitar luz directa\r\nRiego: Regulares, sustrato constantemente húmedo pero nunca encharcado\r\nSuelo: Ligero, bien drenado y rico en materia orgánica, mezcla de turba, perlita y fibra de coco\r\nTemperatura: Ambientes cálidos\r\nHumedad: Alta humedad, espacios con humedad ambiental elevada o humidificador\r\nFertilización: Una vez al mes durante crecimiento activo con fertilizante líquido diluido, preferiblemente en primavera y verano\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Calathea con dibujos vibrantes que requiere alta humedad para mantener su belleza",
       "medidas": "None",
       "precio_base": "4500.00",
@@ -452,7 +452,7 @@
     "pk": 25,
     "fields": {
       "nombre": "Calathea orbifolia M11",
-      "descripcion": "Luz: Luz indirecta intensa o semisombra, evitar quemaduras\r\nRiego: Constantes, sustrato h·medo pero bien drenado, no tolera encharcamiento ni sequÝa prolongada\r\nSuelo: Ligero y rico en materia orgßnica, buena retenci¾n de humedad, mezcla de turba, fibra de coco y perlita\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Alta humedad, habitaciones con humedad controlada o humidificador\r\nFertilizaci¾n: Cada 3-4 semanas durante crecimiento con fertilizante lÝquido diluido\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta intensa o semisombra, evitar quemaduras\r\nRiego: Constantes, sustrato húmedo pero bien drenado, no tolera encharcamiento ni sequía prolongada\r\nSuelo: Ligero y rico en materia orgánica, buena retención de humedad, mezcla de turba, fibra de coco y perlita\r\nTemperatura: Ambientes cálidos\r\nHumedad: Alta humedad, habitaciones con humedad controlada o humidificador\r\nFertilización: Cada 3-4 semanas durante crecimiento con fertilizante líquido diluido\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Calathea con grandes hojas redondeadas y franjas claras distintivas",
       "medidas": "None",
       "precio_base": "4200.00",
@@ -470,7 +470,7 @@
     "pk": 26,
     "fields": {
       "nombre": "Calathea ornata sanderiana M11",
-      "descripcion": "Luz: Luz filtrada o sombra parcial, no tolera sol directo\r\nRiego: Regulares, sustrato h·medo sin saturar, permitir que superficie se seque ligeramente\r\nSuelo: Esponjoso, rico en materia orgßnica y con buen drenaje, turba, perlita y fibra de coco\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Alta humedad, espacios ventilados y h·medos o humidificadores\r\nFertilizaci¾n: Una vez al mes en temporada de crecimiento con fertilizante lÝquido equilibrado\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz filtrada o sombra parcial, no tolera sol directo\r\nRiego: Regulares, sustrato húmedo sin saturar, permitir que superficie se seque ligeramente\r\nSuelo: Esponjoso, rico en materia orgánica y con buen drenaje, turba, perlita y fibra de coco\r\nTemperatura: Ambientes cálidos\r\nHumedad: Alta humedad, espacios ventilados y húmedos o humidificadores\r\nFertilización: Una vez al mes en temporada de crecimiento con fertilizante líquido equilibrado\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Calathea con hojas rayadas de rosa sobre fondo verde oscuro muy decorativa",
       "medidas": "None",
       "precio_base": "4200.00",
@@ -488,7 +488,7 @@
     "pk": 27,
     "fields": {
       "nombre": "Calathea picturata crimson M11",
-      "descripcion": "Luz: Luz indirecta suave a media, evitar luz directa\r\nRiego: Frecuente para mantener sustrato h·medo sin encharcar\r\nSuelo: Sustrato ligero, rico en materia orgßnica y bien drenado\r\nTemperatura: Ambientes cßlidos y estables\r\nHumedad: Alta humedad ambiental, humidificador o pulverizaciones frecuentes\r\nFertilizaci¾n: Mensual durante primavera y verano con fertilizante lÝquido diluido\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta suave a media, evitar luz directa\r\nRiego: Frecuente para mantener sustrato húmedo sin encharcar\r\nSuelo: Sustrato ligero, rico en materia orgánica y bien drenado\r\nTemperatura: Ambientes cálidos y estables\r\nHumedad: Alta humedad ambiental, humidificador o pulverizaciones frecuentes\r\nFertilización: Mensual durante primavera y verano con fertilizante líquido diluido\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Variedad con hojas que presentan tonos rojizos y patrones distintivos. Como otras Calatheas, es sensible a las condiciones ambientales",
       "medidas": "None",
       "precio_base": "5000.00",
@@ -506,7 +506,7 @@
     "pk": 28,
     "fields": {
       "nombre": "Calathea roseopicta crimson green M11",
-      "descripcion": "Luz: Iluminaci¾n suave y difusa, evitar sol directo\r\nRiego: Sustrato constantemente h·medo sin encharcamientos\r\nSuelo: Aireado y fÚrtil, mezcla de turba, compost y perlita\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos, humidificador o pulverizaciones frecuentes\r\nFertilizaci¾n: Mensual en primavera y verano con abono lÝquido diluido\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Iluminación suave y difusa, evitar sol directo\r\nRiego: Sustrato constantemente húmedo sin encharcamientos\r\nSuelo: Aireado y fÚrtil, mezcla de turba, compost y perlita\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos, humidificador o pulverizaciones frecuentes\r\nFertilización: Mensual en primavera y verano con abono líquido diluido\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Calathea bicolor con tonos rojizos y verdes muy llamativa",
       "medidas": "None",
       "precio_base": "4200.00",
@@ -524,7 +524,7 @@
     "pk": 29,
     "fields": {
       "nombre": "Calathea vittata M11",
-      "descripcion": "Luz: Luz indirecta brillante o sombra parcial, evitar luz intensa\r\nRiego: Regulares, tierra ligeramente h·meda permitiendo leve secado superficial\r\nSuelo: Bien aireado y rico en materia orgßnica, turba mezclada con perlita y fibra de coco\r\nTemperatura: Ambiente cßlido\r\nHumedad: Buena humedad, humidificadores o nebulizaciones peri¾dicas\r\nFertilizaci¾n: Una vez al mes en Úpoca de crecimiento con fertilizante lÝquido suave\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta brillante o sombra parcial, evitar luz intensa\r\nRiego: Regulares, tierra ligeramente húmeda permitiendo leve secado superficial\r\nSuelo: Bien aireado y rico en materia orgánica, turba mezclada con perlita y fibra de coco\r\nTemperatura: Ambiente cálido\r\nHumedad: Buena humedad, humidificadores o nebulizaciones periódicas\r\nFertilización: Una vez al mes en Úpoca de crecimiento con fertilizante líquido suave\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Calathea con rayas blancas y verdes distintivas en el follaje",
       "medidas": "None",
       "precio_base": "3500.00",
@@ -542,8 +542,8 @@
     "pk": 30,
     "fields": {
       "nombre": "Ceropegia woodii variegada M9",
-      "descripcion": "Luz: Luz intensa pero indirecta, exposici¾n directa puede quemar hojas\r\nRiego: Moderado, dejar sustrato secar completamente entre riegos\r\nSuelo: Muy bien drenado, mezcla para cactus o suculentas\r\nTemperatura: Ambientes cßlidos y ventilados\r\nHumedad: Poca humedad ambiental\r\nFertilizaci¾n: Primavera y verano con fertilizante lÝquido diluido cada mes\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Planta suculenta colgante con hojas en forma de coraz¾n y patrones variegados",
+      "descripcion": "Luz: Luz intensa pero indirecta, exposición directa puede quemar hojas\r\nRiego: Moderado, dejar sustrato secar completamente entre riegos\r\nSuelo: Muy bien drenado, mezcla para cactus o suculentas\r\nTemperatura: Ambientes cálidos y ventilados\r\nHumedad: Poca humedad ambiental\r\nFertilización: Primavera y verano con fertilizante líquido diluido cada mes\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Planta suculenta colgante con hojas en forma de corazón y patrones variegados",
       "medidas": "None",
       "precio_base": "3800.00",
       "porcentaje_extra": "30.00",
@@ -560,8 +560,8 @@
     "pk": 31,
     "fields": {
       "nombre": "Colocasia mickey mouse M10",
-      "descripcion": "Luz: Luz filtrada o semisombra, evitar da±os en hojas\r\nRiego: Frecuentes, sustrato constantemente h·medo con buen drenaje\r\nSuelo: Rico en materia orgßnica, suelto y bien aireado, mezcla de turba, compost y perlita\r\nTemperatura: Clima cßlido\r\nHumedad: Alta humedad, pulverizar o usar humidificadores\r\nFertilizaci¾n: Mensual con abono lÝquido\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Planta con hojas caracterÝsticas que recuerdan a las orejas de Mickey Mouse",
+      "descripcion": "Luz: Luz filtrada o semisombra, evitar daños en hojas\r\nRiego: Frecuentes, sustrato constantemente húmedo con buen drenaje\r\nSuelo: Rico en materia orgánica, suelto y bien aireado, mezcla de turba, compost y perlita\r\nTemperatura: Clima cálido\r\nHumedad: Alta humedad, pulverizar o usar humidificadores\r\nFertilización: Mensual con abono líquido\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Planta con hojas características que recuerdan a las orejas de Mickey Mouse",
       "medidas": "None",
       "precio_base": "16000.00",
       "porcentaje_extra": "30.00",
@@ -578,7 +578,7 @@
     "pk": 32,
     "fields": {
       "nombre": "Dieffenbachia reflector M10.5",
-      "descripcion": "Luz: Luz indirecta intensa, evitar sol directo que causa manchas amarillentas\r\nRiego: Moderados, dejar secar superficie del sustrato ligeramente entre riegos\r\nSuelo: Rico en nutrientes, bien drenado y aireado, mezcla de turba, compost y perlita\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Buena humedad, nebulizaciones o humidificadores\r\nFertilizaci¾n: Una vez al mes durante crecimiento activo con abono lÝquido equilibrado\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta intensa, evitar sol directo que causa manchas amarillentas\r\nRiego: Moderados, dejar secar superficie del sustrato ligeramente entre riegos\r\nSuelo: Rico en nutrientes, bien drenado y aireado, mezcla de turba, compost y perlita\r\nTemperatura: Ambientes cálidos\r\nHumedad: Buena humedad, nebulizaciones o humidificadores\r\nFertilización: Una vez al mes durante crecimiento activo con abono líquido equilibrado\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Planta de interior robusta con hojas grandes y manchadas",
       "medidas": "None",
       "precio_base": "5000.00",
@@ -596,8 +596,8 @@
     "pk": 33,
     "fields": {
       "nombre": "Epipremnum manjula M10",
-      "descripcion": "Luz: Luz brillante pero filtrada, evitar quemaduras\r\nRiego: Moderados, dejar secar ligeramente capa superior entre riegos\r\nSuelo: Suelto y bien drenado, mezcla de turba, perlita y compost\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Media a alta, humidificadores o nebulizaciones\r\nFertilizaci¾n: Cada mes durante crecimiento con fertilizante lÝquido diluido\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Pothos con follaje variegado que requiere buena iluminaci¾n",
+      "descripcion": "Luz: Luz brillante pero filtrada, evitar quemaduras\r\nRiego: Moderados, dejar secar ligeramente capa superior entre riegos\r\nSuelo: Suelto y bien drenado, mezcla de turba, perlita y compost\r\nTemperatura: Ambientes cálidos\r\nHumedad: Media a alta, humidificadores o nebulizaciones\r\nFertilización: Cada mes durante crecimiento con fertilizante líquido diluido\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Pothos con follaje variegado que requiere buena iluminación",
       "medidas": "None",
       "precio_base": "8000.00",
       "porcentaje_extra": "30.00",
@@ -614,7 +614,7 @@
     "pk": 34,
     "fields": {
       "nombre": "Ficus tineke M13",
-      "descripcion": "Luz: Iluminaci¾n indirecta brillante, no tolera sol directo\r\nRiego: Regulares y moderados, dejar secar ligeramente capa superior entre riegos\r\nSuelo: FÚrtil y bien drenado, mezcla de turba, compost y perlita\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual en primavera y verano con fertilizante lÝquido\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Iluminación indirecta brillante, no tolera sol directo\r\nRiego: Regulares y moderados, dejar secar ligeramente capa superior entre riegos\r\nSuelo: FÚrtil y bien drenado, mezcla de turba, compost y perlita\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual en primavera y verano con fertilizante líquido\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Ficus con hojas variegadas y brillantes muy popular",
       "medidas": "None",
       "precio_base": "3900.00",
@@ -632,8 +632,8 @@
     "pk": 35,
     "fields": {
       "nombre": "Hoya carnosa verde",
-      "descripcion": "Luz: Luz brillante indirecta, tolera algo de sombra, evitar sol directo\r\nRiego: Espaciados, permitir que sustrato se seque casi completamente entre riegos\r\nSuelo: Aireado y drenante, mezcla para suculentas con perlita y turba\r\nTemperatura: Temperaturas templadas\r\nHumedad: Humedad moderada\r\nFertilizaci¾n: Una vez al mes en primavera y verano con fertilizante lÝquido equilibrado\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Hoya clßsica con hojas carnosas y flores fragantes",
+      "descripcion": "Luz: Luz brillante indirecta, tolera algo de sombra, evitar sol directo\r\nRiego: Espaciados, permitir que sustrato se seque casi completamente entre riegos\r\nSuelo: Aireado y drenante, mezcla para suculentas con perlita y turba\r\nTemperatura: Temperaturas templadas\r\nHumedad: Humedad moderada\r\nFertilización: Una vez al mes en primavera y verano con fertilizante líquido equilibrado\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Hoya clásica con hojas carnosas y flores fragantes",
       "medidas": "None",
       "precio_base": "3900.00",
       "porcentaje_extra": "30.00",
@@ -650,7 +650,7 @@
     "pk": 36,
     "fields": {
       "nombre": "Hoya krimson queen M11",
-      "descripcion": "Luz: Luz intensa filtrada que ayude a mantener variegaci¾n\r\nRiego: Moderados, dejar secar sustrato entre riegos\r\nSuelo: Ligero y bien drenado, similar a mezcla para orquÝdeas o suculentas\r\nTemperatura: Temperaturas cßlidas\r\nHumedad: Humedad ambiental moderada\r\nFertilizaci¾n: Mensual en temporada de crecimiento\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz intensa filtrada que ayude a mantener variegación\r\nRiego: Moderados, dejar secar sustrato entre riegos\r\nSuelo: Ligero y bien drenado, similar a mezcla para orquídeas o suculentas\r\nTemperatura: Temperaturas cálidas\r\nHumedad: Humedad ambiental moderada\r\nFertilización: Mensual en temporada de crecimiento\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Hoya variegada con hojas rosadas y verdes muy decorativa",
       "medidas": "None",
       "precio_base": "3900.00",
@@ -668,8 +668,8 @@
     "pk": 37,
     "fields": {
       "nombre": "Hoya wayetii M11",
-      "descripcion": "Luz: Luz brillante e indirecta, evitar quemaduras\r\nRiego: Moderado, permitir que sustrato se seque entre riegos\r\nSuelo: Ligero, aireado y drenante, mezcla de turba, perlita y corteza de pino\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad moderada, nebulizaciones ocasionales\r\nFertilizaci¾n: Mensual en primavera y verano\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Hoya con crecimiento compacto que requiere cuidados especÝficos",
+      "descripcion": "Luz: Luz brillante e indirecta, evitar quemaduras\r\nRiego: Moderado, permitir que sustrato se seque entre riegos\r\nSuelo: Ligero, aireado y drenante, mezcla de turba, perlita y corteza de pino\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad moderada, nebulizaciones ocasionales\r\nFertilización: Mensual en primavera y verano\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Hoya con crecimiento compacto que requiere cuidados específicos",
       "medidas": "None",
       "precio_base": "9000.00",
       "porcentaje_extra": "30.00",
@@ -686,7 +686,7 @@
     "pk": 38,
     "fields": {
       "nombre": "Maranta lemon lime B15",
-      "descripcion": "Luz: Luz indirecta suave, evitar sol directo\r\nRiego: Frecuentes, sustrato ligeramente h·medo con buen drenaje\r\nSuelo: Rico en materia orgßnica y aireado, turba, fibra de coco y perlita\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos, humidificadores\r\nFertilizaci¾n: Mensual en Úpoca de crecimiento\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta suave, evitar sol directo\r\nRiego: Frecuentes, sustrato ligeramente húmedo con buen drenaje\r\nSuelo: Rico en materia orgánica y aireado, turba, fibra de coco y perlita\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos, humidificadores\r\nFertilización: Mensual en Úpoca de crecimiento\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Maranta con contraste intenso entre verde y amarillo en las hojas",
       "medidas": "None",
       "precio_base": "7000.00",
@@ -704,7 +704,7 @@
     "pk": 39,
     "fields": {
       "nombre": "Maranta leuconeura kerchoveana variegata M11",
-      "descripcion": "Luz: Luz filtrada o semisombra, evitar sol directo\r\nRiego: Regulares, sustrato ligeramente h·medo permitiendo leve secado superficial\r\nSuelo: Suelto, rico en materia orgßnica y con buen drenaje\r\nTemperatura: Ambiente cßlido\r\nHumedad: Alta humedad, nebulizar o usar humidificadores\r\nFertilizaci¾n: Mensual en primavera y verano\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz filtrada o semisombra, evitar sol directo\r\nRiego: Regulares, sustrato ligeramente húmedo permitiendo leve secado superficial\r\nSuelo: Suelto, rico en materia orgánica y con buen drenaje\r\nTemperatura: Ambiente cálido\r\nHumedad: Alta humedad, nebulizar o usar humidificadores\r\nFertilización: Mensual en primavera y verano\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Maranta con marcas blancas y verdes distintivas en las hojas",
       "medidas": "None",
       "precio_base": "5500.00",
@@ -722,7 +722,7 @@
     "pk": 40,
     "fields": {
       "nombre": "Monstera deliciosa thai constellation M12",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Moderados, permitir que superficie se seque entre riegos\r\nSuelo: Rico en nutrientes, aireado y con buen drenaje, turba, perlita y compost\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad elevada, humidificadores o nebulizaciones\r\nFertilizaci¾n: Mensual en temporada de crecimiento con fertilizante lÝquido\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Moderados, permitir que superficie se seque entre riegos\r\nSuelo: Rico en nutrientes, aireado y con buen drenaje, turba, perlita y compost\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad elevada, humidificadores o nebulizaciones\r\nFertilización: Mensual en temporada de crecimiento con fertilizante líquido\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Monstera variegada muy cotizada con hojas crema y verde oscuro",
       "medidas": "None",
       "precio_base": "15000.00",
@@ -740,8 +740,8 @@
     "pk": 41,
     "fields": {
       "nombre": "Monstera deliciosa M15",
-      "descripcion": "Luz: Luz brillante y filtrada, evitar sol directo\r\nRiego: Sustrato h·medo pero nunca encharcado, regar cuando capa superior estÚ seca\r\nSuelo: Suelto y rico en materia orgßnica, buena capacidad de drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Buena humedad, nebulizaci¾n frecuente\r\nFertilizaci¾n: Mensual en primavera y verano con fertilizante lÝquido\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Monstera clßsica con hojas grandes y perforadas ic¾nica",
+      "descripcion": "Luz: Luz brillante y filtrada, evitar sol directo\r\nRiego: Sustrato húmedo pero nunca encharcado, regar cuando capa superior estÚ seca\r\nSuelo: Suelto y rico en materia orgánica, buena capacidad de drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Buena humedad, nebulización frecuente\r\nFertilización: Mensual en primavera y verano con fertilizante líquido\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Monstera clásica con hojas grandes y perforadas icónica",
       "medidas": "None",
       "precio_base": "4100.00",
       "porcentaje_extra": "30.00",
@@ -758,8 +758,8 @@
     "pk": 42,
     "fields": {
       "nombre": "Musa acuminata Zebrina M26",
-      "descripcion": "Luz: Luz indirecta brillante para mantener patrones rayados\r\nRiego: Frecuente para mantener sustrato h·medo, evitar encharcamiento\r\nSuelo: Sustrato fÚrtil, bien drenado y con buena retenci¾n de humedad\r\nTemperatura: Ambientes cßlidos y estables\r\nHumedad: Alta humedad ambiental, nebulizaciones regulares o humidificador\r\nFertilizaci¾n: Mensual durante crecimiento activo con fertilizante equilibrado\r\nNivel: DifÝcil - Guardißn Verde",
-      "descripcion_corta": "lanta tipo banano ornamental con hojas rayadas distintivas. Requiere espacio y condiciones especÝficas para desarrollarse adecuadamente",
+      "descripcion": "Luz: Luz indirecta brillante para mantener patrones rayados\r\nRiego: Frecuente para mantener sustrato húmedo, evitar encharcamiento\r\nSuelo: Sustrato fÚrtil, bien drenado y con buena retención de humedad\r\nTemperatura: Ambientes cálidos y estables\r\nHumedad: Alta humedad ambiental, nebulizaciones regulares o humidificador\r\nFertilización: Mensual durante crecimiento activo con fertilizante equilibrado\r\nNivel: Difícil - Guardián Verde",
+      "descripcion_corta": "lanta tipo banano ornamental con hojas rayadas distintivas. Requiere espacio y condiciones específicas para desarrollarse adecuadamente",
       "medidas": "None",
       "precio_base": "14800.00",
       "porcentaje_extra": "30.00",
@@ -776,7 +776,7 @@
     "pk": 43,
     "fields": {
       "nombre": "Musa florida verde M17",
-      "descripcion": "Luz: Luz indirecta brillante o semisombra, evitar quemaduras\r\nRiego: Regulares, tierra h·meda con buen drenaje evitando encharcamientos\r\nSuelo: Rico en materia orgßnica y aireado\r\nTemperatura: Ambiente cßlido\r\nHumedad: H·medo, nebulizaciones o humidificadores\r\nFertilizaci¾n: Mensual con abono lÝquido\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta brillante o semisombra, evitar quemaduras\r\nRiego: Regulares, tierra húmeda con buen drenaje evitando encharcamientos\r\nSuelo: Rico en materia orgánica y aireado\r\nTemperatura: Ambiente cálido\r\nHumedad: Húmedo, nebulizaciones o humidificadores\r\nFertilización: Mensual con abono líquido\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Banano ornamental con hojas grandes y verdes ideal para interiores amplios",
       "medidas": "None",
       "precio_base": "7000.00",
@@ -794,7 +794,7 @@
     "pk": 44,
     "fields": {
       "nombre": "Musa florida verde M26",
-      "descripcion": "Luz: Luz indirecta brillante o semisombra, evitar quemaduras\r\nRiego: Regulares, tierra h·meda con buen drenaje evitando encharcamientos\r\nSuelo: Rico en materia orgßnica y aireado\r\nTemperatura: Ambiente cßlido\r\nHumedad: H·medo, nebulizaciones o humidificadores\r\nFertilizaci¾n: Mensual con abono lÝquido\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta brillante o semisombra, evitar quemaduras\r\nRiego: Regulares, tierra húmeda con buen drenaje evitando encharcamientos\r\nSuelo: Rico en materia orgánica y aireado\r\nTemperatura: Ambiente cálido\r\nHumedad: Húmedo, nebulizaciones o humidificadores\r\nFertilización: Mensual con abono líquido\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Banano ornamental con hojas grandes y verdes ideal para interiores amplios",
       "medidas": "None",
       "precio_base": "12500.00",
@@ -812,7 +812,7 @@
     "pk": 45,
     "fields": {
       "nombre": "Philodendron bipennifolium aurea M11",
-      "descripcion": "Luz: Luz filtrada para preservar tono dorado\r\nRiego: Regulares, sustrato h·medo sin encharcarse\r\nSuelo: Rico en materia orgßnica, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos, nebulizaciones beneficiosas\r\nFertilizaci¾n: Una vez al mes durante temporada activa\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz filtrada para preservar tono dorado\r\nRiego: Regulares, sustrato húmedo sin encharcarse\r\nSuelo: Rico en materia orgánica, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos, nebulizaciones beneficiosas\r\nFertilización: Una vez al mes durante temporada activa\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con hojas grandes profundamente divididas y tono dorado",
       "medidas": "None",
       "precio_base": "9000.00",
@@ -830,7 +830,7 @@
     "pk": 46,
     "fields": {
       "nombre": "Philodendron gloriosum darkform M13",
-      "descripcion": "Luz: Luz indirecta suave para proteger hojas aterciopeladas\r\nRiego: Frecuentes, sustrato h·medo pero bien drenado evitando encharcamientos\r\nSuelo: Ligero, rico en materia orgßnica y con buena aireaci¾n, turba, fibra de coco y perlita\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Alta humedad, nebulizar o usar humidificadores\r\nFertilizaci¾n: Mensual con abono lÝquido\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta suave para proteger hojas aterciopeladas\r\nRiego: Frecuentes, sustrato húmedo pero bien drenado evitando encharcamientos\r\nSuelo: Ligero, rico en materia orgánica y con buena aireación, turba, fibra de coco y perlita\r\nTemperatura: Ambientes cálidos\r\nHumedad: Alta humedad, nebulizar o usar humidificadores\r\nFertilización: Mensual con abono líquido\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con hojas grandes aterciopeladas y venas claras",
       "medidas": "None",
       "precio_base": "9500.00",
@@ -848,7 +848,7 @@
     "pk": 47,
     "fields": {
       "nombre": "Philodendron gloriosum darkform M23",
-      "descripcion": "Luz: Luz indirecta suave para proteger hojas aterciopeladas\r\nRiego: Frecuentes, sustrato h·medo pero bien drenado evitando encharcamientos\r\nSuelo: Ligero, rico en materia orgßnica y con buena aireaci¾n, turba, fibra de coco y perlita\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Alta humedad, nebulizar o usar humidificadores\r\nFertilizaci¾n: Mensual con abono lÝquido\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta suave para proteger hojas aterciopeladas\r\nRiego: Frecuentes, sustrato húmedo pero bien drenado evitando encharcamientos\r\nSuelo: Ligero, rico en materia orgánica y con buena aireación, turba, fibra de coco y perlita\r\nTemperatura: Ambientes cálidos\r\nHumedad: Alta humedad, nebulizar o usar humidificadores\r\nFertilización: Mensual con abono líquido\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con hojas grandes aterciopeladas y venas claras",
       "medidas": "None",
       "precio_base": "21000.00",
@@ -866,8 +866,8 @@
     "pk": 48,
     "fields": {
       "nombre": "Philodendron imbe paraiso verde variegated M13",
-      "descripcion": "Luz: Luz brillante e indirecta que realce variegaci¾n\r\nRiego: Regulares, dejar secar capa superior entre riegos\r\nSuelo: Nutritivo, suelto y bien drenado\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad elevada, nebulizaciones beneficiosas\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con distintiva variegaci¾n verde y crema",
+      "descripcion": "Luz: Luz brillante e indirecta que realce variegación\r\nRiego: Regulares, dejar secar capa superior entre riegos\r\nSuelo: Nutritivo, suelto y bien drenado\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad elevada, nebulizaciones beneficiosas\r\nFertilización: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con distintiva variegación verde y crema",
       "medidas": "None",
       "precio_base": "7500.00",
       "porcentaje_extra": "30.00",
@@ -884,7 +884,7 @@
     "pk": 49,
     "fields": {
       "nombre": "Philodendron imperial golden M13",
-      "descripcion": "Luz: Iluminaci¾n brillante y filtrada, evitar sol directo\r\nRiego: Moderado, dejar secar ligeramente superficie entre riegos\r\nSuelo: Rico en materia orgßnica y bien aireado\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual con fertilizante lÝquido\r\nNivel: DifÝcil - Guardian Verde",
+      "descripcion": "Luz: Iluminación brillante y filtrada, evitar sol directo\r\nRiego: Moderado, dejar secar ligeramente superficie entre riegos\r\nSuelo: Rico en materia orgánica y bien aireado\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual con fertilizante líquido\r\nNivel: Difícil - Guardian Verde",
       "descripcion_corta": "Philodendron con intenso follaje dorado muy llamativo",
       "medidas": "None",
       "precio_base": "7000.00",
@@ -902,7 +902,7 @@
     "pk": 50,
     "fields": {
       "nombre": "Philodendron imperial green M11",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares, permitir leve secado superficial entre riegos\r\nSuelo: Ricos, aireados y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Media a alta\r\nFertilizaci¾n: Mensual en temporada activa\r\nNivel: DifÝcil - Guardian Verde\r\n\r\n",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares, permitir leve secado superficial entre riegos\r\nSuelo: Ricos, aireados y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Media a alta\r\nFertilización: Mensual en temporada activa\r\nNivel: Difícil - Guardian Verde\r\n\r\n",
       "descripcion_corta": "Philodendron con intenso verde en grandes hojas",
       "medidas": "None",
       "precio_base": "6500.00",
@@ -920,7 +920,7 @@
     "pk": 51,
     "fields": {
       "nombre": "Philodendron malay gold M11",
-      "descripcion": "Luz: Luz brillante pero indirecta, evitar sol directo\r\nRiego: Moderado, dejar secar superficie entre riegos\r\nSuelo: Ligero, fÚrtil y con buen drenaje\r\nTemperatura: Temperaturas cßlidas\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz brillante pero indirecta, evitar sol directo\r\nRiego: Moderado, dejar secar superficie entre riegos\r\nSuelo: Ligero, fÚrtil y con buen drenaje\r\nTemperatura: Temperaturas cálidas\r\nHumedad: Humedad media\r\nFertilización: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con brillo y tonalidad dorada en el follaje",
       "medidas": "None",
       "precio_base": "7500.00",
@@ -938,7 +938,7 @@
     "pk": 52,
     "fields": {
       "nombre": "Philodendron malay gold M15",
-      "descripcion": "Luz: Luz brillante pero indirecta, evitar sol directo\r\nRiego: Moderado, dejar secar superficie entre riegos\r\nSuelo: Ligero, fÚrtil y con buen drenaje\r\nTemperatura: Temperaturas cßlidas\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz brillante pero indirecta, evitar sol directo\r\nRiego: Moderado, dejar secar superficie entre riegos\r\nSuelo: Ligero, fÚrtil y con buen drenaje\r\nTemperatura: Temperaturas cálidas\r\nHumedad: Humedad media\r\nFertilización: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con brillo y tonalidad dorada en el follaje",
       "medidas": "None",
       "precio_base": "9500.00",
@@ -956,7 +956,7 @@
     "pk": 53,
     "fields": {
       "nombre": "Philodendron melanochrysum M11",
-      "descripcion": "Luz: Luz filtrada y brillante, evitar sol directo\r\nRiego: Frecuentes pero con buen drenaje, sustrato h·medo sin encharcar\r\nSuelo: Rico en materia orgßnica y aireado\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Alta humedad\r\nFertilizaci¾n: Cada mes durante temporada de crecimiento\r\nNivel: DifÝcil - Guardian Verde",
+      "descripcion": "Luz: Luz filtrada y brillante, evitar sol directo\r\nRiego: Frecuentes pero con buen drenaje, sustrato húmedo sin encharcar\r\nSuelo: Rico en materia orgánica y aireado\r\nTemperatura: Ambientes cálidos\r\nHumedad: Alta humedad\r\nFertilización: Cada mes durante temporada de crecimiento\r\nNivel: Difícil - Guardian Verde",
       "descripcion_corta": "Philodendron con color oscuro aterciopelado muy elegante",
       "medidas": "None",
       "precio_base": "10000.00",
@@ -974,8 +974,8 @@
     "pk": 54,
     "fields": {
       "nombre": "Philodendron pedatum florida ghost M11",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Constantes pero controlados, dejar secar ligeramente entre riegos\r\nSuelo: Aireado, fÚrtil y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad moderada\r\nFertilizaci¾n: Una vez al mes en Úpoca de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con follaje ·nico blanco con matices verdes",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Constantes pero controlados, dejar secar ligeramente entre riegos\r\nSuelo: Aireado, fÚrtil y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad moderada\r\nFertilización: Una vez al mes en Úpoca de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con follaje único blanco con matices verdes",
       "medidas": "None",
       "precio_base": "11000.00",
       "porcentaje_extra": "30.00",
@@ -992,8 +992,8 @@
     "pk": 55,
     "fields": {
       "nombre": "Philodendron pink princess M13",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares y controlados, dejar secar ligeramente entre riegos\r\nSuelo: Nutritivo, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con hermosa variegaci¾n rosada muy cotizado",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares y controlados, dejar secar ligeramente entre riegos\r\nSuelo: Nutritivo, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos\r\nFertilización: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con hermosa variegación rosada muy cotizado",
       "medidas": "None",
       "precio_base": "9500.00",
       "porcentaje_extra": "30.00",
@@ -1010,8 +1010,8 @@
     "pk": 56,
     "fields": {
       "nombre": "Philodendron pink princess ScndCh",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares y controlados, dejar secar ligeramente entre riegos\r\nSuelo: Nutritivo, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con hermosa variegaci¾n rosada muy cotizado",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares y controlados, dejar secar ligeramente entre riegos\r\nSuelo: Nutritivo, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos\r\nFertilización: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con hermosa variegación rosada muy cotizado",
       "medidas": "None",
       "precio_base": "3500.00",
       "porcentaje_extra": "30.00",
@@ -1028,7 +1028,7 @@
     "pk": 57,
     "fields": {
       "nombre": "Philodendron pluto M13",
-      "descripcion": "Luz: Luz brillante e indirecta, evitar luz directa\r\nRiego: Moderado, asegurar buen drenaje evitando encharcamiento\r\nSuelo: Rico en nutrientes, aireado y ligero\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Una vez al mes en temporada de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz brillante e indirecta, evitar luz directa\r\nRiego: Moderado, asegurar buen drenaje evitando encharcamiento\r\nSuelo: Rico en nutrientes, aireado y ligero\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Una vez al mes en temporada de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con follaje oscuro y brillante muy elegante",
       "medidas": "None",
       "precio_base": "10000.00",
@@ -1046,7 +1046,7 @@
     "pk": 58,
     "fields": {
       "nombre": "Philodendron prince of orange M11",
-      "descripcion": "Luz: Luz filtrada y brillante, evitar sol directo\r\nRiego: Regulares, dejar secar ligeramente superficie\r\nSuelo: Sueltos, ricos en materia orgßnica y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Moderada a alta\r\nFertilizaci¾n: Mensual durante fase activa\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz filtrada y brillante, evitar sol directo\r\nRiego: Regulares, dejar secar ligeramente superficie\r\nSuelo: Sueltos, ricos en materia orgánica y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Moderada a alta\r\nFertilización: Mensual durante fase activa\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con contraste entre hojas naranja y verdes",
       "medidas": "None",
       "precio_base": "6500.00",
@@ -1064,8 +1064,8 @@
     "pk": 59,
     "fields": {
       "nombre": "Philodendron ring of fire golden M11",
-      "descripcion": "Luz: Luz intensa pero indirecta, evitar sol directo\r\nRiego: Moderados, permitir secado superficial entre riegos\r\nSuelo: Aireado, fÚrtil y bien drenado\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual en primavera y verano\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con llamativa variegaci¾n dorada",
+      "descripcion": "Luz: Luz intensa pero indirecta, evitar sol directo\r\nRiego: Moderados, permitir secado superficial entre riegos\r\nSuelo: Aireado, fÚrtil y bien drenado\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual en primavera y verano\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con llamativa variegación dorada",
       "medidas": "None",
       "precio_base": "8000.00",
       "porcentaje_extra": "30.00",
@@ -1082,8 +1082,8 @@
     "pk": 60,
     "fields": {
       "nombre": "Philodendron ring of fire variegated M11",
-      "descripcion": "Luz: Luz brillante indirecta, evitar luz directa\r\nRiego: Regulares pero controlados, permitir secado superficial entre riegos\r\nSuelo: Rico en materia orgßnica, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad moderada\r\nFertilizaci¾n: Mensual durante crecimiento con fertilizante lÝquido\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con variegaci¾n blanca y verde distintiva",
+      "descripcion": "Luz: Luz brillante indirecta, evitar luz directa\r\nRiego: Regulares pero controlados, permitir secado superficial entre riegos\r\nSuelo: Rico en materia orgánica, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad moderada\r\nFertilización: Mensual durante crecimiento con fertilizante líquido\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con variegación blanca y verde distintiva",
       "medidas": "None",
       "precio_base": "10000.00",
       "porcentaje_extra": "30.00",
@@ -1100,7 +1100,7 @@
     "pk": 61,
     "fields": {
       "nombre": "Philodendron selloum micans M11",
-      "descripcion": "Luz: Luz brillante y filtrada, evitar sol directo\r\nRiego: Constantes pero evitando exceso de humedad\r\nSuelo: Nutritivo, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos, nebulizaci¾n recomendable\r\nFertilizaci¾n: Mensual\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz brillante y filtrada, evitar sol directo\r\nRiego: Constantes pero evitando exceso de humedad\r\nSuelo: Nutritivo, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos, nebulización recomendable\r\nFertilización: Mensual\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Philodendron con hojas grandes divididas y tono verde oscuro",
       "medidas": "None",
       "precio_base": "8000.00",
@@ -1118,7 +1118,7 @@
     "pk": 62,
     "fields": {
       "nombre": "Philodendron selloum sun red M11",
-      "descripcion": "Luz: Luz indirecta brillante que potencie tonos rojizos, evitar sol directo\r\nRiego: Moderados, permitir secado superficial entre riegos\r\nSuelo: Rico, aireado y bien drenado\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Una vez al mes durante periodo activo\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta brillante que potencie tonos rojizos, evitar sol directo\r\nRiego: Moderados, permitir secado superficial entre riegos\r\nSuelo: Rico, aireado y bien drenado\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Una vez al mes durante periodo activo\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con tonos rojizos distintivos en las hojas",
       "medidas": "None",
       "precio_base": "7500.00",
@@ -1136,8 +1136,8 @@
     "pk": 63,
     "fields": {
       "nombre": "Philodendron silver hastatum M11",
-      "descripcion": "Luz: Luz indirecta brillante para preservar el color plateado\r\nRiego: Moderado, permitir secado superficial entre riegos\r\nSuelo: Sustrato aireado, rico en materia orgßnica y bien drenado\r\nTemperatura: Ambientes cßlidos y estables\r\nHumedad: Humedad ambiental moderada a alta\r\nFertilizaci¾n: Mensual durante temporada de crecimiento con fertilizante lÝquido equilibrado\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con hojas en forma de flecha de color plateado metßlico. Variedad llamativa que requiere cuidados especÝficos para mantener su coloraci¾n",
+      "descripcion": "Luz: Luz indirecta brillante para preservar el color plateado\r\nRiego: Moderado, permitir secado superficial entre riegos\r\nSuelo: Sustrato aireado, rico en materia orgánica y bien drenado\r\nTemperatura: Ambientes cálidos y estables\r\nHumedad: Humedad ambiental moderada a alta\r\nFertilización: Mensual durante temporada de crecimiento con fertilizante líquido equilibrado\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con hojas en forma de flecha de color plateado metálico. Variedad llamativa que requiere cuidados específicos para mantener su coloración",
       "medidas": "None",
       "precio_base": "4000.00",
       "porcentaje_extra": "30.00",
@@ -1154,7 +1154,7 @@
     "pk": 64,
     "fields": {
       "nombre": "Philodendron squamiferum M11",
-      "descripcion": "Luz: Luz filtrada y brillante, evitar luz directa\r\nRiego: Regulares, dejar secar superficie entre riegos\r\nSuelo: Rico en materia orgßnica, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos\r\nFertilizaci¾n: Mensual en primavera y verano\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz filtrada y brillante, evitar luz directa\r\nRiego: Regulares, dejar secar superficie entre riegos\r\nSuelo: Rico en materia orgánica, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos\r\nFertilización: Mensual en primavera y verano\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con hojas de bordes escamosos muy particular",
       "medidas": "None",
       "precio_base": "7000.00",
@@ -1172,7 +1172,7 @@
     "pk": 65,
     "fields": {
       "nombre": "Philodendron verrucosum M11",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Frecuentes, sustrato h·medo pero nunca encharcado\r\nSuelo: Rico en materia orgßnica, aireado y bien drenado\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Alta humedad\r\nFertilizaci¾n: Mensual durante fase activa\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Frecuentes, sustrato húmedo pero nunca encharcado\r\nSuelo: Rico en materia orgánica, aireado y bien drenado\r\nTemperatura: Ambientes cálidos\r\nHumedad: Alta humedad\r\nFertilización: Mensual durante fase activa\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con textura aterciopelada y venas claras",
       "medidas": "None",
       "precio_base": "7000.00",
@@ -1190,7 +1190,7 @@
     "pk": 66,
     "fields": {
       "nombre": "Philodendron warscewiczii flavum M13",
-      "descripcion": "Luz: Luz brillante pero filtrada, evitar luz directa\r\nRiego: Regulares, dejar secar ligeramente entre riegos\r\nSuelo: FÚrtil, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Media a alta\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: DifÝcil - Guardian Verde",
+      "descripcion": "Luz: Luz brillante pero filtrada, evitar luz directa\r\nRiego: Regulares, dejar secar ligeramente entre riegos\r\nSuelo: FÚrtil, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Media a alta\r\nFertilización: Mensual durante crecimiento\r\nNivel: Difícil - Guardian Verde",
       "descripcion_corta": "Philodendron con hojas grandes de color verde claro y textura lisa",
       "medidas": "None",
       "precio_base": "10000.00",
@@ -1208,7 +1208,7 @@
     "pk": 67,
     "fields": {
       "nombre": "Philodendron warscewiczii flavum M17",
-      "descripcion": "Luz: Luz brillante pero filtrada, evitar luz directa\r\nRiego: Regulares, dejar secar ligeramente entre riegos\r\nSuelo: FÚrtil, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Media a alta\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: DifÝcil - Guardian Verde",
+      "descripcion": "Luz: Luz brillante pero filtrada, evitar luz directa\r\nRiego: Regulares, dejar secar ligeramente entre riegos\r\nSuelo: FÚrtil, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Media a alta\r\nFertilización: Mensual durante crecimiento\r\nNivel: Difícil - Guardian Verde",
       "descripcion_corta": "Philodendron con hojas grandes de color verde claro y textura lisa",
       "medidas": "None",
       "precio_base": "13500.00",
@@ -1226,7 +1226,7 @@
     "pk": 68,
     "fields": {
       "nombre": "Philodendron white knight M11",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Constantes pero controlados, dejar secar ligeramente superficie\r\nSuelo: Aireado, nutritivo y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Constantes pero controlados, dejar secar ligeramente superficie\r\nSuelo: Aireado, nutritivo y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con contraste blanco y verde elegante",
       "medidas": "None",
       "precio_base": "7500.00",
@@ -1244,7 +1244,7 @@
     "pk": 69,
     "fields": {
       "nombre": "Philodendron white knight ScndCh",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Constantes pero controlados, dejar secar ligeramente superficie\r\nSuelo: Aireado, nutritivo y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Constantes pero controlados, dejar secar ligeramente superficie\r\nSuelo: Aireado, nutritivo y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con contraste blanco y verde elegante",
       "medidas": "None",
       "precio_base": "3500.00",
@@ -1262,8 +1262,8 @@
     "pk": 70,
     "fields": {
       "nombre": "Philodendron white princess M11",
-      "descripcion": "Luz: Luz filtrada brillante, evitar sol directo\r\nRiego: Moderado, permitir secado ligero entre riegos\r\nSuelo: Sueltos, ricos en materia orgßnica y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual en Úpoca de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con variegaci¾n blanca y verde distintiva",
+      "descripcion": "Luz: Luz filtrada brillante, evitar sol directo\r\nRiego: Moderado, permitir secado ligero entre riegos\r\nSuelo: Sueltos, ricos en materia orgánica y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual en Úpoca de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con variegación blanca y verde distintiva",
       "medidas": "None",
       "precio_base": "7500.00",
       "porcentaje_extra": "30.00",
@@ -1280,8 +1280,8 @@
     "pk": 71,
     "fields": {
       "nombre": "Philodendron white princess ScndCh",
-      "descripcion": "Luz: Luz filtrada brillante, evitar sol directo\r\nRiego: Moderado, permitir secado ligero entre riegos\r\nSuelo: Sueltos, ricos en materia orgßnica y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual en Úpoca de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con variegaci¾n blanca y verde distintiva",
+      "descripcion": "Luz: Luz filtrada brillante, evitar sol directo\r\nRiego: Moderado, permitir secado ligero entre riegos\r\nSuelo: Sueltos, ricos en materia orgánica y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual en Úpoca de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con variegación blanca y verde distintiva",
       "medidas": "None",
       "precio_base": "3500.00",
       "porcentaje_extra": "30.00",
@@ -1298,8 +1298,8 @@
     "pk": 72,
     "fields": {
       "nombre": "Philodendron white wizard M11",
-      "descripcion": "Luz: Luz indirecta brillante, evitar luz directa\r\nRiego: Regulares pero evitando exceso de humedad\r\nSuelo: Rico en nutrientes, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos\r\nFertilizaci¾n: Una vez al mes durante temporada activa\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con follaje blanco y verde en ¾ptimas condiciones",
+      "descripcion": "Luz: Luz indirecta brillante, evitar luz directa\r\nRiego: Regulares pero evitando exceso de humedad\r\nSuelo: Rico en nutrientes, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos\r\nFertilización: Una vez al mes durante temporada activa\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con follaje blanco y verde en óptimas condiciones",
       "medidas": "None",
       "precio_base": "7500.00",
       "porcentaje_extra": "30.00",
@@ -1316,8 +1316,8 @@
     "pk": 73,
     "fields": {
       "nombre": "Philodendron white wizard M13",
-      "descripcion": "Luz: Luz indirecta brillante, evitar luz directa\r\nRiego: Regulares pero evitando exceso de humedad\r\nSuelo: Rico en nutrientes, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos\r\nFertilizaci¾n: Una vez al mes durante temporada activa\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con follaje blanco y verde en ¾ptimas condiciones",
+      "descripcion": "Luz: Luz indirecta brillante, evitar luz directa\r\nRiego: Regulares pero evitando exceso de humedad\r\nSuelo: Rico en nutrientes, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos\r\nFertilización: Una vez al mes durante temporada activa\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con follaje blanco y verde en óptimas condiciones",
       "medidas": "None",
       "precio_base": "9500.00",
       "porcentaje_extra": "30.00",
@@ -1334,8 +1334,8 @@
     "pk": 74,
     "fields": {
       "nombre": "Philodendron white wizard ScndCh",
-      "descripcion": "Luz: Luz indirecta brillante, evitar luz directa\r\nRiego: Regulares pero evitando exceso de humedad\r\nSuelo: Rico en nutrientes, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos\r\nFertilizaci¾n: Una vez al mes durante temporada activa\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Philodendron con follaje blanco y verde en ¾ptimas condiciones",
+      "descripcion": "Luz: Luz indirecta brillante, evitar luz directa\r\nRiego: Regulares pero evitando exceso de humedad\r\nSuelo: Rico en nutrientes, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos\r\nFertilización: Una vez al mes durante temporada activa\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Philodendron con follaje blanco y verde en óptimas condiciones",
       "medidas": "None",
       "precio_base": "3500.00",
       "porcentaje_extra": "30.00",
@@ -1352,7 +1352,7 @@
     "pk": 75,
     "fields": {
       "nombre": "Philodendron xanadu M13",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares, dejar secar ligeramente superficie entre riegos\r\nSuelo: FÚrtil, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares, dejar secar ligeramente superficie entre riegos\r\nSuelo: FÚrtil, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual durante crecimiento\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Philodendron con forma distintiva de hojas muy popular",
       "medidas": "None",
       "precio_base": "4000.00",
@@ -1370,7 +1370,7 @@
     "pk": 76,
     "fields": {
       "nombre": "Rhaphidophora tetrasperma M13",
-      "descripcion": "Luz: Luz filtrada brillante, evitar exposici¾n directa\r\nRiego: Moderado, permitir secado superficial entre riegos\r\nSuelo: Suelto y bien drenado, con buena retenci¾n de humedad\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Media a alta\r\nFertilizaci¾n: Mensual durante periodo de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz filtrada brillante, evitar exposición directa\r\nRiego: Moderado, permitir secado superficial entre riegos\r\nSuelo: Suelto y bien drenado, con buena retención de humedad\r\nTemperatura: Ambientes cálidos\r\nHumedad: Media a alta\r\nFertilización: Mensual durante periodo de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Planta conocida como \"Mini Monstera\" con hojas recortadas",
       "medidas": "None",
       "precio_base": "7200.00",
@@ -1388,7 +1388,7 @@
     "pk": 77,
     "fields": {
       "nombre": "Scindapsus pictus argyraeus M11",
-      "descripcion": "Luz: Luz indirecta suave, evitar quemaduras\r\nRiego: Moderados, dejar secar capa superior antes del pr¾ximo riego\r\nSuelo: Aireados y bien drenados, turba, perlita y corteza\r\nTemperatura: Temperatura templada\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta suave, evitar quemaduras\r\nRiego: Moderados, dejar secar capa superior antes del próximo riego\r\nSuelo: Aireados y bien drenados, turba, perlita y corteza\r\nTemperatura: Temperatura templada\r\nHumedad: Humedad media\r\nFertilización: Mensual durante crecimiento\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Pothos plateado con follaje gris plateado distintivo",
       "medidas": "None",
       "precio_base": "6000.00",
@@ -1406,7 +1406,7 @@
     "pk": 78,
     "fields": {
       "nombre": "Scindapsus pictus exotica M11",
-      "descripcion": "Luz: Luz filtrada, evitar sol directo\r\nRiego: Moderado, permitir secado superficial entre riegos\r\nSuelo: Aireado, nutritivo y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Una vez al mes durante temporada activa\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz filtrada, evitar sol directo\r\nRiego: Moderado, permitir secado superficial entre riegos\r\nSuelo: Aireado, nutritivo y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Una vez al mes durante temporada activa\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Scindapsus con hojas moteadas plateadas y verdes",
       "medidas": "None",
       "precio_base": "6000.00",
@@ -1424,7 +1424,7 @@
     "pk": 79,
     "fields": {
       "nombre": "Syngonium confetti M11",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares, dejar secar ligeramente entre riegos\r\nSuelo: Rico en materia orgßnica, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Regulares, dejar secar ligeramente entre riegos\r\nSuelo: Rico en materia orgánica, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual durante crecimiento\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Syngonium con follaje jaspeado verde y blanco",
       "medidas": "None",
       "precio_base": "4300.00",
@@ -1442,7 +1442,7 @@
     "pk": 80,
     "fields": {
       "nombre": "Syngonium erythrophyllum red arrow M11",
-      "descripcion": "Luz: Luz indirecta brillante, evitar luz directa\r\nRiego: Moderaci¾n, dejar secar superficie entre riegos\r\nSuelo: Aireado, fÚrtil y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Media a alta\r\nFertilizaci¾n: Mensual durante crecimiento con fertilizante lÝquido\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta brillante, evitar luz directa\r\nRiego: Moderación, dejar secar superficie entre riegos\r\nSuelo: Aireado, fÚrtil y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Media a alta\r\nFertilización: Mensual durante crecimiento con fertilizante líquido\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Syngonium con intenso color rojizo en hojas grandes y alargadas",
       "medidas": "None",
       "precio_base": "4300.00",
@@ -1460,8 +1460,8 @@
     "pk": 81,
     "fields": {
       "nombre": "Syngonium mouse ears M9",
-      "descripcion": "Luz: Luz filtrada, evitar sol directo\r\nRiego: Regulares, permitir secado ligero entre riegos\r\nSuelo: Aireado, nutritivo y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad moderada\r\nFertilizaci¾n: Mensual durante crecimiento\r\nNivel: Fßcil - Novato Verde",
-      "descripcion_corta": "Syngonium con hojas peque±as y redondeadas muy particular",
+      "descripcion": "Luz: Luz filtrada, evitar sol directo\r\nRiego: Regulares, permitir secado ligero entre riegos\r\nSuelo: Aireado, nutritivo y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad moderada\r\nFertilización: Mensual durante crecimiento\r\nNivel: Fácil - Novato Verde",
+      "descripcion_corta": "Syngonium con hojas pequeñas y redondeadas muy particular",
       "medidas": "None",
       "precio_base": "3000.00",
       "porcentaje_extra": "30.00",
@@ -1478,7 +1478,7 @@
     "pk": 82,
     "fields": {
       "nombre": "Syngonium podophyllum holly M9",
-      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Moderado, dejar secar ligeramente entre riegos\r\nSuelo: FÚrtil, aireado y bien drenado\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Una vez al mes durante temporada activa\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz indirecta brillante, evitar sol directo\r\nRiego: Moderado, dejar secar ligeramente entre riegos\r\nSuelo: FÚrtil, aireado y bien drenado\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Una vez al mes durante temporada activa\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Syngonium con forma de hoja de acebo y colores vivos",
       "medidas": "None",
       "precio_base": "1500.00",
@@ -1496,8 +1496,8 @@
     "pk": 83,
     "fields": {
       "nombre": "Syngonium podophyllum strawberry ice M11",
-      "descripcion": "Luz: Luz filtrada brillante, evitar luz directa\r\nRiego: Moderado, dejar secar superficie entre riegos\r\nSuelo: Nutritivo, aireado y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante temporada de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Syngonium con variegaci¾n rosada y blanca muy decorativo",
+      "descripcion": "Luz: Luz filtrada brillante, evitar luz directa\r\nRiego: Moderado, dejar secar superficie entre riegos\r\nSuelo: Nutritivo, aireado y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual durante temporada de crecimiento\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Syngonium con variegación rosada y blanca muy decorativo",
       "medidas": "None",
       "precio_base": "4300.00",
       "porcentaje_extra": "30.00",
@@ -1514,8 +1514,8 @@
     "pk": 84,
     "fields": {
       "nombre": "Syngonium starlite M11",
-      "descripcion": "Luz: Luz filtrada, evitar sol directo\r\nRiego: Moderado, dejar secar capa superficial entre riegos\r\nSuelo: Sueltos, ricos en nutrientes y bien drenados\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante temporada activa\r\nNivel: Intermedio - Aventurero Verde",
-      "descripcion_corta": "Syngonium con variegaci¾n blanca y verde distintiva",
+      "descripcion": "Luz: Luz filtrada, evitar sol directo\r\nRiego: Moderado, dejar secar capa superficial entre riegos\r\nSuelo: Sueltos, ricos en nutrientes y bien drenados\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual durante temporada activa\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion_corta": "Syngonium con variegación blanca y verde distintiva",
       "medidas": "None",
       "precio_base": "4300.00",
       "porcentaje_extra": "30.00",
@@ -1532,7 +1532,7 @@
     "pk": 85,
     "fields": {
       "nombre": "Tradescantia spathacea M13",
-      "descripcion": "Luz: Luz filtrada, evitar luz directa\r\nRiego: Moderados, dejar secar superficie entre riegos\r\nSuelo: Aireados, nutritivos y con buen drenaje\r\nTemperatura: Ambientes cßlidos\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante temporada de crecimiento\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz filtrada, evitar luz directa\r\nRiego: Moderados, dejar secar superficie entre riegos\r\nSuelo: Aireados, nutritivos y con buen drenaje\r\nTemperatura: Ambientes cálidos\r\nHumedad: Humedad media\r\nFertilización: Mensual durante temporada de crecimiento\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Tradescantia con contraste entre verde superior y morado inferior",
       "medidas": "",
       "precio_base": "5000.00",
@@ -1677,7 +1677,7 @@
     "fields": {
       "nombre": "Sumicote",
       "descripcion": "",
-      "descripcion_corta": "Formato saco 10 Kg, fertilizante de entrega lenta\r\n(120 y 180 dÝas, N-P-K)",
+      "descripcion_corta": "Formato saco 10 Kg, fertilizante de entrega lenta\r\n(120 y 180 días, N-P-K)",
       "medidas": "None",
       "precio_base": "15000.00",
       "porcentaje_extra": "30.00",
@@ -1748,7 +1748,7 @@
     "pk": 101,
     "fields": {
       "nombre": "Ficus benghalensis gold M17",
-      "descripcion": "Luz: Luz brillante e indirecta, evitar sol directo\r\nRiego: Constantes pero moderados, dejar secar superficie entre riegos\r\nSuelo: Rico en materia orgßnica y con buen drenaje, mezcla de turba, fibra de coco y perlita\r\nTemperatura: Temperatura cßlida\r\nHumedad: Humedad media\r\nFertilizaci¾n: Mensual durante periodo de crecimiento con fertilizante lÝquido\r\nNivel: Fßcil - Novato Verde",
+      "descripcion": "Luz: Luz brillante e indirecta, evitar sol directo\r\nRiego: Constantes pero moderados, dejar secar superficie entre riegos\r\nSuelo: Rico en materia orgánica y con buen drenaje, mezcla de turba, fibra de coco y perlita\r\nTemperatura: Temperatura cálida\r\nHumedad: Humedad media\r\nFertilización: Mensual durante periodo de crecimiento con fertilizante líquido\r\nNivel: Fácil - Novato Verde",
       "descripcion_corta": "Ficus con intenso tono dorado en las hojas",
       "medidas": "",
       "precio_base": "5500.00",
@@ -1766,7 +1766,7 @@
     "pk": 102,
     "fields": {
       "nombre": "Ctenanthe golden mosaic M15",
-      "descripcion": "Luz: Luz indirecta brillante, sol directo puede da±ar follaje\r\nRiego: Constantes, sustrato ligeramente h·medo evitando secado y exceso de agua\r\nSuelo: Suelto, rico en materia orgßnica y con buen drenaje, mezcla de turba, fibra de coco y perlita\r\nTemperatura: Ambientes cßlidos\r\nHumedad: H·medos, alta humedad ambiental o humidificadores\r\nFertilizaci¾n: Mensual con abono lÝquido\r\nNivel: Intermedio - Aventurero Verde",
+      "descripcion": "Luz: Luz indirecta brillante, sol directo puede dañar follaje\r\nRiego: Constantes, sustrato ligeramente húmedo evitando secado y exceso de agua\r\nSuelo: Suelto, rico en materia orgánica y con buen drenaje, mezcla de turba, fibra de coco y perlita\r\nTemperatura: Ambientes cálidos\r\nHumedad: Húmedos, alta humedad ambiental o humidificadores\r\nFertilización: Mensual con abono líquido\r\nNivel: Intermedio - Aventurero Verde",
       "descripcion_corta": "Planta con follaje dorado y verde en patrones de mosaico",
       "medidas": "",
       "precio_base": "4500.00",
