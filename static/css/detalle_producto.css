@@ -393,6 +393,7 @@
   font-size: 1.5rem;
   line-height: 1.6;
   font-weight: 300;
+  text-align: center;
 }
 
 #desc-input,
@@ -408,6 +409,7 @@
   min-height: 120px;
   resize: vertical;
   background: transparent;
+  text-align: center;
 }
 
 /* Información de envíos */
