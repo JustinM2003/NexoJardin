@@ -33,12 +33,35 @@
                 </button>
 
                 <!-- Barra de búsqueda (solo desktop) -->
+                <button class="search-icon-desktop" id="search-icon-desktop">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                
                 <form class="search-form" action="{% url 'ver-todo' %}" method="GET">
                     <div class="search-icon">
                         <i class="fa-solid fa-magnifying-glass icon-lupa"></i>
                     </div>
                     <input type="search" placeholder="Buscar producto" name="q">
                     <div class="search-dropdown" id="search-dropdown"></div>
+                </form>
+
+                <!-- Botón de cerrar búsqueda -->
+                <button class="search-close-desktop" id="search-close-desktop">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+
+                <!-- Barra de búsqueda móvil inline (dentro del container superior) -->
+                <form class="search-form-mobile-inline" action="{% url 'ver-todo' %}" method="GET">
+                    <div class="search-input-container-inline">
+                        <div class="search-icon-mobile-inline">
+                            <i class="fa-solid fa-magnifying-glass icon-lupa-mobile"></i>
+                        </div>
+                        <input type="search" placeholder="Buscar producto" id="search-input-mobile-inline" name="q">
+                        <button type="button" class="search-close-mobile-inline" id="search-close-mobile-inline">
+                            <i class="fa-solid fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="search-dropdown-mobile" id="search-dropdown-mobile-inline"></div>
                 </form>
 
                 <div class="logo-container">
@@ -126,6 +149,7 @@
                         <i class="fa-solid fa-times"></i>
                     </button>
                 </form>
+                <div class="search-dropdown-mobile" id="search-dropdown-mobile"></div>
             </div>
         </div>
     </header>
@@ -275,30 +299,158 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Search toggle (solo para móvil)
-    if (searchToggle && searchBarMobile) {
+    // Search toggle (solo para móvil y tablet)
+    if (searchToggle) {
         searchToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            searchBarMobile.classList.toggle('active');
-            // Cerrar menú móvil si está abierto
-            if (mobileNav && mobileNav.classList.contains('active')) {
-                closeMobileMenu();
-            }
-            // Focus en el input si se abre
-            if (searchBarMobile.classList.contains('active')) {
-                const searchInput = document.getElementById('search-input-mobile');
-                if (searchInput) searchInput.focus();
+            // Verificar si es móvil/tablet (menor o igual a 1024px)
+            if (window.innerWidth <= 1024) {
+                // Usar la nueva funcionalidad de expandir búsqueda móvil
+                const superior = document.querySelector('.superior');
+                const searchInputMobileInline = document.getElementById('search-input-mobile-inline');
+                const searchFormMobileInline = document.querySelector('.search-form-mobile-inline');
+                
+                if (superior && !superior.classList.contains('search-active-mobile')) {
+                    superior.classList.add('search-active-mobile');
+                    superior.setAttribute('data-search-active', 'true');
+                    
+                    // Limpiar el estilo inline que pudo haber sido aplicado al cerrar
+                    if (searchFormMobileInline) {
+                        searchFormMobileInline.style.display = '';
+                    }
+                    
+                    if (searchInputMobileInline) {
+                        setTimeout(() => {
+                            searchInputMobileInline.focus();
+                        }, 100);
+                    }
+                }
+                
+                // Cerrar menú móvil si está abierto
+                if (mobileNav && mobileNav.classList.contains('active')) {
+                    closeMobileMenu();
+                }
             }
         });
     }
 
-    // Close search (solo para móvil)
-    if (searchClose && searchBarMobile) {
+    // Close search (solo para móvil y tablet)
+    if (searchClose) {
         searchClose.addEventListener('click', function() {
-            searchBarMobile.classList.remove('active');
-            if (searchToggle) searchToggle.classList.remove('active');
+            // Verificar si es móvil/tablet
+            if (window.innerWidth <= 1024) {
+                const superior = document.querySelector('.superior');
+                if (superior && superior.classList.contains('search-active-mobile')) {
+                    superior.classList.remove('search-active-mobile');
+                    const searchInputMobileInline = document.getElementById('search-input-mobile-inline');
+                    if (searchInputMobileInline) searchInputMobileInline.value = '';
+                }
+            }
+            
+            // Fallback para la búsqueda antigua (mantener compatibilidad)
+            if (searchBarMobile) {
+                searchBarMobile.classList.remove('active');
+                if (searchToggle) searchToggle.classList.remove('active');
+            }
         });
     }
+
+    // Manejador para cerrar búsqueda móvil inline
+    const searchCloseMobileInline = document.getElementById('search-close-mobile-inline');
+    if (searchCloseMobileInline) {
+        // Prevenir que el botón X envíe el formulario
+        searchCloseMobileInline.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const superior = document.querySelector('.superior');
+            if (superior) {
+                superior.classList.remove('search-active-mobile');
+                superior.removeAttribute('data-search-active');
+                
+                // Forzar el ocultamiento del formulario
+                const searchFormMobileInline = document.querySelector('.search-form-mobile-inline');
+                if (searchFormMobileInline) {
+                    searchFormMobileInline.style.display = 'none';
+                }
+                
+                const searchInputMobileInline = document.getElementById('search-input-mobile-inline');
+                if (searchInputMobileInline) {
+                    searchInputMobileInline.value = '';
+                    searchInputMobileInline.blur(); // Quitar focus
+                }
+                
+                // Ocultar dropdown si existe
+                const dropdown = document.getElementById('search-dropdown-mobile-inline');
+                if (dropdown) {
+                    dropdown.classList.remove('show');
+                    dropdown.innerHTML = '';
+                }
+            }
+        });
+        
+        // También prevenir el mousedown para evitar que active el input
+        searchCloseMobileInline.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+        });
+    }
+
+    // Cerrar búsqueda móvil al hacer click fuera
+    document.addEventListener('click', function(e) {
+        const superior = document.querySelector('.superior');
+        const searchFormMobileInline = document.querySelector('.search-form-mobile-inline');
+        const searchBarMobile = document.querySelector('.search-bar-mobile');
+        const searchToggle = document.getElementById('search-toggle');
+        
+        // Solo procesar si estamos en móvil/tablet
+        if (window.innerWidth <= 1024) {
+            // Pequeño delay para evitar conflictos con el toggle
+            setTimeout(function() {
+                // Verificar si el click fue fuera del área de búsqueda móvil inline
+                if (superior && superior.classList.contains('search-active-mobile')) {
+                    // Verificar si el click fue en el toggle o dentro del formulario de búsqueda
+                    const clickedOnToggle = searchToggle && (e.target === searchToggle || searchToggle.contains(e.target));
+                    const clickedInsideForm = searchFormMobileInline && searchFormMobileInline.contains(e.target);
+                    
+                    // Si no se hizo click en el toggle ni dentro del formulario, cerrar la búsqueda
+                    if (!clickedOnToggle && !clickedInsideForm) {
+                        // Cerrar búsqueda móvil inline
+                        superior.classList.remove('search-active-mobile');
+                        superior.removeAttribute('data-search-active');
+                        
+                        // Forzar el ocultamiento del formulario
+                        if (searchFormMobileInline) {
+                            searchFormMobileInline.style.display = 'none';
+                        }
+                        
+                        const searchInputMobileInline = document.getElementById('search-input-mobile-inline');
+                        if (searchInputMobileInline) {
+                            searchInputMobileInline.value = '';
+                            searchInputMobileInline.blur();
+                        }
+                        
+                        // Ocultar dropdown si existe
+                        const dropdown = document.getElementById('search-dropdown-mobile-inline');
+                        if (dropdown) {
+                            dropdown.classList.remove('show');
+                            dropdown.innerHTML = '';
+                        }
+                    }
+                }
+                
+                // Verificar si el click fue fuera del área de búsqueda móvil del header
+                if (searchBarMobile && searchBarMobile.classList.contains('active')) {
+                    const clickedOnToggle = searchToggle && (e.target === searchToggle || searchToggle.contains(e.target));
+                    const clickedInsideBar = searchBarMobile.contains(e.target);
+                    
+                    if (!clickedOnToggle && !clickedInsideBar) {
+                        // Cerrar búsqueda móvil del header
+                        searchBarMobile.classList.remove('active');
+                        if (searchToggle) searchToggle.classList.remove('active');
+                    }
+                }
+            }, 10);
+        }
+    });
 
     // Manejar cambios de tamaño de ventana
     window.addEventListener('resize', function() {
@@ -307,6 +459,14 @@ document.addEventListener('DOMContentLoaded', function() {
             closeMobileMenu();
             if (searchBarMobile) searchBarMobile.classList.remove('active');
             if (searchToggle) searchToggle.classList.remove('active');
+        }
+        
+        // Si se cambia a desktop, cerrar búsqueda móvil
+        if (window.innerWidth > 1024) {
+            const superior = document.querySelector('.superior');
+            if (superior && superior.classList.contains('search-active-mobile')) {
+                superior.classList.remove('search-active-mobile');
+            }
         }
     });
 
