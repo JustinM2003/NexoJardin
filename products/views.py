@@ -219,9 +219,9 @@ def editar_descripciones(request, producto_id):
         precio_base = request.POST.get('precio_base', '').strip()
         porcentaje_extra = request.POST.get('porcentaje_extra', '').strip()
         incluir_iva = request.POST.get('incluir_iva') == 'on'
-        descripcion_corta = request.POST.get('descripcion_corta', '').strip()
-        descripcion = request.POST.get('descripcion', '').strip()
-        medidas = request.POST.get('medidas', '').strip()
+        descripcion_corta = request.POST.get('descripcion_corta', '')
+        descripcion = request.POST.get('descripcion', '')
+        medidas = request.POST.get('medidas', '')
         imagen = request.FILES.get('imagen')
 
         if nombre:
@@ -242,11 +242,12 @@ def editar_descripciones(request, producto_id):
             producto.porcentaje_extra = 0
             
         producto.incluir_iva = incluir_iva
-        producto.descripcion_corta = descripcion_corta if descripcion_corta else None
-        producto.descripcion = descripcion if descripcion else None
-        producto.medidas = medidas if medidas else None
+        producto.descripcion_corta = descripcion_corta
+        producto.descripcion = descripcion
+        producto.medidas = medidas
         if imagen:
             producto.imagen = imagen
+            
         producto.save()  # Esto calculará automáticamente el precio final
         return JsonResponse({'success': True})
     except Exception as e:

@@ -531,13 +531,58 @@ function cancelEdit() {
 }
 
 function saveChanges() {
-    const formData = new FormData(document.getElementById('edit-form'));
+    const formData = new FormData();
     const productId = document.getElementById('edit-form').dataset.productoId;
+    
+    // Obtener el token CSRF
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    formData.append('csrfmiddlewaretoken', csrfToken);
+    
+    // Recopilar todos los campos manualmente
+    const nameInput = document.getElementById('name-input');
+    if (nameInput) {
+        formData.append('nombre', nameInput.value);
+    }
+    
+    const priceBaseInput = document.getElementById('price-base-input');
+    if (priceBaseInput) {
+        formData.append('precio_base', priceBaseInput.value);
+    }
+    
+    const percentageInput = document.getElementById('percentage-input');
+    if (percentageInput) {
+        formData.append('porcentaje_extra', percentageInput.value);
+    }
+    
+    const ivaCheckbox = document.getElementById('iva-checkbox');
+    if (ivaCheckbox && ivaCheckbox.checked) {
+        formData.append('incluir_iva', 'on');
+    }
+    
+    const shortDescInput = document.getElementById('short-desc-input');
+    if (shortDescInput) {
+        formData.append('descripcion_corta', shortDescInput.value);
+    }
+    
+    const descInput = document.getElementById('desc-input');
+    if (descInput) {
+        formData.append('descripcion', descInput.value);
+    }
+    
+    const measuresInput = document.getElementById('measures-input');
+    if (measuresInput) {
+        formData.append('medidas', measuresInput.value);
+    }
+    
+    const imageInput = document.getElementById('image-input');
+    if (imageInput && imageInput.files.length > 0) {
+        formData.append('imagen', imageInput.files[0]);
+    }
     
     fetch(`/products/editar-descripciones/${productId}/`, {
         method: 'POST',
         headers: {
-            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+            'X-CSRFToken': csrfToken,
             'X-Requested-With': 'XMLHttpRequest'
         },
         body: formData
@@ -548,11 +593,17 @@ function saveChanges() {
             showMessage('Producto actualizado correctamente', 'success');
             exitEditMode();
             saveOriginalData(); // Actualizar datos originales
+            // Recargar la página para mostrar los cambios actualizados
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         } else {
-            showMessage('Error al actualizar el producto', 'error');
+            showMessage('Error al actualizar el producto: ' + (data.error || 'Error desconocido'), 'error');
         }
     })
-    .catch(() => showMessage('Error inesperado', 'error'));
+    .catch(error => {
+        showMessage('Error inesperado', 'error');
+    });
 }
 
 function showMessage(message, type) {
