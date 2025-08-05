@@ -1,20 +1,20 @@
 [
-{
-  "model": "auth.user",
-  "pk": 1,
-  "fields": {
-    "password": "pbkdf2_sha256$1000000$81kD9EVf8CBo5rbNqYRnHp$HmtcfAo1Mw8WL9A2rCWhFIGX+tDCOrtnoQ/QnxLtg48=",
-    "last_login": "2025-08-02T01:38:28.993Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "justin.mancilla.2003@gmail.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2025-07-12T01:29:46.183Z",
-    "groups": [],
-    "user_permissions": []
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$81kD9EVf8CBo5rbNqYRnHp$HmtcfAo1Mw8WL9A2rCWhFIGX+tDCOrtnoQ/QnxLtg48=",
+      "last_login": "2025-08-02T01:38:28.993Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "justin.mancilla.2003@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2025-07-12T01:29:46.183Z",
+      "groups": [],
+      "user_permissions": []
+    }
   }
-}
 ]
