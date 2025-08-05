@@ -1502,9 +1502,6 @@ button:focus {
 
 /* Móviles grandes (600px - 768px) */
 @media (max-width: 767px) {
-
-/* Móviles grandes (600px - 768px) */
-@media (max-width: 767px) {
   .page-wrapper {
     padding: 0 1rem;
     padding-top: 50px;
@@ -1939,6 +1936,3 @@ button:focus {
     max-width: 250px;
   }
 }
-
-
-
