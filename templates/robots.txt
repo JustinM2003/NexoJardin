@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Permitir acceso a archivos estaticos
+Allow: /static/
+Allow: /media/
+
+# Bloquear paginas administrativas
+Disallow: /admin/
+
+# Sitemap
+Sitemap: {{ request.scheme }}://{{ request.get_host }}/sitemap.xml
+
+# Paginas importantes para crawling
+Allow: /productos/
+Allow: /plantas/
+Allow: /materiales/

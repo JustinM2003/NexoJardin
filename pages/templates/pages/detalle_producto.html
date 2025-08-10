@@ -3,6 +3,51 @@
 {% load humanize %}
 {% load puntomiles %}
 
+{% block title %}{{ producto.nombre }} - NexoJardin{% endblock title %}
+
+{% block description %}{{ producto.descripcion_corta|default:"Compra "|add:producto.nombre|add:" en NexoJardin. "|add:producto.descripcion|truncatewords:25 }}{% endblock description %}
+
+{% block keywords %}{{ producto.nombre }}, plantas de interior, {{ producto.tipo }}, jardinería, plantas online Chile{% if producto.destacado %}, planta destacada{% endif %}{% endblock keywords %}
+
+{% block og_title %}{{ producto.nombre }} - NexoJardin{% endblock og_title %}
+{% block og_description %}{{ producto.descripcion_corta|default:"Descubre "|add:producto.nombre|add:" en NexoJardin." }}{% endblock og_description %}
+{% block og_image %}{{ producto.imagen.url }}{% endblock og_image %}
+{% block og_type %}product{% endblock og_type %}
+
+{% block twitter_title %}{{ producto.nombre }} - NexoJardin{% endblock twitter_title %}
+{% block twitter_description %}{{ producto.descripcion_corta|default:"Descubre "|add:producto.nombre|add:" en NexoJardin." }}{% endblock twitter_description %}
+{% block twitter_image %}{{ producto.imagen.url }}{% endblock twitter_image %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "{{ producto.nombre }}",
+    "image": [
+        "{{ request.scheme }}://{{ request.get_host }}{{ producto.imagen.url }}"
+    ],
+    "description": "{{ producto.descripcion_corta|default:producto.descripcion|truncatewords:30 }}",
+    "brand": {
+        "@type": "Brand",
+        "name": "NexoJardin"
+    },
+    "offers": {
+        "@type": "Offer",
+        "url": "{{ request.build_absolute_uri }}",
+        "priceCurrency": "CLP",
+        "price": "{{ producto.precio }}",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+            "@type": "Organization",
+            "name": "NexoJardin"
+        }
+    }{% if producto.tipo == "planta" %},
+    "category": "Plantas de Interior"{% endif %}
+}
+</script>
+{% endblock structured_data %}
+
 {% block banner %}{% endblock %}
 
 {% block extra_css %}

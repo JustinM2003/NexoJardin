@@ -1,6 +1,45 @@
 {% extends "base.html" %}
 {% load static %}
 {% load puntomiles %}
+
+{% block title %}NexoJardin - Plantas de Interior y Sustratos Premium | Tienda Online Chile{% endblock title %}
+
+{% block description %}Descubre la mejor selección de plantas de interior, sustratos premium y accesorios para jardinería en Chile. Envíos gratuitos en RM sobre $30.000. ¡Transforma tu hogar en un oasis verde!{% endblock description %}
+
+{% block keywords %}plantas de interior Chile, sustratos premium, jardinería online, philodendron, ficus, plantas variegadas, macetas, fertilizantes, plantas delivery Santiago{% endblock keywords %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NexoJardin",
+    "url": "{{ request.build_absolute_uri }}",
+    "logo": "{% static 'img/logo.png' %}",
+    "description": "Tienda especializada en plantas de interior, sustratos premium y accesorios para jardinería en Chile",
+    "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CL",
+        "addressRegion": "Región Metropolitana"
+    },
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": "Spanish"
+    },
+    "sameAs": [
+        "https://www.instagram.com/nexojardin"
+    ],
+    "offers": {
+        "@type": "AggregateOffer",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "CLP"
+    }
+}
+</script>
+{% endblock structured_data %}
+
 {% block content %}
 
 {% block extra_css %}

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',  # Para sitemap SEO
     # Mis Apps
     'pages.apps.PagesConfig',
     'products.apps.ProductsConfig',
@@ -177,4 +178,33 @@ if not DEBUG:
     AZURE_ACCOUNT_NAME = 'nexojardinstorage'
     AZURE_ACCOUNT_KEY = '3SS4g+7IQ6Lx70WWrf8nb310I0VXoF7IKux/chKMW6IvsC7dS4hykgJB1kGUMWMrU42DEKnVsrRx+AStyngJVQ=='
     AZURE_CONTAINER = 'media'
+
+# ===== CONFIGURACIONES SEO =====
+
+# Seguridad mejorada para producción
+if not DEBUG:
+    # HTTPS settings
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_HSTS_SECONDS = 31536000  # 1 año
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    
+    # Redirect HTTP to HTTPS
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+# Configuración de idioma para SEO
+LANGUAGE_CODE = 'es-cl'
+TIME_ZONE = 'America/Santiago'
+USE_I18N = True
+USE_TZ = True
+
+# Configuración de dominio para sitemap
+SITE_ID = 1
+
+# Azure Media URL para producción
+if not DEBUG:
     MEDIA_URL = 'https://nexojardinstorage.blob.core.windows.net/media/'

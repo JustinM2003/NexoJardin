@@ -1,5 +1,29 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}Todas las Plantas y Productos - NexoJardin{% endblock title %}
+
+{% block description %}Explora toda nuestra colección de plantas de interior, sustratos, fertilizantes y accesorios para jardinería. La mayor variedad de plantas online en Chile con envíos a domicilio.{% endblock description %}
+
+{% block keywords %}plantas de interior, catálogo plantas Chile, sustratos jardinería, fertilizantes plantas, accesorios jardinería, plantas online, delivery plantas Santiago{% endblock keywords %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Todas las Plantas y Productos - NexoJardin",
+    "description": "Explora toda nuestra colección de plantas de interior, sustratos, fertilizantes y accesorios para jardinería",
+    "url": "{{ request.build_absolute_uri }}",
+    "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": "{{ productos.count }}",
+        "itemListElement": []
+    }
+}
+</script>
+{% endblock structured_data %}
+
 {% block banner %}{% endblock banner %}
 {% block content %}
 <div class="container">
