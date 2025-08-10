@@ -24,8 +24,9 @@ from django.views.generic import TemplateView
 from django.shortcuts import redirect
 from .sitemaps import sitemaps
 
-def favicon_redirect(request):
-    return redirect('/static/img/favicon.ico')
+# Comentado temporalmente para evitar bucles de redirect
+# def favicon_redirect(request):
+#     return redirect('/static/img/favicon.ico')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,7 +37,7 @@ urlpatterns = [
     # SEO URLs
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
-    path('favicon.ico', favicon_redirect),
+    # path('favicon.ico', favicon_redirect),  # Comentado para evitar bucles de redirect
     # path('login/', include('pages.urls_login')),
 ]
 

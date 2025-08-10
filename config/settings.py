@@ -191,8 +191,8 @@ if not DEBUG:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
     
-    # Redirect HTTP to HTTPS
-    SECURE_SSL_REDIRECT = True
+    # Redirect HTTP to HTTPS - COMENTADO PARA RENDER
+    # SECURE_SSL_REDIRECT = True  # Esta línea causa bucle de redirects en Render
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
 
