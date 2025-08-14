@@ -35,6 +35,14 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
+# CSRF Settings para producción - CRÍTICO para evitar errores 403
+CSRF_TRUSTED_ORIGINS = [
+    'https://nexojardin.cl',
+    'https://www.nexojardin.cl',
+]
+if RENDER_EXTERNAL_HOSTNAME:
+    CSRF_TRUSTED_ORIGINS.append(f'https://{RENDER_EXTERNAL_HOSTNAME}')
+
 
 # Application definition
 
@@ -193,8 +201,13 @@ if not DEBUG:
     
     # Redirect HTTP to HTTPS - COMENTADO PARA RENDER
     # SECURE_SSL_REDIRECT = True  # Esta línea causa bucle de redirects en Render
+    
+    # Configuraciones de cookies seguras
     SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
     CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_SAMESITE = 'Lax'
+    CSRF_USE_SESSIONS = False
 
 # Configuración de idioma para SEO
 LANGUAGE_CODE = 'es-cl'
