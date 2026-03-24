@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 import os
-SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-5gt+u4q1pi1f5n!wqhq7amtrf#gsybb-4@+z$^ya#@k--if2t_')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'clave-generica-para-tu-pc-local')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
@@ -181,11 +181,18 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Configuración para Azure Blob Storage
 if not DEBUG:
-    INSTALLED_APPS += ['storages']
-    DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-    AZURE_ACCOUNT_NAME = 'nexojardinstorage'
-    AZURE_ACCOUNT_KEY = '3SS4g+7IQ6Lx70WWrf8nb310I0VXoF7IKux/chKMW6IvsC7dS4hykgJB1kGUMWMrU42DEKnVsrRx+AStyngJVQ=='
-    AZURE_CONTAINER = 'media'
+
+    MEDIA_ROOT = '/data/media' 
+    MEDIA_URL = '/media/'
+
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    
+    # INSTALLED_APPS += ['storages']
+    # DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+    # AZURE_ACCOUNT_NAME = 'nexojardinstorage'
+    # AZURE_ACCOUNT_KEY = '3SS4g+7IQ6Lx70WWrf8nb310I0VXoF7IKux/chKMW6IvsC7dS4hykgJB1kGUMWMrU42DEKnVsrRx+AStyngJVQ=='
+    # AZURE_CONTAINER = 'media'
 
 # ===== CONFIGURACIONES SEO =====
 
@@ -219,5 +226,5 @@ USE_TZ = True
 SITE_ID = 1
 
 # Azure Media URL para producción
-if not DEBUG:
-    MEDIA_URL = 'https://nexojardinstorage.blob.core.windows.net/media/'
+# if not DEBUG:
+#     MEDIA_URL = 'https://nexojardinstorage.blob.core.windows.net/media/'

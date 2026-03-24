@@ -21,12 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from django.views.generic import TemplateView
-from django.shortcuts import redirect
 from .sitemaps import sitemaps
-
-# Comentado temporalmente para evitar bucles de redirect
-# def favicon_redirect(request):
-#     return redirect('/static/img/favicon.ico')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,15 +29,13 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('productos/', include('products.urls')),
     path('', include('products.urls')),
-    # SEO URLs
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
-    # path('favicon.ico', favicon_redirect),  # Comentado para evitar bucles de redirect
-    # path('login/', include('pages.urls_login')),
 ]
 
-# Servir archivos estáticos en producción (DEBUG=False)
+# Servir archivos estáticos en producción
 if not settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+# Habilitar el acceso a las imágenes del disco persistente (/data/media)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
