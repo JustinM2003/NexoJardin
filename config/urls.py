@@ -16,11 +16,12 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from django.views.generic import TemplateView
+from django.views.static import serve
 from .sitemaps import sitemaps
 
 urlpatterns = [
@@ -33,9 +34,14 @@ urlpatterns = [
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
 ]
 
-# Servir archivos estáticos en producción
+# Servir archivos estáticos en producción (CSS, JS)
 if not settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-# Habilitar el acceso a las imágenes del disco persistente (/data/media)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# FORZAR a Django a servir los archivos Media en producción (Render)
+# Esto ignora el bloqueo de DEBUG=False y busca directamente en el disco persistente
+urlpatterns += [
+    re_path(r'^media/(?P<path>.*)$', serve, {
+        'document_root': settings.MEDIA_ROOT,
+    }),
+]
